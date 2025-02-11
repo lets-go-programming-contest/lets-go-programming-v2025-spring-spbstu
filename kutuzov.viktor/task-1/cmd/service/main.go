@@ -2,52 +2,42 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/kutuzov.viktor/task-1/internal/calculate"
+	"github.com/kutuzov.viktor/task-1/internal/print"
+	value "github.com/kutuzov.viktor/task-1/internal/readFloat"
+	operator "github.com/kutuzov.viktor/task-1/internal/readOp"
 )
 
 func main() {
-
-	var num1 float64
-	fmt.Print("Введите первое число: ")
-	_, err := fmt.Scanln(&num1)
+	var val1 float64
+	val1, err := value.Read()
 	if err != nil {
-		fmt.Println("Некорректное число. Пожалуйста, введите числовое значение.")
+		fmt.Println(err)
 		return
 	}
 
-	var operation string
-	fmt.Print("Выберите операцию (+, -, *, /): ")
-	_, err = fmt.Scanln(&operation)
+	op, err := operator.Read()
 	if err != nil {
-		fmt.Println("Ошибка ввода операции.")
+		fmt.Println(err)
 		return
 	}
 
-	var num2 float64
-	fmt.Print("Введите второе число: ")
-	_, err = fmt.Scanln(&num2)
+	val2, err := value.Read()
 	if err != nil {
-		fmt.Println("Некорректное число. Пожалуйста, введите числовое значение.")
+		fmt.Println(err)
 		return
 	}
 
-	switch operation {
-	case "+":
-		fmt.Println("Результат:", num1, operation, num2, "=", num1+num2)
+	ans, err := calculate.Calculate(val1, val2, op)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
-	case "-":
-		fmt.Println("Результат:", num1, operation, num2, "=", num1-num2)
-
-	case "*":
-		fmt.Println("Результат:", num1, operation, num2, "=", num1*num2)
-
-	case "/":
-		if num2 == 0 {
-			fmt.Println("Ошибка: деление на ноль невозможно.")
-		} else {
-			fmt.Println("Результат:", num1, operation, num2, "=", num1/num2)
-		}
-
-	default:
-		fmt.Println("Некорректная операция. Пожалуйста, используйте символы +, -, * или /.")
+	err = print.PrintAns(val1, val2, ans, op)
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
 }
