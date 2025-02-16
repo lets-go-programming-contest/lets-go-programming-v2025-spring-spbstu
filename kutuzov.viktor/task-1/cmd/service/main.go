@@ -5,25 +5,25 @@ import (
 
 	"github.com/kutuzov.viktor/task-1/internal/calculate"
 	"github.com/kutuzov.viktor/task-1/internal/print"
-	value "github.com/kutuzov.viktor/task-1/internal/readFloat"
-	operator "github.com/kutuzov.viktor/task-1/internal/readOp"
+	"github.com/kutuzov.viktor/task-1/internal/readFloat"
+	"github.com/kutuzov.viktor/task-1/internal/readOp"
 )
 
 func main() {
 	var val1 float64
-	val1, err := value.Read()
+	val1, err := readFloat.Read()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	op, err := operator.Read()
+	op, err := readOp.Read()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	val2, err := value.Read()
+	val2, err := readFloat.Read()
 	if err != nil {
 		fmt.Println(err)
 		return
