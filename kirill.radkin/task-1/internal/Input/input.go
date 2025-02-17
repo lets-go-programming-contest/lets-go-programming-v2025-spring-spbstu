@@ -6,9 +6,9 @@ import (
 )
 
 func ScanFloatNum() float64 {
-	var Num float64
+	var num float64
 
-	_, err := fmt.Scan(&Num)
+	_, err := fmt.Scan(&num)
 
 	for err != nil {
 		var garbage string
@@ -16,23 +16,23 @@ func ScanFloatNum() float64 {
 
 		fmt.Println("Incorrect input, should be floating point number, try again")
 
-		_, err = fmt.Scan(&Num)
+		_, err = fmt.Scan(&num)
 	}
 
-	return Num
+	return num
 }
 
 func ScanOperation() string {
-	var Op string
+	var op string
 	var AvailableOperations = "+-*/"
 
-	_, err := fmt.Scan(&Op)
+	_, err := fmt.Scan(&op)
 
-	for (err != nil) || (!strings.Contains(AvailableOperations, Op)) {
+	for (err != nil) || (!strings.Contains(AvailableOperations, op)) {
 		fmt.Println("Incorrect input, should be '+', '-', '*' or '/', try again")
 
-		_, err = fmt.Scan(&Op)
+		_, err = fmt.Scan(&op)
 	}
 
-	return Op
+	return op
 }

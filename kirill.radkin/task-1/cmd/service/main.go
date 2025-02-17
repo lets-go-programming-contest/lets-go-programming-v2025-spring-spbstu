@@ -8,24 +8,20 @@ import (
 )
 
 func main() {
-	var Num1, Num2, Res float64
-	var Op string
-
 	fmt.Println("Enter first number: ")
-	Num1 = input.ScanFloatNum()
+	num1 := input.ScanFloatNum()
 
 	fmt.Println("Enter operation (+, -, *, /): ")
-	Op = input.ScanOperation()
+	op := input.ScanOperation()
 
 	fmt.Println("Enter second number: ")
-	Num2 = input.ScanFloatNum()
+	num2 := input.ScanFloatNum()
 
-	Res, err := calc.Eval(Num1, Num2, Op)
+	res, err := calc.Eval(num1, num2, op)
 
 	if err != nil {
 		fmt.Println("Calcualtion error:", err.Error())
 	} else {
-		ResStr := fmt.Sprintf("%f %s %f = %f", Num1, Op, Num2, Res)
-		fmt.Println(ResStr)
+		fmt.Printf("%f %s %f = %f\n", num1, op, num2, res)
 	}
 }

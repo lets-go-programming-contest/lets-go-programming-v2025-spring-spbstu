@@ -2,26 +2,21 @@ package calc
 
 import "fmt"
 
-func Eval[T int | float32 | float64](Num1 T, Num2 T, Op string) (T, error) {
-	var Res T = 0
-	var err error
-
-	switch Op {
+func Eval[T int | float32 | float64](num1 T, num2 T, op string) (T, error) {
+	switch op {
 	case "+":
-		Res = Num1 + Num2
+		return num1 + num2, nil
 	case "-":
-		Res = Num1 - Num2
+		return num1 - num2, nil
 	case "*":
-		Res = Num1 * Num2
+		return num1 * num2, nil
 	case "/":
-		if Num2 == 0 {
-			err = fmt.Errorf("division by zero")
+		if num2 == 0 {
+			return 0, fmt.Errorf("division by zero")
 		} else {
-			Res = Num1 / Num2
+			return num1 / num2, nil
 		}
 	default:
-		err = fmt.Errorf("unknown operation")
+		return 0, fmt.Errorf("unknown operation")
 	}
-
-	return Res, err
 }
