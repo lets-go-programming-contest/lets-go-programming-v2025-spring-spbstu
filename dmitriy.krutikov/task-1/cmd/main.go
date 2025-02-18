@@ -17,7 +17,7 @@ func isValidOperator(operator string) bool {
 func inputNumber() (float64, error) {
 	var number float64
 	fmt.Print("Введите число: ")
-	_, err := fmt.Scan(&number)
+	_, err := fmt.Scanln(&number)
 
 	if err != nil {
 		return 0, errors.New("Некорректное число. Пожалуйста, введите числовое значение")
@@ -29,7 +29,7 @@ func inputNumber() (float64, error) {
 func inputOperator() (string, error) {
 	var operator string
 	fmt.Print("Введите операцию(+, -, *, /): ")
-	_, err := fmt.Scan(&operator)
+	_, err := fmt.Scanln(&operator)
 
 	if err != nil {
 		return "", errors.New("Некорректный ввод. Пожалуйста, введите +, -, *, /")
