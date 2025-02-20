@@ -1,33 +1,21 @@
 package calculate
 
 import (
-	"errors"
+	"container/heap"
+
+	"github.com/vktr-ktzv/task2-2/internal/intHeap"
 )
 
-func Calculate(val1, val2 float64, op string) (float64, error) {
+func FindKthLargest(nums []int, k int) int {
+	h := &intHeap.IntHeap{}
+	heap.Init(h)
 
-	var ans float64
-	var err error
-	switch op {
-	case "+":
-		ans = val1 + val2
-
-	case "-":
-		ans = val1 - val2
-
-	case "*":
-		ans = val1 * val2
-
-	case "/":
-		if val2 == 0 {
-			err = errors.New("error: division by zero is forbidden")
-		} else {
-			ans = val1 / val2
+	for _, num := range nums {
+		heap.Push(h, num)
+		if h.Len() > k {
+			heap.Pop(h)
 		}
-
-	default:
-		err = errors.New("error: bad op argument")
 	}
 
-	return ans, err
+	return (*h)[0]
 }
