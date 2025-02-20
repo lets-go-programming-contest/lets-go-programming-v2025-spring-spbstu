@@ -17,11 +17,6 @@ func CalcSuitableTemp(n, employesQuantity uint64) ([]int64, error) {
 			return []int64{}, err
 		}
 
-		err = checkInput(op, temp)
-		if err != nil {
-			return []int64{}, err
-		}
-
 		switch op {
 		case ">=":
 			if temp > minTemp {
@@ -38,7 +33,8 @@ func CalcSuitableTemp(n, employesQuantity uint64) ([]int64, error) {
 
 	}
 
-	if minTemp > maxTemp {
+	err := checkInput(minTemp, maxTemp)
+	if err != nil {
 		return []int64{-1}, nil
 	}
 
@@ -55,11 +51,15 @@ func fillSlice(minTemp, maxTemp int64) []int64 {
 	return slice
 }
 
-func checkInput(op string, temp uint64) error {
-	if temp < 15 && op != ">=" {
-		return errors.New("bad temp arg")
-	} else if temp > 30 && op != "<=" {
-		return errors.New("bad temp arg")
+func checkInput(minTemp, maxTemp uint64) error {
+	if minTemp > maxTemp {
+		return errors.New("minTemp > maxTemp")
+	}
+
+	if maxTemp < 15 {
+		return errors.New("bad maxTemp")
+	} else if minTemp > 30 {
+		return errors.New("bad minTemp")
 	}
 
 	return nil

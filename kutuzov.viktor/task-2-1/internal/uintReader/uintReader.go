@@ -1,4 +1,4 @@
-package uintreader
+package uintReader
 
 import (
 	"bufio"

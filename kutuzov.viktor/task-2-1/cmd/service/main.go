@@ -5,13 +5,13 @@ import (
 	"log"
 
 	"github.com/kutuzov.viktor/task-2-1/internal/calculate"
-	"github.com/kutuzov.viktor/task-2-1/internal/uintreader"
+	"github.com/kutuzov.viktor/task-2-1/internal/uintReader"
 )
 
 func main() {
 	fmt.Print("Введите количество отделов: ")
 	var N uint64
-	N, err := uintreader.Read()
+	N, err := uintReader.Read()
 	if err != nil {
 		log.Fatal(err)
 		return
@@ -21,7 +21,7 @@ func main() {
 
 	for i := uint64(0); i < N; i++ {
 		fmt.Printf("Количество сотрудников в отделе %d: ", i)
-		k, err := uintreader.Read()
+		k, err := uintReader.Read()
 		if err != nil {
 			log.Fatal(err)
 			return
