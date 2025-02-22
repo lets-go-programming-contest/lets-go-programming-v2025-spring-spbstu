@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
-	arithmetic "task-1/pkg"
+	arithmetic "task-1/pkg/arithmetic"
 )
 
 func Run() error {
