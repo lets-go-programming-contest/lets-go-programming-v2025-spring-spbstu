@@ -1,0 +1,2 @@
+input-file: "https://www.cbr.ru/scripts/XML_daily.asp"
+output-file: "examples/result_remote.json"
