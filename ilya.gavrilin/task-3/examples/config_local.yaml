@@ -1,0 +1,2 @@
+input-file: "examples/input_1.xml"
+output-file: "examples/result_remote.json"
