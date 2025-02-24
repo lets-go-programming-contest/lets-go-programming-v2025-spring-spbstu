@@ -20,7 +20,7 @@ func (h *IntHeap) Pop() interface{} {
 	return x
 }
 
-func findKthLargest(nums []int, K int) int {
+func FindKthLargest(nums []int, K int) int {
 	h := &IntHeap{}
 	heap.Init(h)
 
