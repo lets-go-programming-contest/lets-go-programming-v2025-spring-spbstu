@@ -14,8 +14,9 @@ func main() {
 	N, err := uintReader.Read()
 	if err != nil {
 		log.Fatal(err)
-		return
-	} else if N == 0 {
+	}
+
+	if N == 0 {
 		log.Fatal("Ноль отделов -> задача отсутвует")
 	}
 
@@ -24,15 +25,15 @@ func main() {
 		k, err := uintReader.Read()
 		if err != nil {
 			log.Fatal(err)
-			return
-		} else if k == 0 {
+		}
+
+		if k == 0 {
 			log.Fatal("Не существует отдела без сотрудников")
 		}
 
 		temp, err := calculate.CalcSuitableTemp(i, k)
 		if err != nil {
 			log.Fatal(err)
-			return
 		}
 
 		fmt.Println("Оптимальная температура в отделе", i, ":", temp, "°C")

@@ -14,7 +14,7 @@ func CalcSuitableTemp(n, employesQuantity uint64) ([]int64, error) {
 		fmt.Printf("Предпочтения сотрудника %d в отделе %d: ", j, n)
 		_, err := fmt.Scanf("%s %d", &op, &temp)
 		if err != nil {
-			return []int64{}, err
+			return nil, err
 		}
 
 		switch op {
@@ -28,7 +28,7 @@ func CalcSuitableTemp(n, employesQuantity uint64) ([]int64, error) {
 			}
 		default:
 			err = errors.New("bad op arg")
-			return []int64{}, err
+			return nil, err
 		}
 
 	}
