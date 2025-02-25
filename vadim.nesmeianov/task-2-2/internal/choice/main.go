@@ -3,15 +3,14 @@ package choice
 import (
 	"container/heap"
 	"fmt"
-	"log"
-	IntHeap "task-2-2/cmd/intHeap"
+	IntHeap "task-2-2/internal/intHeap"
 )
 
-func Run() {
+func Run() error {
 	var n int
 	_, err := fmt.Scan(&n)
 	if err != nil {
-		handleError(err)
+		return err
 	}
 
 	h := make(IntHeap.IntHeap, n)
@@ -21,7 +20,7 @@ func Run() {
 		var val int
 		_, err = fmt.Scanf("%d", &val)
 		if err != nil {
-			handleError(err)
+			return err
 		}
 		heap.Push(&h, val)
 	}
@@ -29,19 +28,14 @@ func Run() {
 	var k int
 	_, err = fmt.Scan(&k)
 	if err != nil {
-		handleError(err)
+		return err
 	}
 
 	res, err := h.GetKNode(k)
 	if err != nil {
-		handleError(err)
+		return err
 	}
 
 	fmt.Println(res)
-}
-
-func handleError(err error) {
-	if err != nil {
-		log.Fatal(err)
-	}
+	return nil
 }
