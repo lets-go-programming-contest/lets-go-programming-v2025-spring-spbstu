@@ -2,14 +2,13 @@ package processor
 
 import (
 	"sort"
-	"strconv"
 
 	"task-3/internal/fetcher"
 )
 
 // CurrencyOutput represents the final output structure.
 type CurrencyOutput struct {
-	NumCode  int     `json:"num_code"`
+	NumCode  int64   `json:"num_code"`
 	CharCode string  `json:"char_code"`
 	Value    float64 `json:"value"`
 }
@@ -18,12 +17,8 @@ type CurrencyOutput struct {
 func SortCurrencies(currencies []fetcher.Currency) []CurrencyOutput {
 	var output []CurrencyOutput
 	for _, c := range currencies {
-		numCode, err := strconv.Atoi(c.NumCode)
-		if err != nil {
-			continue // Ignore invalid entries
-		}
 		output = append(output, CurrencyOutput{
-			NumCode:  numCode,
+			NumCode:  c.NumCode,
 			CharCode: c.CharCode,
 			Value:    c.Value,
 		})
