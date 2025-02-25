@@ -29,7 +29,6 @@ func (instance *department) EventEmployeeCame(temp int, op comp_op.Operand) erro
 		errStr := fmt.Sprintf("department %d is overcrowded", instance.depId)
 		return errors.New(errStr)
 	}
-
 	return instance.ac.NewRequest(temp, op)
 }
 
@@ -42,6 +41,5 @@ func GetDepartment(id int) Department {
 	instance.depId = id
 	instance.employeesCame = 0
 	instance.ac = ac.GetAc()
-
 	return instance
 }

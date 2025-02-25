@@ -17,7 +17,6 @@ type office struct {
 type Office interface {
 	EventEmployeeCame(int, int, comp_op.Operand) error
 	SetDepartmentCapasity(int, int) error
-
 	GetTempInDepartment(int) int
 }
 
