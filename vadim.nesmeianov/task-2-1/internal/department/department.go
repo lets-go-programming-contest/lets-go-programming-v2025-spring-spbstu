@@ -11,7 +11,7 @@ type Department struct {
 	depId         int
 	employeesNum  int
 	employeesCame int
-	ac            *ac.Ac
+	ac            ac.Ac
 }
 
 func (instance Department) GetTemperature() int {
@@ -30,8 +30,8 @@ func (instance *Department) SetCapacity(cap int) {
 	instance.employeesNum = cap
 }
 
-func GetDepartment(id int) *Department {
-	instance := new(Department)
+func GetDepartment(id int) Department {
+	var instance Department
 	instance.depId = id
 	instance.employeesCame = 0
 	instance.ac = ac.GetAc()

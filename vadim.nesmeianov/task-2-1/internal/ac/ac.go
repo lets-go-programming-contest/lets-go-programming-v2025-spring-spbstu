@@ -68,11 +68,11 @@ func (instance Ac) GetTemperature() int {
 	return instance.currentTemp
 }
 
-func GetAc() *Ac {
+func GetAc() Ac {
 	const minTemp = 15
 	const maxTemp = 30
+	var instance Ac
 
-	instance := new(Ac)
 	instance.maxTemp = maxTemp
 	instance.minTemp = minTemp
 	instance.currentTemp = 0

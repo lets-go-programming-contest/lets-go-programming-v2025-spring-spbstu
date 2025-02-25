@@ -10,7 +10,7 @@ import (
 
 type office struct {
 	depNum int
-	dep    []*department.Department
+	dep    []department.Department
 }
 
 func (instance office) GetTempInDepartment(id int) int {
@@ -39,7 +39,7 @@ func (instance *office) SetDepartmentCapasity(num, size int) error {
 func GetOffice(n int) *office {
 	instance := new(office)
 	instance.depNum = n
-	instance.dep = make([]*department.Department, n)
+	instance.dep = make([]department.Department, n)
 
 	for i, _ := range instance.dep {
 		instance.dep[i] = department.GetDepartment(i)
