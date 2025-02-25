@@ -8,7 +8,7 @@ import (
 )
 
 // WriteToFile saves processed data to a JSON file.
-func WriteToFile(path string, data interface{}) error {
+func WriteToFile(path string, data any) error {
 	// Ensure directory exists
 	dir := filepath.Dir(path)
 	if err := os.MkdirAll(dir, os.ModePerm); err != nil {
