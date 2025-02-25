@@ -9,7 +9,7 @@ import (
 )
 
 // LoadData loads data from a local file or a remote URL.
-func LoadData(path string) (io.Reader, error) {
+func LoadData(path string) (io.ReadCloser, error) {
 	if strings.HasPrefix(path, "https://") {
 		return fetchFromURL(path)
 	}
@@ -17,7 +17,7 @@ func LoadData(path string) (io.Reader, error) {
 }
 
 // fetchFromURL downloads XML data from a given URL.
-func fetchFromURL(url string) (io.Reader, error) {
+func fetchFromURL(url string) (io.ReadCloser, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -41,7 +41,7 @@ func fetchFromURL(url string) (io.Reader, error) {
 }
 
 // loadFromFile reads XML data from a local file.
-func loadFromFile(path string) (io.Reader, error) {
+func loadFromFile(path string) (io.ReadCloser, error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open file %s: %w", path, err)
