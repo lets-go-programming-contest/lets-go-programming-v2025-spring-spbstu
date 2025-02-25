@@ -16,23 +16,20 @@ func main() {
 	scanner.Scan()
 	N, err := strconv.Atoi(scanner.Text())
 	if err != nil || N < 1 || N > 10000 {
-		fmt.Println("Invalid number of dishes")
-		log.Fatal()
+		log.Fatal("Invalid number of dishes")
 	}
 
 	scanner.Scan()
 	numbers := strings.Fields(scanner.Text())
 	if len(numbers) != N {
-		fmt.Println("Number of ratings does not match number of dishes")
-		log.Fatal()
+		log.Fatal("Number of ratings does not match number of dishes")
 	}
 
 	ratings := make([]int, N)
 	for i := 0; i < N; i++ {
 		value, err := strconv.Atoi(numbers[i])
 		if err != nil || value < -10000 || value > 10000 {
-			fmt.Println("Invalid dish rating")
-			log.Fatal()
+			log.Fatal("Invalid dish rating")
 		}
 		ratings[i] = value
 	}
@@ -40,8 +37,7 @@ func main() {
 	scanner.Scan()
 	K, err := strconv.Atoi(scanner.Text())
 	if err != nil || K < 1 || K > N {
-		fmt.Println("Invalid k value")
-		log.Fatal()
+		log.Fatal("Invalid k value")
 	}
 
 	fmt.Println(min_heap.FindKthLargest(ratings, K))
