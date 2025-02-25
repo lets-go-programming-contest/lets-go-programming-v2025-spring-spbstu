@@ -2,8 +2,9 @@ package choice
 
 import (
 	"container/heap"
+	"errors"
 	"fmt"
-	IntHeap "task-2-2/internal/intHeap"
+	"task-2-2/internal/intHeap"
 )
 
 func Run() error {
@@ -13,7 +14,11 @@ func Run() error {
 		return err
 	}
 
-	h := make(IntHeap.IntHeap, n)
+	if n <= 0 {
+		return errors.New("n < 0")
+	}
+
+	h := make(intHeap.IntHeap, 0, n)
 	heap.Init(&h)
 
 	for i := 0; i < n; i += 1 {

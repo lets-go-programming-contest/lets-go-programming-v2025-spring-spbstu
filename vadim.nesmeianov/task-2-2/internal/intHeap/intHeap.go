@@ -1,4 +1,4 @@
-package IntHeap
+package intHeap
 
 import (
 	"container/heap"
