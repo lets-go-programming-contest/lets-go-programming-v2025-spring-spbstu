@@ -8,16 +8,16 @@ import (
 	"task-2-1/pkg/comp_op"
 )
 
-type office struct {
+type Office struct {
 	depNum int
 	dep    []department.Department
 }
 
-func (instance office) GetTempInDepartment(id int) int {
+func (instance Office) GetTempInDepartment(id int) int {
 	return instance.dep[id].GetTemperature()
 }
 
-func (instance *office) EventEmployeeCame(dep, temp int, op comp_op.Operand) error {
+func (instance *Office) EventEmployeeCame(dep, temp int, op comp_op.Operand) error {
 	if dep < instance.depNum {
 		return instance.dep[dep].EventEmployeeCame(temp, op)
 	}
@@ -26,7 +26,7 @@ func (instance *office) EventEmployeeCame(dep, temp int, op comp_op.Operand) err
 	return errors.New(errStr)
 }
 
-func (instance *office) SetDepartmentCapasity(num, size int) error {
+func (instance *Office) SetDepartmentCapasity(num, size int) error {
 	if num < instance.depNum {
 		instance.dep[num].SetCapacity(size)
 		return nil
@@ -36,8 +36,8 @@ func (instance *office) SetDepartmentCapasity(num, size int) error {
 	return errors.New(errStr)
 }
 
-func GetOffice(n int) *office {
-	instance := new(office)
+func GetOffice(n int) *Office {
+	instance := new(Office)
 	instance.depNum = n
 	instance.dep = make([]department.Department, n)
 
@@ -55,7 +55,7 @@ func Run(logOutput bool) error {
 		return err
 	}
 
-	_office := GetOffice(n)
+	office := GetOffice(n)
 
 	for i := 0; i < n; i += 1 {
 		var k int
@@ -65,7 +65,7 @@ func Run(logOutput bool) error {
 			return err
 		}
 
-		_office.SetDepartmentCapasity(i, k)
+		office.SetDepartmentCapasity(i, k)
 
 		for j := 0; j < k; j += 1 {
 			op, temp, err := readRequest()
@@ -73,12 +73,12 @@ func Run(logOutput bool) error {
 				return err
 			}
 
-			err = _office.EventEmployeeCame(i, temp, op)
+			err = office.EventEmployeeCame(i, temp, op)
 			if err != nil {
 				return err
 			}
 
-			currTemp := _office.GetTempInDepartment(i)
+			currTemp := office.GetTempInDepartment(i)
 			fmt.Printf("%d\n", currTemp)
 		}
 	}
