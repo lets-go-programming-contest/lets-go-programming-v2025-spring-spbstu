@@ -8,12 +8,6 @@ import (
 func main() {
 	err := choice.Run()
 	if err != nil {
-		handleError(err)
-	}
-}
-
-func handleError(err error) {
-	if err != nil {
 		log.Fatal(err)
 	}
 }
