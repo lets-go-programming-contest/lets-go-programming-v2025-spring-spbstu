@@ -9,12 +9,6 @@ func main() {
 	err := office.Run(true)
 
 	if err != nil {
-		handleError(err)
-	}
-}
-
-func handleError(err error) {
-	if err != nil {
 		log.Fatal(err)
 	}
 }
