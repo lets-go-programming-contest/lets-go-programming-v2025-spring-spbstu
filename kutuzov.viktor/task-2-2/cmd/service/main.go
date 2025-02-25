@@ -15,7 +15,9 @@ func main() {
 	N, err := intReader.Read()
 	if err != nil {
 		log.Fatal(err)
-	} else if N <= 0 {
+	}
+
+	if N <= 0 {
 		log.Fatal("error: N <= 0")
 	}
 
