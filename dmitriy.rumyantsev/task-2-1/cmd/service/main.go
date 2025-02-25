@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -54,14 +55,14 @@ func main() {
 	N, valid := readIntInRange(scanner, 1, 1000)
 	if !valid {
 		fmt.Println("Invalid number of departments")
-		return
+		log.Fatal()
 	}
 
 	for i := 0; i < N; i++ {
 		K, valid := readIntInRange(scanner, 1, 1000)
 		if !valid {
 			fmt.Println("Invalid number of employees in department", i+1)
-			return
+			log.Fatal()
 		}
 
 		department := Department{minTemp, maxTemp}
@@ -70,7 +71,7 @@ func main() {
 			sign, temp, valid := readTemperatureConstraint(scanner)
 			if !valid {
 				fmt.Println("Invalid temperature constraint")
-				return
+				log.Fatal()
 			}
 
 			if sign == "<=" {
