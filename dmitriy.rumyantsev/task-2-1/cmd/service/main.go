@@ -54,15 +54,13 @@ func main() {
 
 	N, valid := readIntInRange(scanner, 1, 1000)
 	if !valid {
-		fmt.Println("Invalid number of departments")
-		log.Fatal()
+		log.Fatal("Invalid number of departments")
 	}
 
 	for i := 0; i < N; i++ {
 		K, valid := readIntInRange(scanner, 1, 1000)
 		if !valid {
-			fmt.Println("Invalid number of employees in department", i+1)
-			log.Fatal()
+			log.Fatal("Invalid number of employees in department ", i+1)
 		}
 
 		department := Department{minTemp, maxTemp}
@@ -70,8 +68,7 @@ func main() {
 		for j := 0; j < K; j++ {
 			sign, temp, valid := readTemperatureConstraint(scanner)
 			if !valid {
-				fmt.Println("Invalid temperature constraint")
-				log.Fatal()
+				log.Fatal("Invalid temperature constraint")
 			}
 
 			if sign == "<=" {
