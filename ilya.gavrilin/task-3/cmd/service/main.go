@@ -27,7 +27,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to load data: %v", err)
 	}
-
+	defer data.Close()
 	// Fetch and parse data
 	currencies, err := fetcher.FetchData(data)
 	if err != nil {
