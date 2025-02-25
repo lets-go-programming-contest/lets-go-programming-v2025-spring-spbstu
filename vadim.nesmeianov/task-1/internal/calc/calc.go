@@ -3,35 +3,26 @@ package calc
 import (
 	"errors"
 	"fmt"
-	"log"
 	arithmetic "task-1/pkg/arithmetic"
 )
 
 func Run() error {
 	a1, a2, err := readValues()
 	if err != nil {
-		return errorHandler(err)
+		return err
 	}
 
 	op, err := readOperator()
 	if err != nil {
-		return errorHandler(err)
+		return err
 	}
 
 	a3, err := op.Perform(a1, a2)
 	if err != nil {
-		return errorHandler(err)
+		return err
 	}
 
 	printAnswer(a1, a2, a3, op)
-	return nil
-}
-
-func errorHandler(err error) error {
-	if err != nil {
-		log.Fatal(err)
-		return err
-	}
 	return nil
 }
 
@@ -61,7 +52,7 @@ func readOperator() (arithmetic.Operand, error) {
 }
 
 func readValues() (float64, float64, error) {
-	fmt.Print("Enter 1st and 2nd operand\n")
+	fmt.Print("Enter 1st and 2nd value\n")
 
 	var a1, a2 float64
 	_, err := fmt.Scan(&a1, &a2)
