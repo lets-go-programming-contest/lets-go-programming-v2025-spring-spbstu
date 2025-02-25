@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"strings"
-	"task-2-1/internal/comp_op"
 	"task-2-1/internal/department"
+	"task-2-1/pkg/comp_op"
 )
 
 type office struct {

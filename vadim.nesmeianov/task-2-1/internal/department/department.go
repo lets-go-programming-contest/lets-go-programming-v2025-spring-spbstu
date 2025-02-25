@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"task-2-1/internal/ac"
-	"task-2-1/internal/comp_op"
+	"task-2-1/pkg/comp_op"
 )
 
 type Department struct {
