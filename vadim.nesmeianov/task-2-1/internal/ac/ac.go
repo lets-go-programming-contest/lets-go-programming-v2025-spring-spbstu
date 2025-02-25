@@ -2,7 +2,7 @@ package ac
 
 import (
 	"errors"
-	"task-2-1/cmd/comp_op"
+	"task-2-1/internal/comp_op"
 )
 
 type AcRequest struct {
@@ -10,19 +10,14 @@ type AcRequest struct {
 	op   comp_op.Operand
 }
 
-type ac struct {
+type Ac struct {
 	maxTemp     int
 	minTemp     int
 	currentTemp int
 	requests    []AcRequest
 }
 
-type Ac interface {
-	NewRequest(temp int, op comp_op.Operand) error
-	GetTemperature() int
-}
-
-func (instance *ac) processRequest(req AcRequest) error {
+func (instance *Ac) processRequest(req AcRequest) error {
 	instance.requests = append(instance.requests, req)
 
 	if instance.currentTemp != -1 {
@@ -32,12 +27,20 @@ func (instance *ac) processRequest(req AcRequest) error {
 		for _, rq := range instance.requests {
 			switch rq.op {
 			case comp_op.BiggerOrEqual:
-				if rq.temp >= minNewTemp {
+				res, err := comp_op.Compare(rq.op, rq.temp, minNewTemp)
+				if err != nil {
+					return err
+				}
+				if res {
 					minNewTemp = rq.temp
 				}
 
 			case comp_op.LessOrEqual:
-				if rq.temp <= maxNewTemp {
+				res, err := comp_op.Compare(rq.op, rq.temp, maxNewTemp)
+				if err != nil {
+					return err
+				}
+				if res {
 					maxNewTemp = rq.temp
 				}
 
@@ -56,20 +59,20 @@ func (instance *ac) processRequest(req AcRequest) error {
 	return nil
 }
 
-func (instance *ac) NewRequest(temp int, op comp_op.Operand) error {
+func (instance *Ac) NewRequest(temp int, op comp_op.Operand) error {
 	req := AcRequest{temp, op}
 	return instance.processRequest(req)
 }
 
-func (instance ac) GetTemperature() int {
+func (instance Ac) GetTemperature() int {
 	return instance.currentTemp
 }
 
-func GetAc() Ac {
+func GetAc() *Ac {
 	const minTemp = 15
 	const maxTemp = 30
 
-	instance := new(ac)
+	instance := new(Ac)
 	instance.maxTemp = maxTemp
 	instance.minTemp = minTemp
 	instance.currentTemp = 0

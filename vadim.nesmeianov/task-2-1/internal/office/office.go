@@ -3,21 +3,14 @@ package office
 import (
 	"errors"
 	"fmt"
-	"log"
 	"strings"
-	"task-2-1/cmd/comp_op"
-	"task-2-1/cmd/department"
+	"task-2-1/internal/comp_op"
+	"task-2-1/internal/department"
 )
 
 type office struct {
 	depNum int
-	dep    []department.Department
-}
-
-type Office interface {
-	EventEmployeeCame(int, int, comp_op.Operand) error
-	SetDepartmentCapasity(int, int) error
-	GetTempInDepartment(int) int
+	dep    []*department.Department
 }
 
 func (instance office) GetTempInDepartment(id int) int {
@@ -43,10 +36,10 @@ func (instance *office) SetDepartmentCapasity(num, size int) error {
 	return errors.New(errStr)
 }
 
-func GetOffice(n int) Office {
+func GetOffice(n int) *office {
 	instance := new(office)
 	instance.depNum = n
-	instance.dep = make([]department.Department, n)
+	instance.dep = make([]*department.Department, n)
 
 	for i, _ := range instance.dep {
 		instance.dep[i] = department.GetDepartment(i)
@@ -55,11 +48,11 @@ func GetOffice(n int) Office {
 	return instance
 }
 
-func Run(logOutput bool) {
+func Run(logOutput bool) error {
 	var n int
 	err := readValue(&n, "Enter N:", logOutput)
 	if err != nil {
-		handleError(err)
+		return err
 	}
 
 	_office := GetOffice(n)
@@ -69,7 +62,7 @@ func Run(logOutput bool) {
 		msgStr := fmt.Sprintf("Enter K for department %d", i)
 		err = readValue(&k, msgStr, logOutput)
 		if err != nil {
-			handleError(err)
+			return err
 		}
 
 		_office.SetDepartmentCapasity(i, k)
@@ -77,18 +70,20 @@ func Run(logOutput bool) {
 		for j := 0; j < k; j += 1 {
 			op, temp, err := readRequest()
 			if err != nil {
-				handleError(err)
+				return err
 			}
 
 			err = _office.EventEmployeeCame(i, temp, op)
 			if err != nil {
-				handleError(err)
+				return err
 			}
 
 			currTemp := _office.GetTempInDepartment(i)
 			fmt.Printf("%d\n", currTemp)
 		}
 	}
+
+	return nil
 }
 
 func readRequest() (comp_op.Operand, int, error) {
@@ -119,10 +114,4 @@ func readValue[T any](x *T, msg string, logOutput bool) error {
 
 	_, err := fmt.Scan(x)
 	return err
-}
-
-func handleError(err error) {
-	if err != nil {
-		log.Fatal(err)
-	}
 }
