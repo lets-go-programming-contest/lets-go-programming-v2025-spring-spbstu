@@ -2,7 +2,7 @@ package ac
 
 import (
 	"errors"
-	"task-2-1/pkg/comp_op"
+	"task-2-1/cmd/comp_op"
 )
 
 type AcRequest struct {

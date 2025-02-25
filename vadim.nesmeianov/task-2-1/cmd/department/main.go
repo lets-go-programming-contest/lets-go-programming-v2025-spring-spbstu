@@ -3,8 +3,8 @@ package department
 import (
 	"errors"
 	"fmt"
-	"task-2-1/internal/ac"
-	"task-2-1/pkg/comp_op"
+	"task-2-1/cmd/ac"
+	"task-2-1/cmd/comp_op"
 )
 
 type department struct {

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 	"strings"
-	"task-2-1/internal/department"
-	"task-2-1/pkg/comp_op"
+	"task-2-1/cmd/comp_op"
+	"task-2-1/cmd/department"
 )
 
 type office struct {
