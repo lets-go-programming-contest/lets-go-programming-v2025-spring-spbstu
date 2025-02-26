@@ -20,7 +20,11 @@ func (ch PriorityQueue) Swap(i, j int) {
 }
 
 func (ch *PriorityQueue) Push(x interface{}) {
-	*ch = append(*ch, x.(int))
+	if val, ok := x.(int); ok {
+		*ch = append(*ch, val)
+	} else {
+		fmt.Println("Error push: invalid type")
+	}
 }
 
 func (ch *PriorityQueue) Pop() interface{} {
