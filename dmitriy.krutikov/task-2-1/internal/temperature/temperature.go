@@ -1,10 +1,11 @@
 package temperature
 
 import (
-	"bufio"
+    "bufio"
     "errors"
     "fmt"
-	"os"
+    "os"
+
     "office-temperature/internal/input"
 )
 
@@ -14,20 +15,20 @@ const (
 )
 
 func caclulatePersonTemperature(minTemp, maxTemp int, constraint string) (int, int, error) {
-	var op string
+    var op string
     var value int
 
-	_, err := fmt.Sscanf(constraint, "%s %d", &op, &value)
+    _, err := fmt.Sscanf(constraint, "%s %d", &op, &value)
 
-	if err != nil {
+    if err != nil {
         return minTemp, maxTemp, errors.New("invalid constraint format")
     }
 
-	if value > MaxTemp || value < MinTemp {
-		return minTemp, maxTemp, errors.New("temperature out of range")
-	}
+    if value > MaxTemp || value < MinTemp {
+        return minTemp, maxTemp, errors.New("temperature out of range")
+    }
 
-	switch op {
+    switch op {
     case "<=":
         if value < maxTemp {
             maxTemp = value
@@ -45,12 +46,12 @@ func caclulatePersonTemperature(minTemp, maxTemp int, constraint string) (int, i
 }
 
 func caclulateDepartamentTemperature(K int) (error) {
-	reader := bufio.NewReader(os.Stdin)
+    reader := bufio.NewReader(os.Stdin)
 
-	newMin := MinTemp
+    newMin := MinTemp
     newMax := MaxTemp
 
-	for i := 0; i < K; i++ {
+    for i := 0; i < K; i++ {
         fmt.Printf("Enter constraint for employee %d (for example, '>= 20'): ", i+1)
         constraint, err := reader.ReadString('\n')
 
@@ -58,49 +59,44 @@ func caclulateDepartamentTemperature(K int) (error) {
             return errors.New("Incorrect number\n")
         }
 
-		newMin, newMax, err = caclulatePersonTemperature(newMin, newMax, constraint)
+        newMin, newMax, err = caclulatePersonTemperature(newMin, newMax, constraint)
 
         if err != nil {
             return err
         }
 
-		if newMin > newMax {
+        if newMin > newMax {
             fmt.Println("Optimal temperature: -1\n")
         } else {
             fmt.Printf("Optimal temperature: %d\n", newMin)
         }
-	}
+    }
 
-	return nil
+    return nil
 }
 
-
-
-
 func Run() error {
-	fmt.Print("Enter the number of departments: ");
-	N, err := input.InputNumber()
+    fmt.Print("Enter the number of departments: ");
+    N, err := input.InputNumber()
+
     if err != nil {
         return err
     }
 	
-	for i := 0; i < N; i++ {
-		fmt.Print("Enter the number of employees: ");
-		K, err := input.InputNumber()
+    for i := 0; i < N; i++ {
+        fmt.Print("Enter the number of employees: ");
+        K, err := input.InputNumber()
 
-		if err != nil {
-			return err
-		}
+        if err != nil {
+            return err
+        }
 
-		err = caclulateDepartamentTemperature(K)
+        err = caclulateDepartamentTemperature(K)
 
-		if err != nil {
-			return err
-		}
-	}
+        if err != nil {
+            return err
+        }
+    }
 
-
-	return nil
-
-
+    return nil
 }
