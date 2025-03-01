@@ -1,0 +1,94 @@
+{
+  "Data": [
+    {
+      "NumCode": "826",
+      "CharCode": "GBP",
+      "Value": "51.7"
+    },
+    {
+      "NumCode": "980",
+      "CharCode": "UAH",
+      "Value": "51.0"
+    },
+    {
+      "NumCode": "208",
+      "CharCode": "DKK",
+      "Value": "47.0"
+    },
+    {
+      "NumCode": "578",
+      "CharCode": "NOK",
+      "Value": "44.1"
+    },
+    {
+      "NumCode": "352",
+      "CharCode": "ISK",
+      "Value": "40.5"
+    },
+    {
+      "NumCode": "960",
+      "CharCode": "XDR",
+      "Value": "39.2"
+    },
+    {
+      "NumCode": "752",
+      "CharCode": "SEK",
+      "Value": "37.3"
+    },
+    {
+      "NumCode": "978",
+      "CharCode": "EUR",
+      "Value": "35.0"
+    },
+    {
+      "NumCode": "156",
+      "CharCode": "CNY",
+      "Value": "34.0"
+    },
+    {
+      "NumCode": "840",
+      "CharCode": "USD",
+      "Value": "25.6"
+    },
+    {
+      "NumCode": "124",
+      "CharCode": "CAD",
+      "Value": "24.2"
+    },
+    {
+      "NumCode": "392",
+      "CharCode": "JPY",
+      "Value": "22.0"
+    },
+    {
+      "NumCode": "756",
+      "CharCode": "CHF",
+      "Value": "21.3"
+    },
+    {
+      "NumCode": "36",
+      "CharCode": "AUD",
+      "Value": "21.1"
+    },
+    {
+      "NumCode": "398",
+      "CharCode": "KZT",
+      "Value": "20.3"
+    },
+    {
+      "NumCode": "949",
+      "CharCode": "TRY",
+      "Value": "19.6"
+    },
+    {
+      "NumCode": "702",
+      "CharCode": "SGD",
+      "Value": "16.8"
+    },
+    {
+      "NumCode": "974",
+      "CharCode": "BYR",
+      "Value": "11.9"
+    }
+  ]
+}

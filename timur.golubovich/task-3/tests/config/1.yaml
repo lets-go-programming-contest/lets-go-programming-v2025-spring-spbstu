@@ -1,0 +1,2 @@
+input-file: "tests/source/1.xml"
+output-file: "tests/result/1.json"
