@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
-
-	myheap "github.com/yanelox/task-2-2/pkg/IntHeap"
+	myheap "github.com/yanelox/task-2-2/internal/IntHeap"
 
 	"container/heap"
+	"fmt"
 )
 
 func main() {
@@ -38,6 +37,11 @@ func main() {
 
 	if err != nil {
 		fmt.Println("Incorrect input")
+		return
+	}
+
+	if choose > numDishes {
+		fmt.Printf("Choosed number should be less or equal than number of dishes: %d\n", numDishes)
 		return
 	}
 
