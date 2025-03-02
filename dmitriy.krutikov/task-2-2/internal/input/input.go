@@ -1,9 +1,9 @@
 package input
 
 import (
-    "bufio"
-    "errors"
-    "fmt"
+	"bufio"
+	"errors"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -36,7 +36,6 @@ func InputPreferences(N int) ([]int, error) {
 	}
 
 	input = strings.TrimSpace(input)
-
 	prefList := strings.Split(input, " ")
 
 	if len(prefList) != N {
@@ -44,8 +43,8 @@ func InputPreferences(N int) ([]int, error) {
 	}
 
 	preferences := make([]int, N, N)
-	for i, p := range prefList {
-		score, err := strconv.Atoi(p)
+	for i, preference := range prefList {
+		score, err := strconv.Atoi(preference)
 
 		if err != nil {
 			return nil, errors.New("invalid input: preference scores must be numbers")
