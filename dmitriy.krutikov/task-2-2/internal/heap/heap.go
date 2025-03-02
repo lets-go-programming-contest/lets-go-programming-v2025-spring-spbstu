@@ -1,6 +1,9 @@
 package heap
 
-import "container/heap"
+import (
+	"container/heap"
+	"fmt"
+)
 
 type MinHeap []int
 
@@ -17,7 +20,13 @@ func (h MinHeap) Swap(i, j int) {
 }
 
 func (h *MinHeap) Push(x interface{}) {
-	*h = append(*h, x.(int))
+	val, ok := x.(int)
+
+	if ok {
+		*h = append(*h, val)
+	} else {
+		fmt.Printf("Invalid type %T, expected int\n", x)
+	}
 }
 
 func (h *MinHeap) Pop() interface{} {

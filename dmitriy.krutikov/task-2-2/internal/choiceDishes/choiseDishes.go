@@ -13,14 +13,15 @@ func Run() error {
 	N, err := input.InputNumber()
 
 	if err != nil {
-        return err
-    }
+		return err
+	}
 
 	if !input.CheckRange(N, 1, 10000) {
 		return errors.New("Number of dishes out of range\n")
 	}
 
 	preferences, err := input.InputPreferences(N)
+
 	if err != nil {
 		return err
 	}
@@ -29,8 +30,8 @@ func Run() error {
 	k, err := input.InputNumber()
 
 	if err != nil {
-        return err
-    }
+		return err
+	}
 
 	if !input.CheckRange(k, 1, N) {
 		return errors.New("Number of dishes out of range\n")
