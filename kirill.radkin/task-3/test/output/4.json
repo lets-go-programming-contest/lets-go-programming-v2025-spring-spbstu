@@ -1,0 +1,142 @@
+[
+ {
+  "num_code": "528",
+  "char_code": "NLG",
+  "value": "11,2400"
+ },
+ {
+  "num_code": "620",
+  "char_code": "PTE",
+  "value": "12,3500"
+ },
+ {
+  "num_code": "276",
+  "char_code": "DEM",
+  "value": "12,6600"
+ },
+ {
+  "num_code": "380",
+  "char_code": "ITL",
+  "value": "12,7900"
+ },
+ {
+  "num_code": "724",
+  "char_code": "ESP",
+  "value": "14,8900"
+ },
+ {
+  "num_code": "036",
+  "char_code": "AUD",
+  "value": "15,8100"
+ },
+ {
+  "num_code": "756",
+  "char_code": "CHF",
+  "value": "15,9000"
+ },
+ {
+  "num_code": "702",
+  "char_code": "SGD",
+  "value": "16,1600"
+ },
+ {
+  "num_code": "040",
+  "char_code": "ATS",
+  "value": "18,0000"
+ },
+ {
+  "num_code": "124",
+  "char_code": "CAD",
+  "value": "18,7400"
+ },
+ {
+  "num_code": "398",
+  "char_code": "KZT",
+  "value": "19,4400"
+ },
+ {
+  "num_code": "978",
+  "char_code": "EUR",
+  "value": "24,7700"
+ },
+ {
+  "num_code": "392",
+  "char_code": "JPY",
+  "value": "25,7900"
+ },
+ {
+  "num_code": "974",
+  "char_code": "BYR",
+  "value": "27,6200"
+ },
+ {
+  "num_code": "840",
+  "char_code": "USD",
+  "value": "27,7100"
+ },
+ {
+  "num_code": "752",
+  "char_code": "SEK",
+  "value": "29,6100"
+ },
+ {
+  "num_code": "578",
+  "char_code": "NOK",
+  "value": "30,8000"
+ },
+ {
+  "num_code": "372",
+  "char_code": "IEP",
+  "value": "31,4500"
+ },
+ {
+  "num_code": "208",
+  "char_code": "DKK",
+  "value": "33,2500"
+ },
+ {
+  "num_code": "352",
+  "char_code": "ISK",
+  "value": "34,4500"
+ },
+ {
+  "num_code": "960",
+  "char_code": "XDR",
+  "value": "36,1600"
+ },
+ {
+  "num_code": "250",
+  "char_code": "FRF",
+  "value": "37,7600"
+ },
+ {
+  "num_code": "826",
+  "char_code": "GBP",
+  "value": "40,9700"
+ },
+ {
+  "num_code": "246",
+  "char_code": "FIM",
+  "value": "41,6600"
+ },
+ {
+  "num_code": "792",
+  "char_code": "TRL",
+  "value": "42,6000"
+ },
+ {
+  "num_code": "980",
+  "char_code": "UAH",
+  "value": "52,8600"
+ },
+ {
+  "num_code": "056",
+  "char_code": "BEF",
+  "value": "61,4000"
+ },
+ {
+  "num_code": "300",
+  "char_code": "GRD",
+  "value": "73,5600"
+ }
+]
