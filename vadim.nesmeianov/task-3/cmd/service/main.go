@@ -1,50 +1,61 @@
 package main
 
 import (
-	"bytes"
-	"encoding/xml"
 	"fmt"
 	"log"
 	"os"
-
-	"golang.org/x/net/html/charset"
+	"path/filepath"
+	"task-3/internal/cbr"
+	configreader "task-3/internal/configReader"
 )
 
-type ValCurs struct {
-	XMLName xml.Name `xml:"ValCurs"`
-	Text    string   `xml:",chardata"`
-	Date    string   `xml:"Date,attr"`
-	Name    string   `xml:"name,attr"`
-	Valute  []struct {
-		Text      string `xml:",chardata"`
-		ID        string `xml:"ID,attr"`
-		NumCode   string `xml:"NumCode"`
-		CharCode  string `xml:"CharCode"`
-		Nominal   string `xml:"Nominal"`
-		Name      string `xml:"Name"`
-		Value     string `xml:"Value"`
-		VunitRate string `xml:"VunitRate"`
-	} `xml:"Valute"`
+func main() {
+	err := Run()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
-func main() {
-	filePath := "example_data/1.xml"
-
-	// Read the file as a byte string
-	content, err := os.ReadFile(filePath)
+func Run() error {
+	config, err := configreader.ReadConfig()
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
-	r := bytes.NewReader([]byte(content))
-	d := xml.NewDecoder(r)
-	d.CharsetReader = charset.NewReaderLabel
-
-	valCurs := new(ValCurs)
-	err = d.Decode(&valCurs)
+	valCursXml, err := cbr.ReadCbrXml(config.InputFile)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
-	fmt.Print(valCurs)
+	valCursJson, err := cbr.GetSortedJsonString(valCursXml)
+	if err != nil {
+		return err
+	}
+
+	err = writeFile(config.OutputFile, valCursJson)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("JSON file created successfully!")
+	return nil
+}
+
+func writeFile(filePath string, data *[]byte) error {
+	if _, err := os.Stat(filePath); os.IsNotExist(err) {
+		os.MkdirAll(filepath.Dir(filePath), 0666)
+	}
+
+	file, err := os.OpenFile(filePath, os.O_CREATE|os.O_TRUNC|os.O_RDWR, 0666)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	_, err = file.Write(*data)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
