@@ -9,8 +9,7 @@ func main() {
 	_, err := fmt.Scan(&numDepartments)
 
 	if err != nil {
-		fmt.Println("Incorrect input")
-		return
+		panic("Incorrect input")
 	}
 
 	for i := 0; i < numDepartments; i++ {
@@ -22,8 +21,7 @@ func main() {
 		_, err := fmt.Scan(&numEmployee)
 
 		if err != nil {
-			fmt.Println("Incorrect input")
-			return
+			panic("Incorrect input")
 		}
 
 		for j := 0; j < numEmployee; j++ {
@@ -32,8 +30,7 @@ func main() {
 			_, err = fmt.Scan(&str, &temp)
 
 			if err != nil || (str != ">=" && str != "<=") {
-				fmt.Println("Incorrect input")
-				return
+				panic("Incorrect input")
 			}
 
 			if str == ">=" {
