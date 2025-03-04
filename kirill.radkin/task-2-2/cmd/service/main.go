@@ -15,8 +15,7 @@ func main() {
 	_, err := fmt.Scan(&numDishes)
 
 	if err != nil {
-		fmt.Println("Incorrect input")
-		return
+		panic("Incorrect input")
 	}
 
 	for i := 0; i < numDishes; i++ {
@@ -25,8 +24,7 @@ func main() {
 		_, err := fmt.Scan(&dishRating)
 
 		if err != nil {
-			fmt.Println("Incorrect input")
-			return
+			panic("Incorrect input")
 		}
 
 		heap.Push(h, dishRating)
@@ -36,13 +34,11 @@ func main() {
 	_, err = fmt.Scan(&choose)
 
 	if err != nil {
-		fmt.Println("Incorrect input")
-		return
+		panic("Incorrect input")
 	}
 
 	if choose > numDishes {
-		fmt.Printf("Choosed number should be less or equal than number of dishes: %d\n", numDishes)
-		return
+		panic(fmt.Errorf("Choosed number should be less or equal than number of dishes: %d\n", numDishes))
 	}
 
 	for i := 0; i < choose-1; i++ {
