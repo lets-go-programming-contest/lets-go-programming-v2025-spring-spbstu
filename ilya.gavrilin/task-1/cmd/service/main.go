@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 )
@@ -48,11 +49,11 @@ func readNumber(prompt string) (float64, error) {
 	var input string
 	fmt.Print(prompt)
 	if _, err := fmt.Scan(&input); err != nil {
-		return 0, fmt.Errorf("Incorrect input. Try again.")
+		return 0, errors.New("Incorrect input. Try again.")
 	}
 	num, err := strconv.ParseFloat(input, 64)
 	if err != nil {
-		return 0, fmt.Errorf("Incorrect value. Please, type numeric one.")
+		return 0, errors.New("Incorrect value. Please, type numeric one.")
 	}
 	return num, nil
 }
@@ -61,17 +62,17 @@ func readOperator(prompt string) (string, error) {
 	var op string
 	fmt.Print(prompt)
 	if _, err := fmt.Scan(&op); err != nil {
-		return "", fmt.Errorf("Incorrect input. Try again.")
+		return "", errors.New("Incorrect input. Try again.")
 	}
 	if op != "+" && op != "-" && op != "*" && op != "/" {
-		return "", fmt.Errorf("Incorrect operation. Please, use: +, -, * or /.")
+		return "", errors.New("Incorrect operation. Please, use: +, -, * or /.")
 	}
 	return op, nil
 }
 
 func calculate(a, b float64, op string) (float64, error) {
 	if op == "/" && b == 0 {
-		return 0, fmt.Errorf("Error: division by zero.")
+		return 0, errors.New("Error: division by zero.")
 	}
 
 	switch op {
@@ -84,5 +85,5 @@ func calculate(a, b float64, op string) (float64, error) {
 	case "/":
 		return a / b, nil
 	}
-	return 0, fmt.Errorf("Unknown error.")
+	return 0, errors.New("Unknown error.")
 }
