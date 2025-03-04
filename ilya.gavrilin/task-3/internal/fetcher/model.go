@@ -1,7 +1,6 @@
 package fetcher
 
 import (
-	"encoding/xml"
 	"fmt"
 	"strconv"
 	"strings"
@@ -9,37 +8,26 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
-// Currency represents a single currency entry from the XML file.
-type Currency struct {
-	NumCode  int64   `xml:"NumCode" validate:"required,numeric"`
-	CharCode string  `xml:"CharCode" validate:"required,alpha,len=3"`
-	Value    float64 `validate:"required,gt=0"`
+// CurrencyValue is a custom type that unmarshals text with a comma as decimal separator.
+type CurrencyValue float64
+
+// UnmarshalText implements the encoding.TextUnmarshaler interface.
+func (cv *CurrencyValue) UnmarshalText(text []byte) error {
+	// Replace comma with dot.
+	s := strings.Replace(string(text), ",", ".", 1)
+	f, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return fmt.Errorf("failed to parse currency value %s: %w", text, err)
+	}
+	*cv = CurrencyValue(f)
+	return nil
 }
 
-// Custom UnmarshalXML to fix comma issue in float values.
-func (c *Currency) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	type Alias Currency
-	aux := &struct {
-		Alias
-		Value string `xml:"Value"`
-	}{Alias: Alias(*c)} // Embed existing data to avoid overwriting
-
-	if err := d.DecodeElement(aux, &start); err != nil {
-		return err
-	}
-
-	// Replace "," with "." and parse as float
-	value := strings.Replace(aux.Value, ",", ".", 1)
-	parsedValue, err := strconv.ParseFloat(value, 64)
-	if err != nil {
-		return fmt.Errorf("failed to parse currency value %s: %w", aux.Value, err)
-	}
-
-	// Assign parsed data back to the original struct
-	*c = Currency(aux.Alias)
-	c.Value = parsedValue
-
-	return nil
+// Currency represents a single currency entry from the XML file.
+type Currency struct {
+	NumCode  int64         `xml:"NumCode" validate:"required,numeric"`
+	CharCode string        `xml:"CharCode" validate:"required,alpha,len=3"`
+	Value    CurrencyValue `xml:"Value" validate:"required,gt=0"`
 }
 
 // ValCurs represents the root XML structure.
