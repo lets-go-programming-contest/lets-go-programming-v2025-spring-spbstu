@@ -13,39 +13,34 @@ import (
 	"github.com/kseniadobrovolskaia/task-3/internal/valute"
 )
 
-func ReadXMLFile(inputFile string) ([]valute.Valute, error) {
-	vals := make([]valute.Valute, 0)
+type Valutes struct {
+	Vals []valute.Valute `xml:"Valute"`
+}
 
+func ReadXMLFile(inputFile string) ([]valute.Valute, error) {
 	xmlFile, err := os.Open(inputFile)
 	if err != nil {
 		return nil, err
 	}
 	defer xmlFile.Close()
 
+	// A Decoder represents an XML parser reading a particular input stream. The parser assumes that its input is encoded in UTF-8.
 	parser := xml.NewDecoder(xmlFile)
+	// NewReaderLabel returns a reader that converts from the specified charset to UTF-8. The value found in the <?xml?> tag is passed to CharsetReader as the first argument (=label). The second argument is the reader itself. It uses Lookup to find the encoding that corresponds to label, and returns an error if Lookup returns nil. It is suitable for use as encoding/xml.Decoder's CharsetReader function.
 	parser.CharsetReader = charset.NewReaderLabel
 
-	for {
-		t, _ := parser.Token()
-		if t == nil {
-			break
-		}
-		switch se := t.(type) {
-		case xml.StartElement:
-			if se.Name.Local == "Valute" {
-				var item valute.Valute
-				parser.DecodeElement(&item, &se)
-				err = validator.New().Struct(item)
-				if err != nil {
-					return nil, errors.New(inputFile + ": validation failed due to: " + err.Error())
-				}
-				//fmt.Printf("Add valute with value: %f\n", item.Value)
-				vals = append(vals, item)
-			}
+	var vals Valutes
+	if err := parser.Decode(&vals); err != nil {
+		return nil, errors.New("error in parse XML: " + err.Error())
+	}
+
+	// Check that all Valutes are valid
+	for _, v := range vals.Vals {
+		if err := validator.New().Struct(v); err != nil {
+			return nil, errors.New(inputFile + ": validation failed due to: " + err.Error())
 		}
 	}
-	//fmt.Printf("decoded valutes: %+v\n", vals)
-	return vals, nil
+	return vals.Vals, nil
 }
 
 func WriteInJSONFile(outputFile string, vals []valute.Valute) (int, error) {
