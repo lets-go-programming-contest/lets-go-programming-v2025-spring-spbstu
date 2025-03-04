@@ -1,8 +1,9 @@
 package process
 
 import (
-	"errors"
 	"container/heap"
+	"errors"
+
 	"github.com/quaiion/go-practice/cafe/internal/intMaxHeapIF"
 	"github.com/quaiion/go-practice/cafe/internal/streamUtils"
 )
@@ -14,10 +15,10 @@ var (
 )
 
 func NewDishHeap() (*intMaxHeapIF.IntMaxHeap, error) {
-	dishHeap := new(intMaxHeapIF.IntMaxHeap)
+        var dishHeap intMaxHeapIF.IntMaxHeap
 
-	heap.Init(dishHeap)
-	return dishHeap, nil
+	heap.Init(&dishHeap)
+	return &dishHeap, nil
 }
 
 func ScanDishHeap(dishHeap *intMaxHeapIF.IntMaxHeap) error {
