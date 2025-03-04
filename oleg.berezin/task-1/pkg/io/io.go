@@ -13,7 +13,7 @@ func GetNum() float64 {
 	for err != nil {
 		fmt.Println("Некорректное число. Пожалуйста, введите числовое значение формата float64.")
 
-		_, err = fmt.Scan(&num)
+		_, err = fmt.Scanln(&num)
 	}
 
 	return num
