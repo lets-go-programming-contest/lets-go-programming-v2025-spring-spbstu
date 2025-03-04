@@ -1,0 +1,174 @@
+{
+  "Data": [
+    {
+      "NumCode": "960",
+      "CharCode": "XDR",
+      "Value": "95.8"
+    },
+    {
+      "NumCode": "344",
+      "CharCode": "HKD",
+      "Value": "92.5"
+    },
+    {
+      "NumCode": "356",
+      "CharCode": "INR",
+      "Value": "87.1"
+    },
+    {
+      "NumCode": "826",
+      "CharCode": "GBP",
+      "Value": "86.6"
+    },
+    {
+      "NumCode": "417",
+      "CharCode": "KGS",
+      "Value": "84.0"
+    },
+    {
+      "NumCode": "756",
+      "CharCode": "CHF",
+      "Value": "77.9"
+    },
+    {
+      "NumCode": "978",
+      "CharCode": "EUR",
+      "Value": "76.1"
+    },
+    {
+      "NumCode": "578",
+      "CharCode": "NOK",
+      "Value": "72.6"
+    },
+    {
+      "NumCode": "840",
+      "CharCode": "USD",
+      "Value": "72.0"
+    },
+    {
+      "NumCode": "972",
+      "CharCode": "TJS",
+      "Value": "70.6"
+    },
+    {
+      "NumCode": "752",
+      "CharCode": "SEK",
+      "Value": "68.7"
+    },
+    {
+      "NumCode": "860",
+      "CharCode": "UZS",
+      "Value": "64.3"
+    },
+    {
+      "NumCode": "410",
+      "CharCode": "KRW",
+      "Value": "56.9"
+    },
+    {
+      "NumCode": "392",
+      "CharCode": "JPY",
+      "Value": "53.7"
+    },
+    {
+      "NumCode": "702",
+      "CharCode": "SGD",
+      "Value": "53.4"
+    },
+    {
+      "NumCode": "124",
+      "CharCode": "CAD",
+      "Value": "53.1"
+    },
+    {
+      "NumCode": "36",
+      "CharCode": "AUD",
+      "Value": "48.6"
+    },
+    {
+      "NumCode": "944",
+      "CharCode": "AZN",
+      "Value": "42.3"
+    },
+    {
+      "NumCode": "710",
+      "CharCode": "ZAR",
+      "Value": "42.3"
+    },
+    {
+      "NumCode": "975",
+      "CharCode": "BGN",
+      "Value": "39.1"
+    },
+    {
+      "NumCode": "949",
+      "CharCode": "TRY",
+      "Value": "38.5"
+    },
+    {
+      "NumCode": "498",
+      "CharCode": "MDL",
+      "Value": "37.6"
+    },
+    {
+      "NumCode": "203",
+      "CharCode": "CZK",
+      "Value": "31.6"
+    },
+    {
+      "NumCode": "933",
+      "CharCode": "BYN",
+      "Value": "26.3"
+    },
+    {
+      "NumCode": "934",
+      "CharCode": "TMT",
+      "Value": "20.6"
+    },
+    {
+      "NumCode": "980",
+      "CharCode": "UAH",
+      "Value": "19.5"
+    },
+    {
+      "NumCode": "348",
+      "CharCode": "HUF",
+      "Value": "19.1"
+    },
+    {
+      "NumCode": "51",
+      "CharCode": "AMD",
+      "Value": "18.3"
+    },
+    {
+      "NumCode": "985",
+      "CharCode": "PLN",
+      "Value": "16.3"
+    },
+    {
+      "NumCode": "398",
+      "CharCode": "KZT",
+      "Value": "15.6"
+    },
+    {
+      "NumCode": "946",
+      "CharCode": "RON",
+      "Value": "15.5"
+    },
+    {
+      "NumCode": "986",
+      "CharCode": "BRL",
+      "Value": "13.6"
+    },
+    {
+      "NumCode": "208",
+      "CharCode": "DKK",
+      "Value": "10.3"
+    },
+    {
+      "NumCode": "156",
+      "CharCode": "CNY",
+      "Value": "10.1"
+    }
+  ]
+}
