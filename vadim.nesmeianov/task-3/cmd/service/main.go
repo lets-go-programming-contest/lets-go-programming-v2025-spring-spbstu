@@ -43,7 +43,7 @@ func Run() error {
 
 func writeFile(filePath string, data *[]byte) error {
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
-		os.MkdirAll(filepath.Dir(filePath), 0666)
+		os.MkdirAll(filepath.Dir(filePath), 0777)
 	}
 
 	file, err := os.OpenFile(filePath, os.O_CREATE|os.O_TRUNC|os.O_RDWR, 0666)
