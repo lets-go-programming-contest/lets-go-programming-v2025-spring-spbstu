@@ -1,10 +1,10 @@
 package main
 
 import (
-	myheap "github.com/yanelox/task-2-2/internal/IntHeap"
-
 	"container/heap"
 	"fmt"
+
+	myheap "github.com/yanelox/task-2-2/internal/IntHeap"
 )
 
 func main() {
