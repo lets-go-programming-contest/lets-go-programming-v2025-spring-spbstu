@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"math"
 	"sync"
@@ -25,7 +26,11 @@ var sumMutex sync.Mutex
 var globalSum float64
 
 func function(x float64) float64 {
-	return math.Cos(1.0 / x)
+	if x == 0 {
+		return 0
+	} else {
+		return math.Sin(1.0 / x)
+	}
 }
 
 type IntegrateTask struct {
@@ -82,14 +87,12 @@ func breakCondition(sacb, sab, epsilon float64) bool {
 
 func executer(id int) {
 	defer wGroup.Done()
-
 	localStack := stack.New()
 	localSum := float64(0)
 
 	for {
 		globalStackTaskPresent.Lock()
 		globalStackMutex.Lock()
-
 		currTask := globalStackPtr.Pop().(IntegrateTask)
 
 		if globalStackPtr.Len() != 0 {
@@ -131,7 +134,7 @@ func executer(id int) {
 
 			if (localStack.Len() > SPK) && (globalStackPtr.Len() == 0) {
 				globalStackMutex.Lock()
-				if globalStackPtr.Len() == 0 { // TODO
+				if globalStackPtr.Len() == 0 {
 					globalStackTaskPresent.Unlock()
 				}
 
@@ -165,25 +168,33 @@ func executer(id int) {
 
 }
 
+func ReadArguments() (int, float64, float64, int) {
+	nThreads := flag.Int("n", 1, "Threads number")
+	begin := flag.Float64("begin", 0, "Begin point of integration interval")
+	end := flag.Float64("end", 1, "Endpoint of integration interval")
+	accuracy := flag.Int("e", -16, "Accuracy: 10^e")
+
+	flag.Parse()
+
+	return *nThreads, *begin, *end, *accuracy
+}
+
 func main() {
 	globalStackPtr = stack.New()
 	SPK = 8
 	maxTask = 10000000
-	accuracy = 1e-16
-	nThreads = 8
-
 	globalSum = 0
 	nActive = 0
 
-	wGroup.Add(nThreads)
-
-	a := float64(0.005)
-	b := float64(40000000)
+	var a, b float64
+	var accuracyPow int
+	nThreads, a, b, accuracyPow = ReadArguments()
+	accuracy = math.Pow(10, float64(accuracyPow))
 
 	initTask := GetIntegrateTask(a, b)
-
 	globalStackPtr.Push(initTask)
 
+	wGroup.Add(nThreads)
 	start := time.Now()
 	for i := range nThreads {
 		go executer(i)
@@ -191,7 +202,9 @@ func main() {
 
 	wGroup.Wait()
 	end := time.Now()
-	fmt.Println("S = ", globalSum, " from ", a, " to ", b)
+
+	fmt.Println("S(sin(1/x))dx = ", globalSum, " from ", a, " to ", b)
 	fmt.Println("Time elapsed: ", end.Sub(start))
 	fmt.Println("Threads: ", nThreads)
+	fmt.Println("Accuracy: ", accuracy)
 }
