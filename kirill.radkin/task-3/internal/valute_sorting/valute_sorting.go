@@ -3,13 +3,13 @@ package valutesorting
 import (
 	"sort"
 
-	vl "github.com/yanelox/task-3/internal/valute"
+	"github.com/yanelox/task-3/internal/mytypes"
 )
 
-type less func(p1, p2 vl.Valute) bool
+type less func(p1, p2 mytypes.Valute) bool
 
 type valuteSorter struct {
-	valutes []vl.Valute
+	valutes []mytypes.Valute
 	less    less
 }
 
@@ -25,7 +25,7 @@ func (vs *valuteSorter) Less(i, j int) bool {
 	return vs.less(vs.valutes[i], vs.valutes[j])
 }
 
-func ValuteSort(valutes []vl.Valute, less less) {
+func ValuteSort(valutes []mytypes.Valute, less less) {
 	var vs = &valuteSorter{valutes, less}
 	sort.Sort(vs)
 }

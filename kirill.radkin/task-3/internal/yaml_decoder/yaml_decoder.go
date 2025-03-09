@@ -1,35 +1,33 @@
 package yaml_decoder
 
 import (
-	"fmt"
 	"os"
 
+	"gopkg.in/go-playground/validator.v9"
 	"gopkg.in/yaml.v3"
 )
 
 type YamlConfig struct {
-	InputFile  string `yaml:"input-file"`
-	OutputFile string `yaml:"output-file"`
+	InputFile  string `yaml:"input-file" validate:"required"`
+	OutputFile string `yaml:"output-file" validate:"required"`
 }
 
-func Decode(filename string, out *YamlConfig) error {
+func Decode(filename string) (*YamlConfig, error) {
 	file, err := os.Open(filename)
 	if err != nil {
-		return fmt.Errorf("yaml_decoder.Decode %v: %w", filename, err)
+		return nil, err
 	}
 	defer file.Close()
 
 	var YamlConfig YamlConfig
 
 	if err = yaml.NewDecoder(file).Decode(&YamlConfig); err != nil {
-		return fmt.Errorf("yaml_decoder.Decode %v: %w", filename, err)
+		return nil, err
 	}
 
-	if YamlConfig.InputFile == "" || YamlConfig.OutputFile == "" {
-		return fmt.Errorf("yaml_decoder.Decode %v: Can't find `input-file` or `output-file`", filename)
+	if err = validator.New().Struct(YamlConfig); err != nil {
+		return nil, err
 	}
 
-	*out = YamlConfig
-
-	return nil
+	return &YamlConfig, nil
 }
