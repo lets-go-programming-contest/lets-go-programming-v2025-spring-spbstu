@@ -1,7 +1,7 @@
 package main
 
-import "github.com/vktr-ktzv/task4/internal/syncBank"
+import "github.com/vktr-ktzv/task4/internal/syncCinema"
 
 func main() {
-	syncBank.Demo()
+	syncCinema.Demo()
 }

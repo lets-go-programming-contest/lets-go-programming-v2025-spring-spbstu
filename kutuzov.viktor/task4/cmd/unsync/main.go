@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/vktr-ktzv/task4/internal/unsyncBank"
+	"github.com/vktr-ktzv/task4/internal/unsyncCinema"
 )
 
 func main() {
-	unsyncBank.Demo()
+	unsyncCinema.Demo()
 }
