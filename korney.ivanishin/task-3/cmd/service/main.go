@@ -12,21 +12,18 @@ func main() {
         inFilePath, outFilePath, err := config.GetIOFilePaths()
         if err != nil {
                 err = fmt.Errorf("configuration failed: %w", err)
-                fmt.Println(err)
-                return
+                panic(err)
         }
 
         data, err := extract.ExtractXmlData(inFilePath)
         if err != nil {
                 err = fmt.Errorf("data extraction failed: %w", err)
-                fmt.Println(err)
-                return
+                panic(err)
         }
 
         err = encase.EncaseJsonData(outFilePath, data)
         if err != nil {
                 err = fmt.Errorf("data encasement failed: %w", err)
-                fmt.Println(err)
-                return
+                panic(err)
         }
 }
