@@ -74,8 +74,7 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
                                                err)
                 }
 
-                switch tokenType := token.(type) {
-                case xml.StartElement:
+                if tokenType, ok := token.(xml.StartElement) ; ok {
                         if tokenType.Name.Local != `Valute` {
                                 continue
                         }
