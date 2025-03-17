@@ -17,17 +17,17 @@ func GetIOFilePaths() (string, string, error) {
         confFileContents, err := readInFile(confFilePath)
         if err != nil {
                 if isDefaultPath {
-                        return ``, ``, fmt.Errorf("failed reading (default) config file data // %w",
+                        return ``, ``, fmt.Errorf("failed reading (default) config file data: %w",
                                                   err)
                 } else {
-                        return ``, ``, fmt.Errorf("failed reading config file data // %w",
+                        return ``, ``, fmt.Errorf("failed reading config file data: %w",
                                                   err)
                 }
         }
 
         inFilePath, outFilePath, err := decodeConfFileData(confFileContents)
         if err != nil {
-                return ``, ``, fmt.Errorf("failed processing config file data // %w",
+                return ``, ``, fmt.Errorf("failed processing config file data: %w",
                                           err)
         }
 
@@ -75,12 +75,12 @@ func decodeConfFileData(confFileContents []byte) (string, string, error) {
 
         err := yaml.Unmarshal(confFileContents, &parsed)
         if err != nil {
-                return ``, ``, fmt.Errorf("failed unmarshalling // %w", err)
+                return ``, ``, fmt.Errorf("failed unmarshalling: %w", err)
         }
 
         err = validator.New().Struct(parsed)
         if err != nil {
-                return ``, ``, fmt.Errorf("decoded data validation failed // %w",
+                return ``, ``, fmt.Errorf("decoded data validation failed: %w",
                                           err)
         }
 

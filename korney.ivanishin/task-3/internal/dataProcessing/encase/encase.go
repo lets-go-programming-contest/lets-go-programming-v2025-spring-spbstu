@@ -21,7 +21,7 @@ func EncaseJsonData(outFilePath string, currList currency.CurrencyList) error {
 
         err := prepareOutputEnv(outFilePath)
         if err != nil {
-                return fmt.Errorf("failed preparing the output environment // %w",
+                return fmt.Errorf("failed preparing the output environment: %w",
                                   err)
         }
 
@@ -29,13 +29,13 @@ func EncaseJsonData(outFilePath string, currList currency.CurrencyList) error {
 
         data, err := json.MarshalIndent(currList, ``, ` `)
         if err != nil {
-                return fmt.Errorf("failed encoding (marshalling) output data // %w",
+                return fmt.Errorf("failed encoding (marshalling) output data: %w",
                                   err)
         }
 
         err = writeJsonData(data, outFilePath)
         if err != nil {
-                return fmt.Errorf("failed writing output json data // %w",
+                return fmt.Errorf("failed writing output json data: %w",
                                   err)
         }
 
@@ -46,7 +46,7 @@ func EncaseJsonData(outFilePath string, currList currency.CurrencyList) error {
 func prepareOutputEnv(filePath string) error {
         err := os.MkdirAll(filepath.Dir(filePath), 0644)
         if err != nil {
-                return fmt.Errorf("failed to create specified directories // %w",
+                return fmt.Errorf("failed to create specified directories: %w",
                                   err)
         }
 
@@ -81,7 +81,7 @@ func writeJsonData(data []byte, outFilePath string) error {
 
         err := os.WriteFile(outFilePath, data, 0644)
         if err != nil {
-                return fmt.Errorf("failed writing output data to the file // %w",
+                return fmt.Errorf("failed writing output data to the file: %w",
                                   err)
         }
 

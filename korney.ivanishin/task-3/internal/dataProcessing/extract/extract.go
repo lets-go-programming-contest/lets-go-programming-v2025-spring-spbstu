@@ -18,7 +18,7 @@ import (
 func ExtractXmlData(inFilePath string) (currency.CurrencyList, error) {
         inFile, err := openInFile(inFilePath)
         if err != nil {
-                return nil, fmt.Errorf("failed opening input file // %w",
+                return nil, fmt.Errorf("failed opening input file: %w",
                                        err)
         }
         defer inFile.Close()
@@ -27,7 +27,7 @@ func ExtractXmlData(inFilePath string) (currency.CurrencyList, error) {
 
         data, err := decodeXmlFile(decoder)
         if err != nil {
-                return nil, fmt.Errorf("failed decoding input file data // %w",
+                return nil, fmt.Errorf("failed decoding input file data: %w",
                                        err)
         }
 
@@ -70,7 +70,7 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
 
         for token, err := decoder.Token() ; token != nil ; token, err = decoder.Token() {
                 if err != nil {
-                        return nil, fmt.Errorf("failed parsing a token from input file data // %w",
+                        return nil, fmt.Errorf("failed parsing a token from input file data: %w",
                                                err)
                 }
 
@@ -82,7 +82,7 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
                         var curr currency.Currency
                         err = decoder.DecodeElement(&curr, &tokenType)
                         if err != nil {
-                                return nil, fmt.Errorf("failed decoding an xml currency record // %w",
+                                return nil, fmt.Errorf("failed decoding an xml currency record: %w",
                                                        err)
                         }
 
@@ -98,7 +98,7 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
 
                         curr, err = translateValueStrToValue(curr)
                         if err != nil {
-                                return nil, fmt.Errorf("failed translating currency '%s' value string to value // %w",
+                                return nil, fmt.Errorf("failed translating currency '%s' value string to value: %w",
                                                        curr.CharCode, err)
                         }
 
@@ -115,7 +115,7 @@ func translateValueStrToValue(curr currency.Currency) (currency.Currency, error)
         var err error = nil
         curr.FPValue, err = strconv.ParseFloat(curr.Value, 64)
         if err != nil {
-                return curr, fmt.Errorf("failed converting a 'Value' record to float // %w",
+                return curr, fmt.Errorf("failed converting a 'Value' record to float: %w",
                                         err)
         }
 
