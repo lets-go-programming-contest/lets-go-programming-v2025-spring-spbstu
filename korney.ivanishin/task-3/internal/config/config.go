@@ -12,17 +12,12 @@ import (
 )
 
 func GetIOFilePaths() (string, string, error) {
-        confFilePath, isDefaultPath := parseConfFilePathFlag()
+        confFilePath := parseConfFilePathFlag()
 
         confFileContents, err := readInFile(confFilePath)
         if err != nil {
-                if isDefaultPath {
-                        return ``, ``, fmt.Errorf("failed reading (default) config file data: %w",
-                                                  err)
-                } else {
-                        return ``, ``, fmt.Errorf("failed reading config file data: %w",
-                                                  err)
-                }
+                return ``, ``, fmt.Errorf("failed reading config file data: %w",
+                                          err)
         }
 
         inFilePath, outFilePath, err := decodeConfFileData(confFileContents)
@@ -49,11 +44,12 @@ func readInFile(filePath string) ([]byte, error) {
         return fileData, nil
 }
 
-func parseConfFilePathFlag() (string, bool) {
+func parseConfFilePathFlag() (string) {
         var pathStr string
         flag.StringVar(&pathStr, "config", "config/config.yml", "config file path")
         flag.Parse()
-        return pathStr, flag.Parsed()
+
+        return pathStr
 }
 
 type fileNamesParsed struct {
