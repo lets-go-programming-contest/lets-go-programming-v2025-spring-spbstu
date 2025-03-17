@@ -1,12 +1,32 @@
 package currency
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+	"strconv"
+	"strings"
+)
+
+type comaSepFloat64 float64
+
+/** this method is implicitly used by `decoder.DecodeElement()` */
+func (f *comaSepFloat64) UnmarshalText(text []byte) error {
+        textComaToDot := strings.ReplaceAll(string(text), `,`, `.`)
+
+        parsedVal, err := strconv.ParseFloat(textComaToDot, 64)
+        if err != nil {
+                return fmt.Errorf("failed unmarshalling a 'Value' float number: %w",
+                                  err)
+        }
+
+        *f = comaSepFloat64(parsedVal)
+        return nil
+}
 
 type Currency struct {
-        NumCode  int     `xml:"NumCode" json:"num_code" validate:"required"`
-        CharCode string  `xml:"CharCode" json:"char_code" validate:"required"`
-        Value    string  `xml:"Value" json:"-" validate:"required"`
-        FPValue  float64 `json:"value"`
+        NumCode  int            `xml:"NumCode" json:"num_code" validate:"required"`
+        CharCode string         `xml:"CharCode" json:"char_code" validate:"required"`
+        Value    comaSepFloat64 `xml:"Value" json:"value" validate:"required"`
 }
 
 type CurrencyList []Currency
@@ -16,7 +36,7 @@ func (l CurrencyList) Len() int {
 }
 
 func (l CurrencyList) Less(idx1, idx2 int) bool {
-        return l[idx1].FPValue < l[idx2].FPValue
+        return l[idx1].Value < l[idx2].Value
 }
 
 func (l CurrencyList) Swap(idx1, idx2 int) {

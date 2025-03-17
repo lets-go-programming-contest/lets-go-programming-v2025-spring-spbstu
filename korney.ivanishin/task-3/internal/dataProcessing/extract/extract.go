@@ -7,8 +7,6 @@ import (
 	"io"
 	"io/fs"
 	"os"
-	"strconv"
-	"strings"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/quaiion/go-practice/convertation/internal/dataProcessing/currency"
@@ -96,28 +94,9 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
                                  continue
                         }
 
-                        curr, err = translateValueStrToValue(curr)
-                        if err != nil {
-                                return nil, fmt.Errorf("failed translating currency '%s' value string to value: %w",
-                                                       curr.CharCode, err)
-                        }
-
                         currList = append(currList, curr)
                 }
         }
 
         return currList, nil
-}
-
-func translateValueStrToValue(curr currency.Currency) (currency.Currency, error) {
-        curr.Value = strings.ReplaceAll(curr.Value, `,`, `.`)
-
-        var err error = nil
-        curr.FPValue, err = strconv.ParseFloat(curr.Value, 64)
-        if err != nil {
-                return curr, fmt.Errorf("failed converting a 'Value' record to float: %w",
-                                        err)
-        }
-
-        return curr, nil
 }
