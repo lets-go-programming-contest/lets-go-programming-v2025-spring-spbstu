@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -13,6 +14,15 @@ import (
 )
 
 func main() {
+
+	// Add the -config flag with the default value
+	configPath := flag.String(
+		"config",
+		"internal/config/config.yaml", // Default path
+		"Path to configuration file",
+	)
+	flag.Parse()
+
 	// Recover from any unexpected panics in the application
 	defer func() {
 		if r := recover(); r != nil {
@@ -22,7 +32,7 @@ func main() {
 	}()
 
 	// Load configuration from config/config.yaml
-	cfg, err := config.LoadConfig()
+	cfg, err := config.LoadConfig(*configPath)
 	if err != nil {
 		handleError(err)
 	}

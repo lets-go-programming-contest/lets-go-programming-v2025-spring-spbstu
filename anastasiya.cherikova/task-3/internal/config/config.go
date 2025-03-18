@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"path/filepath"
 
 	"gopkg.in/yaml.v3"
 )
@@ -14,9 +13,6 @@ var (
 	ErrConfigParse = errors.New("config parse error")
 )
 
-const configDir = "internal/config" // Directory for configs
-const configFile = "config.yaml"    // Configuration file name
-
 // Configuration structure for YAML parsing
 type Config struct {
 	InputFile  string `yaml:"input-file"`
@@ -24,9 +20,7 @@ type Config struct {
 }
 
 // LoadConfig reads and parses YAML configuration file
-func LoadConfig() (*Config, error) {
-	configPath := filepath.Join(configDir, configFile)
-
+func LoadConfig(configPath string) (*Config, error) {
 	data, err := os.ReadFile(configPath)
 	if err != nil {
 		return nil, fmt.Errorf("%w: %v", ErrConfigRead, err)
