@@ -2,8 +2,8 @@ package xml2json
 
 import "encoding/json"
 
-func writeJSON(valCurs Format) []byte {
-	jsonData, err := json.Marshal(valCurs)
+func WriteJSON(valCurs []Format) []byte {
+	jsonData, err := json.MarshalIndent(valCurs, "", "    ")
 	if err != nil {
 		panic("Error during marshal json")
 	}

@@ -8,31 +8,42 @@ import (
 
 type ValCurs struct {
 	XMLName xml.Name `xml:"ValCurs"`
-	Valutes []Valute `xml:"Valute"`
+	Text    string   `xml:",chardata"`
+	Date    string   `xml:"Date,attr"`
+	Name    string   `xml:"name,attr"`
+	Valute  []struct {
+		Text      string `xml:",chardata"`
+		ID        string `xml:"ID,attr"`
+		NumCode   string `xml:"NumCode"`
+		CharCode  string `xml:"CharCode"`
+		Nominal   string `xml:"Nominal"`
+		Name      string `xml:"Name"`
+		Value     string `xml:"Value"`
+		VunitRate string `xml:"VunitRate"`
+	} `xml:"Valute"`
 }
 
-type Valute struct {
-	NumCode  int    `xml:"NumCode"`
-	CharCode string `xml:"CharCode"`
-	Value    string `xml:"Value"`
-}
-
-func readXML(data []byte) []Format {
+func ReadXML(data *xml.Decoder) []Format {
 	var valCurs ValCurs
-	err := xml.Unmarshal(data, &valCurs)
+	err := data.Decode(&valCurs)
 	if err != nil {
-		panic("Error during unmarshal xml")
+		panic(err)
 	}
 
 	var currencies []Format
-	for _, v := range valCurs.Valutes {
+	for _, v := range valCurs.Valute {
 		value, err := strconv.ParseFloat(strings.Replace(v.Value, ",", ".", -1), 64)
 		if err != nil {
 			panic("Error during replacing comma")
 		}
 
+		num, err := strconv.Atoi(v.NumCode)
+		if err != nil {
+			panic("Error during atio")
+		}
+
 		currencies = append(currencies, Format{
-			NumCode:  v.NumCode,
+			NumCode:  num,
 			CharCode: v.CharCode,
 			Value:    value,
 		})

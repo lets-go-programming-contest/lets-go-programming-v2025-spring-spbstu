@@ -4,7 +4,7 @@
         <NumCode>036</NumCode>
         <CharCode>AUD</CharCode>
         <Nominal>1</Nominal>
-        <Name>Австралийский доллар</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</Name>
         <Value>16,0102</Value>
         <VunitRate>16,0102</VunitRate>
     </Valute>
@@ -12,7 +12,7 @@
         <NumCode>826</NumCode>
         <CharCode>GBP</CharCode>
         <Nominal>1</Nominal>
-        <Name>Фунт стерлингов Соединенного королевства</Name>
+        <Name>пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</Name>
         <Value>43,8254</Value>
         <VunitRate>43,8254</VunitRate>
     </Valute>
@@ -20,7 +20,7 @@
         <NumCode>974</NumCode>
         <CharCode>BYR</CharCode>
         <Nominal>1000</Nominal>
-        <Name>Белорусских рублей</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</Name>
         <Value>18,4290</Value>
         <VunitRate>0,018429</VunitRate>
     </Valute>
@@ -28,7 +28,7 @@
         <NumCode>208</NumCode>
         <CharCode>DKK</CharCode>
         <Nominal>10</Nominal>
-        <Name>Датских крон</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ</Name>
         <Value>36,1010</Value>
         <VunitRate>3,6101</VunitRate>
     </Valute>
@@ -36,7 +36,7 @@
         <NumCode>840</NumCode>
         <CharCode>USD</CharCode>
         <Nominal>1</Nominal>
-        <Name>Доллар США</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ</Name>
         <Value>30,9436</Value>
         <VunitRate>30,9436</VunitRate>
     </Valute>
@@ -44,7 +44,7 @@
         <NumCode>978</NumCode>
         <CharCode>EUR</CharCode>
         <Nominal>1</Nominal>
-        <Name>Евро</Name>
+        <Name>пїЅпїЅпїЅпїЅ</Name>
         <Value>26,8343</Value>
         <VunitRate>26,8343</VunitRate>
     </Valute>
@@ -52,7 +52,7 @@
         <NumCode>352</NumCode>
         <CharCode>ISK</CharCode>
         <Nominal>100</Nominal>
-        <Name>Исландских крон</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ</Name>
         <Value>30,7958</Value>
         <VunitRate>0,307958</VunitRate>
     </Valute>
@@ -60,7 +60,7 @@
         <NumCode>398</NumCode>
         <CharCode>KZT</CharCode>
         <Nominal>100</Nominal>
-        <Name>Казахстанских тенге</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ</Name>
         <Value>20,3393</Value>
         <VunitRate>0,203393</VunitRate>
     </Valute>
@@ -68,7 +68,7 @@
         <NumCode>124</NumCode>
         <CharCode>CAD</CharCode>
         <Nominal>1</Nominal>
-        <Name>Канадский доллар</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</Name>
         <Value>19,3240</Value>
         <VunitRate>19,324</VunitRate>
     </Valute>
@@ -76,7 +76,7 @@
         <NumCode>578</NumCode>
         <CharCode>NOK</CharCode>
         <Nominal>10</Nominal>
-        <Name>Норвежских крон</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ</Name>
         <Value>34,7853</Value>
         <VunitRate>3,47853</VunitRate>
     </Valute>
@@ -84,7 +84,7 @@
         <NumCode>960</NumCode>
         <CharCode>XDR</CharCode>
         <Nominal>1</Nominal>
-        <Name>СДР (специальные права заимствования)</Name>
+        <Name>пїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)</Name>
         <Value>38,4205</Value>
         <VunitRate>38,4205</VunitRate>
     </Valute>
@@ -92,7 +92,7 @@
         <NumCode>702</NumCode>
         <CharCode>SGD</CharCode>
         <Nominal>1</Nominal>
-        <Name>Сингапурский доллар</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</Name>
         <Value>16,8878</Value>
         <VunitRate>16,8878</VunitRate>
     </Valute>
@@ -100,7 +100,7 @@
         <NumCode>792</NumCode>
         <CharCode>TRL</CharCode>
         <Nominal>1000000</Nominal>
-        <Name>Турецких лир</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ</Name>
         <Value>22,2616</Value>
         <VunitRate>2,22616E-05</VunitRate>
     </Valute>
@@ -108,7 +108,7 @@
         <NumCode>980</NumCode>
         <CharCode>UAH</CharCode>
         <Nominal>10</Nominal>
-        <Name>Украинских гривен</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</Name>
         <Value>58,1090</Value>
         <VunitRate>5,8109</VunitRate>
     </Valute>
@@ -116,7 +116,7 @@
         <NumCode>752</NumCode>
         <CharCode>SEK</CharCode>
         <Nominal>10</Nominal>
-        <Name>Шведских крон</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ</Name>
         <Value>29,5924</Value>
         <VunitRate>2,95924</VunitRate>
     </Valute>
@@ -124,7 +124,7 @@
         <NumCode>756</NumCode>
         <CharCode>CHF</CharCode>
         <Nominal>1</Nominal>
-        <Name>Швейцарский франк</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ</Name>
         <Value>18,1861</Value>
         <VunitRate>18,1861</VunitRate>
     </Valute>
@@ -132,7 +132,7 @@
         <NumCode>392</NumCode>
         <CharCode>JPY</CharCode>
         <Nominal>100</Nominal>
-        <Name>Японских иен</Name>
+        <Name>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ</Name>
         <Value>23,1527</Value>
         <VunitRate>0,231527</VunitRate>
     </Valute>
