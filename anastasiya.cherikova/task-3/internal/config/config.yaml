@@ -1,0 +1,2 @@
+input-file: "data/input.xml"    # Путь к входному XML-файлу
+output-file: "result/output.json" # Путь для сохранения JSON
