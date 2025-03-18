@@ -2,14 +2,14 @@ package currency
 
 import "sort"
 
-// Структура валюты (теги для XML и JSON)
+// Currency structure with XML/JSON tags
 type Currency struct {
 	NumCode  int     `xml:"NumCode" json:"num_code"`
 	CharCode string  `xml:"CharCode" json:"char_code"`
 	Value    float64 `xml:"Value" json:"value"`
 }
 
-// Сортировка валют по убыванию значения
+// SortCurrencies sorts currencies in descending order by Value
 func SortCurrencies(currencies []Currency) {
 	sort.Slice(currencies, func(i, j int) bool {
 		return currencies[i].Value > currencies[j].Value

@@ -2,6 +2,7 @@ package xmlparser
 
 import (
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -13,54 +14,66 @@ import (
 	"golang.org/x/text/encoding/charmap"
 )
 
-type xmlCurrency struct {
-	NumCode  int    `xml:"NumCode"`
-	CharCode string `xml:"CharCode"`
-	ValueStr string `xml:"Value"` // Значение как строка
+var (
+	ErrFileOpen  = errors.New("file open error")
+	ErrXMLDecode = errors.New("xml decode error")
+)
+
+// Custom type to handle currency value parsing
+type CurrencyValue float64
+
+// Implement TextUnmarshaler interface for custom parsing
+func (cv *CurrencyValue) UnmarshalText(text []byte) error {
+	s := strings.Replace(string(text), ",", ".", 1)
+	f, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return fmt.Errorf("invalid currency value: %w", err)
+	}
+	*cv = CurrencyValue(f)
+	return nil
 }
 
-type ValCurs struct {
+// Temporary XML structure with custom value type
+type xmlCurrency struct {
+	NumCode  int           `xml:"NumCode"`
+	CharCode string        `xml:"CharCode"`
+	Value    CurrencyValue `xml:"Value"`
+}
+
+// XML root element structure
+type valCurs struct {
 	Currencies []xmlCurrency `xml:"Valute"`
 }
 
-func ParseXML(filePath string) []currency.Currency {
+func ParseXML(filePath string) ([]currency.Currency, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
-		panic(fmt.Sprintf("Ошибка открытия файла: %v", err))
+		return nil, fmt.Errorf("%w: %v", ErrFileOpen, err)
 	}
 	defer file.Close()
 
-	// Создаем XML-декодер с обработкой кодировки
 	decoder := xml.NewDecoder(file)
 	decoder.CharsetReader = func(charset string, input io.Reader) (io.Reader, error) {
 		if charset == "windows-1251" {
-			// Преобразуем Windows-1251, UTF-8
 			return charmap.Windows1251.NewDecoder().Reader(input), nil
 		}
-		return nil, fmt.Errorf("неподдерживаемая кодировка: %s", charset)
+		return nil, fmt.Errorf("unsupported charset: %s", charset)
 	}
 
-	// Парсим XML
-	var valCurs ValCurs
-	if err := decoder.Decode(&valCurs); err != nil {
-		panic(fmt.Sprintf("Ошибка декодирования XML: %v", err))
+	var vc valCurs
+	if err := decoder.Decode(&vc); err != nil {
+		return nil, fmt.Errorf("%w: %v", ErrXMLDecode, err)
 	}
 
-	// Конвертируем значения в float64
-	result := make([]currency.Currency, 0, len(valCurs.Currencies))
-	for _, c := range valCurs.Currencies {
-		valueStr := strings.Replace(c.ValueStr, ",", ".", -1)
-		value, err := strconv.ParseFloat(valueStr, 64)
-		if err != nil {
-			panic(fmt.Sprintf("Ошибка конвертации '%s': %v", c.ValueStr, err))
-		}
-
-		result = append(result, currency.Currency{
+	// Convert to final currency structure
+	result := make([]currency.Currency, len(vc.Currencies))
+	for i, c := range vc.Currencies {
+		result[i] = currency.Currency{
 			NumCode:  c.NumCode,
 			CharCode: c.CharCode,
-			Value:    value,
-		})
+			Value:    float64(c.Value), // Convert custom type to float64
+		}
 	}
 
-	return result
+	return result, nil
 }

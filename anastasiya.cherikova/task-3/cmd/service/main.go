@@ -1,8 +1,10 @@
 package main
 
 import (
-	"flag"
+	"errors"
 	"fmt"
+	"log"
+	"os"
 
 	"task-3/internal/config"
 	"task-3/internal/currency"
@@ -11,22 +13,49 @@ import (
 )
 
 func main() {
-	// Обработка флага -config
-	configPath := flag.String("config", "", "Путь к конфигурационному файлу")
-	flag.Parse()
+	// Recover from any unexpected panics in the application
+	defer func() {
+		if r := recover(); r != nil {
+			log.Printf("Critical error: %v", r)
+			os.Exit(1)
+		}
+	}()
 
-	if *configPath == "" {
-		panic("Не указан путь к конфигурационному файлу!")
+	// Load configuration from config/config.yaml
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		handleError(err)
 	}
-	fmt.Println(*configPath)
 
-	// Загрузка конфига
-	cfg := config.LoadConfig(*configPath)
+	// Parse XML file with currency data
+	currencies, err := xmlparser.ParseXML(cfg.InputFile)
+	if err != nil {
+		handleError(err)
+	}
 
-	// Парсинг XML, Сортировка, Запись в JSON
-	currencies := xmlparser.ParseXML(cfg.InputFile)
+	// Sort currencies in descending order by value
 	currency.SortCurrencies(currencies)
-	jsonwriter.WriteJSON(currencies, cfg.OutputFile)
 
-	fmt.Println("Успешно! Результат сохранён в", cfg.OutputFile)
+	// Write sorted results to JSON file
+	if err := jsonwriter.WriteJSON(currencies, cfg.OutputFile); err != nil {
+		handleError(err)
+	}
+
+	fmt.Printf("Success! Output saved to: %s\n", cfg.OutputFile)
+}
+
+// handleError processes application errors and exits the program.
+// It unwraps joined errors and prints individual error messages.
+func handleError(err error) {
+	var joinedErr interface{ Unwrap() []error }
+
+	// Check if error contains multiple wrapped errors
+	if errors.As(err, &joinedErr) {
+		for _, e := range joinedErr.Unwrap() {
+			log.Printf("Error: %v", e)
+		}
+	} else {
+		log.Printf("Error: %v", err)
+	}
+	os.Exit(1)
 }
