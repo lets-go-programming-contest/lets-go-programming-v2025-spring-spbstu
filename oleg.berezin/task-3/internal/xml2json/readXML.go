@@ -6,21 +6,25 @@ import (
 	"strings"
 )
 
+type Value string
+
 type ValCurs struct {
 	XMLName xml.Name `xml:"ValCurs"`
-	Text    string   `xml:",chardata"`
-	Date    string   `xml:"Date,attr"`
 	Name    string   `xml:"name,attr"`
 	Valute  []struct {
-		Text      string `xml:",chardata"`
-		ID        string `xml:"ID,attr"`
-		NumCode   string `xml:"NumCode"`
-		CharCode  string `xml:"CharCode"`
-		Nominal   string `xml:"Nominal"`
-		Name      string `xml:"Name"`
-		Value     string `xml:"Value"`
-		VunitRate string `xml:"VunitRate"`
+		NumCode  string `xml:"NumCode"`
+		CharCode string `xml:"CharCode"`
+		Value    Value  `xml:"Value"`
 	} `xml:"Valute"`
+}
+
+func (v *Value) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+	var rawValue string
+	if err := d.DecodeElement(&rawValue, &start); err != nil {
+		return err
+	}
+	*v = Value(strings.ReplaceAll(rawValue, ",", "."))
+	return nil
 }
 
 func ReadXML(data *xml.Decoder) []Format {
@@ -32,7 +36,7 @@ func ReadXML(data *xml.Decoder) []Format {
 
 	var currencies []Format
 	for _, v := range valCurs.Valute {
-		value, err := strconv.ParseFloat(strings.Replace(v.Value, ",", ".", -1), 64)
+		value, err := strconv.ParseFloat(string(v.Value), 64)
 		if err != nil {
 			panic("Error during replacing comma")
 		}
