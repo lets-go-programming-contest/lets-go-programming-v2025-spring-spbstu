@@ -2,6 +2,7 @@ package xml2json
 
 import (
 	"encoding/xml"
+	"errors"
 	"strconv"
 	"strings"
 )
@@ -27,23 +28,23 @@ func (v *Value) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	return nil
 }
 
-func ReadXML(data *xml.Decoder) []Format {
+func ReadXML(data *xml.Decoder) ([]Format, error) {
 	var valCurs ValCurs
 	err := data.Decode(&valCurs)
 	if err != nil {
-		panic(err)
+		return []Format{}, errors.New("error during decoding xml")
 	}
 
 	var currencies []Format
 	for _, v := range valCurs.Valute {
 		value, err := strconv.ParseFloat(string(v.Value), 64)
 		if err != nil {
-			panic("Error during replacing comma")
+			return []Format{}, errors.New("error during replacing comma")
 		}
 
 		num, err := strconv.Atoi(v.NumCode)
 		if err != nil {
-			panic("Error during atio")
+			return []Format{}, errors.New("error during atio")
 		}
 
 		currencies = append(currencies, Format{
@@ -53,5 +54,5 @@ func ReadXML(data *xml.Decoder) []Format {
 		})
 	}
 
-	return currencies
+	return currencies, nil
 }

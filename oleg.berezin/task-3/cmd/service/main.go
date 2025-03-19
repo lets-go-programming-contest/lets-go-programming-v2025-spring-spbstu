@@ -18,38 +18,37 @@ func main() {
 	flag.Parse()
 
 	if *configPath == "" {
-		fmt.Println("error: the argument -config=<path2file> must be specified")
-		return
+		panic("error: the argument -config=<path2file> must be specified")
 	}
 
 	config := readconfig.ReadConfig(*configPath)
 
 	rawData, errRF := os.ReadFile(config.Src)
 	if errRF != nil {
-		errRF = errors.New("error during reading file")
+		panic(errRF)
 	}
 
 	recodeData := staff.Win2UTF(rawData)
 
-	data := xml2json.ReadXML(recodeData)
+	data, errRX := xml2json.ReadXML(recodeData)
 
 	sort.Slice(data, func(i, j int) bool {
 		return data[i].Value > data[j].Value
 	})
 
-	jsonData := xml2json.WriteJSON(data)
+	jsonData, errWJ := xml2json.WriteJSON(data)
 
 	errMkdir := os.MkdirAll(filepath.Dir(config.Dst), os.ModePerm)
 	if errMkdir != nil {
-		errMkdir = errors.New("error during creating directories")
+		panic(errMkdir)
 	}
 
 	errWF := os.WriteFile(config.Dst, jsonData, 0644)
 	if errWF != nil {
-		errWF = errors.New("error during writing file")
+		panic(errWF)
 	}
 
-	err := errors.Join(errRF, errMkdir, errWF)
+	err := errors.Join(errRX, errWJ)
 	if err != nil {
 		fmt.Println("errors:", err)
 	}
