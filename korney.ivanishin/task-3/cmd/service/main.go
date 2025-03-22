@@ -9,9 +9,9 @@ import (
 )
 
 var (
-        errConfigFailed =  errors.New("configuration failed")
+        errConfigFailed  = errors.New("configuration failed")
         errExtractFailed = errors.New("data extraction failed")
-        errEncaseFailed =  errors.New("data encasement failed")
+        errEncaseFailed  = errors.New("data encasement failed")
 )
 
 func main() {

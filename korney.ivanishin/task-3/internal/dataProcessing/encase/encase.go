@@ -10,9 +10,9 @@ import (
 )
 
 var (
-        errPrepEnvFailed =    errors.New("failed preparing the output environment")
+        errPrepEnvFailed    = errors.New("failed preparing the output environment")
         errOuputMarshFailed = errors.New("failed encoding (marshalling) output data")
-        errWriteJsonFailed =  errors.New("failed writing output json data")
+        errWriteJsonFailed  = errors.New("failed writing output json data")
 )
 
 func EncaseJsonData(outFilePath string, currList currency.CurrencyList) error {

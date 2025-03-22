@@ -14,7 +14,7 @@ import (
 )
 
 var (
-        errOpenInpFileFailed =   errors.New("failed opening input file")
+        errOpenInpFileFailed   = errors.New("failed opening input file")
         errDecodeInpFileFailed = errors.New("failed decoding input file data")
 )
 
@@ -58,7 +58,7 @@ func createXmlDecoder(inFile io.Reader) *xml.Decoder {
 }
 
 var (
-        errTokenParseFailed =   errors.New("failed parsing a token from input file data")
+        errTokenParseFailed   = errors.New("failed parsing a token from input file data")
         errRecordDecodeFailed = errors.New("failed decoding an xml currency record")
 )
 

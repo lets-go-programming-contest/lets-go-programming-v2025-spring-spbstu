@@ -56,7 +56,7 @@ func parseConfFilePathFlag() (string) {
 }
 
 var (
-        errUnmrashalFailed =   errors.New("failed unmarshalling")
+        errUnmrashalFailed   = errors.New("failed unmarshalling")
         errDecodeValidFailed = errors.New("decoded data validation failed")
 )
 
