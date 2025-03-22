@@ -67,11 +67,10 @@ type fileNamesParsed struct {
 
 func decodeConfFileData(confFileContents []byte) (string, string, error) {
         if confFileContents == nil {
-                /** 
-                 * `panic` is used here as an assertion: it can be
-                 * triggered only by a critical memory fault or
-                 * because of a developer's mistake
-                 */
+                // `panic` is used here as an assertion: it can be
+                // triggered only by a critical memory fault or
+                // because of a developer's mistake
+
                 panic("failed while opening a file / storing its contents")
         }
 

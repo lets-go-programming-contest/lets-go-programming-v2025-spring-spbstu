@@ -50,7 +50,7 @@ func openInFile(inFilePath string) (*os.File, error) {
         return inFile, nil
 }
 
-/** separate function for flexibility */
+// separate function for flexibility
 func createXmlDecoder(inFile io.Reader) *xml.Decoder {
         decoder := xml.NewDecoder(inFile)
         decoder.CharsetReader = charset.NewReaderLabel
@@ -64,11 +64,10 @@ var (
 
 func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
         if decoder == nil {
-                /** 
-                 * `panic` is used here as an assertion: it can be
-                 * triggered only by a critical memory fault or
-                 * because of a developer's mistake
-                 */
+                // `panic` is used here as an assertion: it can be
+                // triggered only by a critical memory fault or
+                // because of a developer's mistake
+
                 panic("failed decoding xml file data")
         }
 
@@ -92,11 +91,10 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
 
                         err = validator.New().Struct(curr)
                         if err != nil {
-                                /**
-                                 * we only validate the "required" condition and
-                                 * just discard elements that dont satisfy it,
-                                 * so there is no need to pass this error upwards
-                                 */
+                                // we only validate the "required" condition and
+                                // just discard elements that dont satisfy it,
+                                // so there is no need to pass this error upwards
+
                                  continue
                         }
 

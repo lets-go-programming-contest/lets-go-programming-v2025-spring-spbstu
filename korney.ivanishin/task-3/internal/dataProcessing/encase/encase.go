@@ -17,11 +17,10 @@ var (
 
 func EncaseJsonData(outFilePath string, currList currency.CurrencyList) error {
         if currList == nil {
-                /** 
-                 * `panic` is used here as an assertion: it can be
-                 * triggered only by a critical memory fault or
-                 * because of a developer's mistake
-                 */
+                // `panic` is used here as an assertion: it can be
+                // triggered only by a critical memory fault or
+                // because of a developer's mistake
+
                 panic("failed encasing/writing data")
         }
 
@@ -47,7 +46,7 @@ func EncaseJsonData(outFilePath string, currList currency.CurrencyList) error {
 
 var errDirCreateFailed = errors.New("failed to create specified directories")
 
-/** separate function just for flexibility */
+// separate function just for flexibility
 func prepareOutputEnv(filePath string) error {
         err := os.MkdirAll(filepath.Dir(filePath), 0644)
         if err != nil {
@@ -57,14 +56,13 @@ func prepareOutputEnv(filePath string) error {
         return nil
 }
 
-/** separate function just for flexibility */
+// separate function just for flexibility
 func transformData(currList currency.CurrencyList) currency.CurrencyList {
         if currList == nil {
-                /** 
-                 * `panic` is used here as an assertion: it can be
-                 * triggered only by a critical memory fault or
-                 * because of a developer's mistake
-                 */
+                // `panic` is used here as an assertion: it can be
+                // triggered only by a critical memory fault or
+                // because of a developer's mistake
+
                 panic("failed transforming decoded data")
         }
 
@@ -74,14 +72,13 @@ func transformData(currList currency.CurrencyList) currency.CurrencyList {
 
 var errDataWriteFailed = errors.New("failed writing output data to the file")
 
-/** separate function just for flexibility */
+// separate function just for flexibility
 func writeJsonData(data []byte, outFilePath string) error {
         if data == nil {
-                /** 
-                 * `panic` is used here as an assertion: it can be
-                 * triggered only by a critical memory fault or
-                 * because of a developer's mistake
-                 */
+                // `panic` is used here as an assertion: it can be
+                // triggered only by a critical memory fault or
+                // because of a developer's mistake
+
                 panic("failed writing encased data")
         }
 

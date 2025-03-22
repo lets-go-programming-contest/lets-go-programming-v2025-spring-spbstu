@@ -11,7 +11,7 @@ type comaSepFloat64 float64
 
 var errValUnmarshFailed = errors.New("failed unmarshalling a 'Value' float")
 
-/** this method is implicitly used by `decoder.DecodeElement()` */
+// this method is implicitly used by `decoder.DecodeElement()`
 func (f *comaSepFloat64) UnmarshalText(text []byte) error {
         textComaToDot := strings.ReplaceAll(string(text), `,`, `.`)
 
