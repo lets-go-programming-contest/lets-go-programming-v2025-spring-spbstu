@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/quaiion/go-practice/lru-cache/internal/CacheDir"
@@ -8,10 +9,14 @@ import (
 	"github.com/quaiion/go-practice/lru-cache/internal/Requester"
 )
 
+var (
+        errConfigFailed = errors.New("failed extracting config parameters")
+)
+
 func main() {
         configParams, err := Config.GetConfigParams()
         if err != nil {
-                panic(fmt.Errorf("failed extracting config parameters: %w", err))
+                panic(errors.Join(errConfigFailed, err))
         }
 
         cacheDir := CacheDir.CreateCacheDir(configParams.ReqRange,

@@ -18,21 +18,24 @@ type ConfigParams struct {
         NRequests   uint32 `yaml:"n_requests" validate:"required"`
 }
 
+var (
+        errConfReadFailed = errors.New("failed reading config file data")
+        errConfProcFailed = errors.New("failed processing config file data")       
+)
+
 func GetConfigParams() (ConfigParams, error) {
         confFilePath := parseConfFilePathFlag()
 
         confFileContents, err := readInFile(confFilePath)
         if err != nil {
                 zeroConfigParams := ConfigParams{0, 0, 0, 0}
-                return zeroConfigParams, fmt.Errorf("failed reading config file data: %w",
-                                                    err)
+                return zeroConfigParams, errors.Join(errConfReadFailed, err)
         }
 
         configParams, err := decodeConfFileData(confFileContents)
         if err != nil {
                 zeroConfigParams := ConfigParams{0, 0, 0, 0}
-                return zeroConfigParams, fmt.Errorf("failed processing config file data: %w",
-                                                    err)
+                return zeroConfigParams, errors.Join(errConfProcFailed, err)
         }
 
         return configParams, nil
@@ -61,6 +64,11 @@ func parseConfFilePathFlag() (string) {
         return pathStr
 }
 
+var (
+        errUnmrashalFailed   = errors.New("failed unmarshalling")
+        errDecodeValidFailed = errors.New("decoded data validation failed")
+)
+
 func decodeConfFileData(confFileContents []byte) (ConfigParams, error) {
         if confFileContents == nil {
                 //  `panic` is used here as an assertion: it can be
@@ -75,14 +83,13 @@ func decodeConfFileData(confFileContents []byte) (ConfigParams, error) {
         err := yaml.Unmarshal(confFileContents, &configParams)
         if err != nil {
                 zeroConfigParams := ConfigParams{0, 0, 0, 0}
-                return zeroConfigParams, fmt.Errorf("failed unmarshalling: %w", err)
+                return zeroConfigParams, errors.Join(errUnmrashalFailed, err)
         }
 
         err = validator.New().Struct(configParams)
         if err != nil {
                 zeroConfigParams := ConfigParams{0, 0, 0, 0}
-                return zeroConfigParams, fmt.Errorf("decoded data validation failed: %w",
-                                                    err)
+                return zeroConfigParams, errors.Join(errDecodeValidFailed, err)
         }
 
         return configParams, nil
