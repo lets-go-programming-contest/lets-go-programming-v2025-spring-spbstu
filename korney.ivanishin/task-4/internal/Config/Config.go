@@ -63,11 +63,10 @@ func parseConfFilePathFlag() (string) {
 
 func decodeConfFileData(confFileContents []byte) (ConfigParams, error) {
         if confFileContents == nil {
-                /** 
-                 * `panic` is used here as an assertion: it can be
-                 * triggered only by a critical memory fault or
-                 * because of a developer's mistake
-                 */
+                //  `panic` is used here as an assertion: it can be
+                //  triggered only by a critical memory fault or
+                //  because of a developer's mistake
+
                 panic("failed while opening a file / storing its contents")
         }
 
