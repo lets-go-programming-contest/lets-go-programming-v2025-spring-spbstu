@@ -1,7 +1,7 @@
 package currency
 
 import (
-	"fmt"
+	"errors"
 	"sort"
 	"strconv"
 	"strings"
@@ -9,14 +9,15 @@ import (
 
 type comaSepFloat64 float64
 
+var errValUnmarshFailed = errors.New("failed unmarshalling a 'Value' float")
+
 /** this method is implicitly used by `decoder.DecodeElement()` */
 func (f *comaSepFloat64) UnmarshalText(text []byte) error {
         textComaToDot := strings.ReplaceAll(string(text), `,`, `.`)
 
         parsedVal, err := strconv.ParseFloat(textComaToDot, 64)
         if err != nil {
-                return fmt.Errorf("failed unmarshalling a 'Value' float number: %w",
-                                  err)
+                return errors.Join(errValUnmarshFailed, err)
         }
 
         *f = comaSepFloat64(parsedVal)

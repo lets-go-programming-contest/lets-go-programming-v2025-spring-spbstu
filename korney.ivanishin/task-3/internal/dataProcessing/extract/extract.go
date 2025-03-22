@@ -13,11 +13,15 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
+var (
+        errOpenInpFileFailed =   errors.New("failed opening input file")
+        errDecodeInpFileFailed = errors.New("failed decoding input file data")
+)
+
 func ExtractXmlData(inFilePath string) (currency.CurrencyList, error) {
         inFile, err := openInFile(inFilePath)
         if err != nil {
-                return nil, fmt.Errorf("failed opening input file: %w",
-                                       err)
+                return nil, errors.Join(errOpenInpFileFailed, err)
         }
         defer inFile.Close()
 
@@ -25,8 +29,7 @@ func ExtractXmlData(inFilePath string) (currency.CurrencyList, error) {
 
         data, err := decodeXmlFile(decoder)
         if err != nil {
-                return nil, fmt.Errorf("failed decoding input file data: %w",
-                                       err)
+                return nil, errors.Join(errDecodeInpFileFailed, err)
         }
 
         return data, nil
@@ -54,6 +57,11 @@ func createXmlDecoder(inFile io.Reader) *xml.Decoder {
         return decoder
 }
 
+var (
+        errTokenParseFailed =   errors.New("failed parsing a token from input file data")
+        errRecordDecodeFailed = errors.New("failed decoding an xml currency record")
+)
+
 func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
         if decoder == nil {
                 /** 
@@ -68,8 +76,7 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
 
         for token, err := decoder.Token() ; token != nil ; token, err = decoder.Token() {
                 if err != nil {
-                        return nil, fmt.Errorf("failed parsing a token from input file data: %w",
-                                               err)
+                        return nil, errors.Join(errTokenParseFailed, err)
                 }
 
                 if tokenType, ok := token.(xml.StartElement) ; ok {
@@ -80,8 +87,7 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
                         var curr currency.Currency
                         err = decoder.DecodeElement(&curr, &tokenType)
                         if err != nil {
-                                return nil, fmt.Errorf("failed decoding an xml currency record: %w",
-                                                       err)
+                                return nil, errors.Join(errRecordDecodeFailed, err)
                         }
 
                         err = validator.New().Struct(curr)

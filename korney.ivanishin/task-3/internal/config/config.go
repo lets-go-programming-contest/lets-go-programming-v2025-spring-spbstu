@@ -11,19 +11,22 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+var (
+        errConfReadFailed = errors.New("failed reading config file data")
+        errConfProcFailed = errors.New("failed processing config file data")       
+)
+
 func GetIOFilePaths() (string, string, error) {
         confFilePath := parseConfFilePathFlag()
 
         confFileContents, err := readInFile(confFilePath)
         if err != nil {
-                return ``, ``, fmt.Errorf("failed reading config file data: %w",
-                                          err)
+                return ``, ``, errors.Join(errConfReadFailed, err)
         }
 
         inFilePath, outFilePath, err := decodeConfFileData(confFileContents)
         if err != nil {
-                return ``, ``, fmt.Errorf("failed processing config file data: %w",
-                                          err)
+                return ``, ``, errors.Join(errConfProcFailed, err)
         }
 
         return inFilePath, outFilePath, nil
@@ -52,6 +55,11 @@ func parseConfFilePathFlag() (string) {
         return pathStr
 }
 
+var (
+        errUnmrashalFailed =   errors.New("failed unmarshalling")
+        errDecodeValidFailed = errors.New("decoded data validation failed")
+)
+
 type fileNamesParsed struct {
         InFile  string `yaml:"input-file" validate:"required"`
         OutFile string `yaml:"output-file" validate:"required"`
@@ -71,13 +79,12 @@ func decodeConfFileData(confFileContents []byte) (string, string, error) {
 
         err := yaml.Unmarshal(confFileContents, &parsed)
         if err != nil {
-                return ``, ``, fmt.Errorf("failed unmarshalling: %w", err)
+                return ``, ``, errors.Join(errUnmrashalFailed, err)
         }
 
         err = validator.New().Struct(parsed)
         if err != nil {
-                return ``, ``, fmt.Errorf("decoded data validation failed: %w",
-                                          err)
+                return ``, ``, errors.Join(errDecodeValidFailed, err)
         }
 
         return parsed.InFile, parsed.OutFile, nil
