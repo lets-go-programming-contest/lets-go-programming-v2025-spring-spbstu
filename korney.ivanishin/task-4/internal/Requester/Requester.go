@@ -11,7 +11,7 @@ type Requester struct {
         reqRange uint32
 }
 
-func CreateRequester(reqRange uint32) Requester {
+func NewRequester(reqRange uint32) Requester {
         return Requester{
                 reqRange: reqRange,
         }

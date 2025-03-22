@@ -16,7 +16,7 @@ type CacheDir struct {
         mtx  sync.Mutex
 }
 
-func CreateCacheDir(reqRange uint32, cacheCap uint32) CacheDir {
+func NewCacheDir(reqRange uint32, cacheCap uint32) CacheDir {
         return CacheDir{
                 list: list.New(),
                 dir: slices.Repeat([]*list.Element{nil}, int(reqRange)),

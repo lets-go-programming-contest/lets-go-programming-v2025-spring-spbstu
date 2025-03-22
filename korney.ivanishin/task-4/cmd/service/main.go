@@ -19,8 +19,8 @@ func main() {
                 panic(errors.Join(errConfigFailed, err))
         }
 
-        cacheDir := CacheDir.CreateCacheDir(configParams.ReqRange,
-                                            configParams.CacheCap)
+        cacheDir := CacheDir.NewCacheDir(configParams.ReqRange,
+                                         configParams.CacheCap)
 
         chanArr := launchRequesters(&cacheDir, configParams.NRequesters, 
                                                configParams.ReqRange,
@@ -48,7 +48,7 @@ func launchRequesters(cd *CacheDir.CacheDir, nRequesters uint32, reqRange uint32
         chanArr := make([]chan uint32, 0, nRequesters)
 
         for i := uint32(0) ; i < nRequesters ; i += 1 {
-                requester := Requester.CreateRequester(reqRange)
+                requester := Requester.NewRequester(reqRange)
                 chanArr = append(chanArr, make(chan uint32))
                 go goroutRequestN(requester, cd, nRequests, chanArr[i])
         }
