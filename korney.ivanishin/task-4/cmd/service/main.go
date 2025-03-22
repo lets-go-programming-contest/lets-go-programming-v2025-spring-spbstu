@@ -9,19 +9,25 @@ import (
 )
 
 func main() {
-        nRequesters, reqRange, cacheCap, nRequests, err := Config.GetConfigParams()
+        configParams, err := Config.GetConfigParams()
         if err != nil {
                 panic(fmt.Errorf("failed extracting config parameters: %w", err))
         }
 
-        cacheDir := CacheDir.CreateCacheDir(reqRange, cacheCap)
+        cacheDir := CacheDir.CreateCacheDir(configParams.ReqRange,
+                                            configParams.CacheCap)
 
-        chanArr := launchRequesters(&cacheDir, nRequesters, reqRange, nRequests)
+        chanArr := launchRequesters(&cacheDir, configParams.NRequesters, 
+                                               configParams.ReqRange,
+                                               configParams.NRequests)
 
-        hitSum := joinRequesters(chanArr, nRequesters)
+        hitSum := joinRequesters(chanArr, configParams.NRequesters)
 
-        fmt.Printf("\nhit rate: %d/%d, %.2f%%\n\n", hitSum, nRequests * nRequesters,
-                   float64(hitSum) / float64(nRequests * nRequesters) * float64(100))
+        fmt.Printf("\nhit rate: %d/%d, %.2f%%\n\n", hitSum,
+                   configParams.NRequests * configParams.NRequesters,
+                   float64(hitSum) / float64(configParams.NRequests *
+                                             configParams.NRequesters) *
+                                     float64(100))
 }
 
 func goroutRequestN(requester Requester.Requester, cd *CacheDir.CacheDir, n uint32,  ch chan<- uint32) {

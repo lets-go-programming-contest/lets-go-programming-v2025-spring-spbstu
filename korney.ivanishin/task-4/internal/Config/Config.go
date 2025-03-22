@@ -11,22 +11,31 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func GetConfigParams() (uint32, uint32, uint32, uint32, error) {
+type ConfigParams struct {
+        NRequesters uint32 `yaml:"n_requesters" validate:"required"`
+        ReqRange    uint32 `yaml:"request_range" validate:"required"`
+        CacheCap    uint32 `yaml:"cache_capacity" validate:"required"`
+        NRequests   uint32 `yaml:"n_requests" validate:"required"`
+}
+
+func GetConfigParams() (ConfigParams, error) {
         confFilePath := parseConfFilePathFlag()
 
         confFileContents, err := readInFile(confFilePath)
         if err != nil {
-                return 0, 0, 0, 0, fmt.Errorf("failed reading config file data: %w",
-                                              err)
+                zeroConfigParams := ConfigParams{0, 0, 0, 0}
+                return zeroConfigParams, fmt.Errorf("failed reading config file data: %w",
+                                                    err)
         }
 
-        nRequesters, reqRange, cacheCap, nRequests, err := decodeConfFileData(confFileContents)
+        configParams, err := decodeConfFileData(confFileContents)
         if err != nil {
-                return 0, 0, 0, 0, fmt.Errorf("failed processing config file data: %w",
-                                              err)
+                zeroConfigParams := ConfigParams{0, 0, 0, 0}
+                return zeroConfigParams, fmt.Errorf("failed processing config file data: %w",
+                                                    err)
         }
 
-        return nRequesters, reqRange, cacheCap, nRequests, nil
+        return configParams, nil
 }
 
 func readInFile(filePath string) ([]byte, error) {
@@ -52,14 +61,7 @@ func parseConfFilePathFlag() (string) {
         return pathStr
 }
 
-type configParamsParsed struct {
-        NRequesters uint32 `yaml:"n_requesters" validate:"required"`
-        ReqRange    uint32 `yaml:"request_range" validate:"required"`
-        CacheCap    uint32 `yaml:"cache_capacity" validate:"required"`
-        NRequests   uint32 `yaml:"n_requests" validate:"required"`
-}
-
-func decodeConfFileData(confFileContents []byte) (uint32, uint32, uint32, uint32, error) {
+func decodeConfFileData(confFileContents []byte) (ConfigParams, error) {
         if confFileContents == nil {
                 /** 
                  * `panic` is used here as an assertion: it can be
@@ -69,18 +71,20 @@ func decodeConfFileData(confFileContents []byte) (uint32, uint32, uint32, uint32
                 panic("failed while opening a file / storing its contents")
         }
 
-        var parsed configParamsParsed
+        var configParams ConfigParams
 
-        err := yaml.Unmarshal(confFileContents, &parsed)
+        err := yaml.Unmarshal(confFileContents, &configParams)
         if err != nil {
-                return 0, 0, 0, 0, fmt.Errorf("failed unmarshalling: %w", err)
+                zeroConfigParams := ConfigParams{0, 0, 0, 0}
+                return zeroConfigParams, fmt.Errorf("failed unmarshalling: %w", err)
         }
 
-        err = validator.New().Struct(parsed)
+        err = validator.New().Struct(configParams)
         if err != nil {
-                return 0, 0, 0, 0, fmt.Errorf("decoded data validation failed: %w",
-                                           err)
+                zeroConfigParams := ConfigParams{0, 0, 0, 0}
+                return zeroConfigParams, fmt.Errorf("decoded data validation failed: %w",
+                                                    err)
         }
 
-        return parsed.NRequesters, parsed.ReqRange, parsed.CacheCap, parsed.NRequests, nil
+        return configParams, nil
 }
