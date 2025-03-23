@@ -12,30 +12,36 @@ type CacheDir struct {
         rang uint32
         size uint32
         cap  uint32
-        mtx  sync.Mutex
 }
 
-func NewCacheDir(reqRange uint32, cacheCap uint32) CacheDir {
-        return CacheDir{
-                list: list.New(),
-                dir: make([]*list.Element, int(reqRange)),
-                rang: reqRange,
-                size: 0,
-                cap: cacheCap,
+type CacheDirSync struct {
+        cd  CacheDir
+        mtx sync.Mutex
+}
+
+func NewCacheDir(reqRange uint32, cacheCap uint32) CacheDirSync {
+        return CacheDirSync{
+                cd: CacheDir{
+                        list: list.New(),
+                        dir: make([]*list.Element, int(reqRange)),
+                        rang: reqRange,
+                        size: 0,
+                        cap: cacheCap,
+                },
                 mtx: sync.Mutex{},
         }
 }
 
-func (cd *CacheDir) GetRequest(id uint32) (bool, error) {
-        if id >= cd.rang {
+func (cds *CacheDirSync) GetRequest(id uint32) (bool, error) {
+        if id >= cds.cd.rang {
                 return false, fmt.Errorf("request id %d out of predefined range of %d",
-                                         id, cd.rang)
+                                         id, cds.cd.rang)
         }
 
-        cd.mtx.Lock()
-        if cd.dir[id] != nil {
-                err := cd.processHit(id)
-                cd.mtx.Unlock()
+        cds.mtx.Lock()
+        if cds.cd.dir[id] != nil {
+                err := cds.cd.processHit(id)
+                cds.mtx.Unlock()
                 if err != nil {
                         return true, fmt.Errorf("failed processing a hit on request id %d: %w",
                                                 id, err)
@@ -43,8 +49,8 @@ func (cd *CacheDir) GetRequest(id uint32) (bool, error) {
 
                 return true, nil
         } else {
-                err := cd.processMiss(id)
-                cd.mtx.Unlock()
+                err := cds.cd.processMiss(id)
+                cds.mtx.Unlock()
                 if err != nil {
                         return false, fmt.Errorf("failed processing a miss on request id %d: %w",
                                                  id, err)

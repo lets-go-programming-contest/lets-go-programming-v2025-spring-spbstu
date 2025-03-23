@@ -19,8 +19,8 @@ func NewRequester(reqRange uint32) Requester {
 
 var errReqProcFailed = errors.New("failed processing a request")
 
-func (r Requester) Request(cd *CacheDir.CacheDir) (bool, error) {
-        hit, err := cd.GetRequest(rand.Uint32N(r.reqRange))
+func (r Requester) Request(cds *CacheDir.CacheDirSync) (bool, error) {
+        hit, err := cds.GetRequest(rand.Uint32N(r.reqRange))
         if err != nil {
                 return hit, errors.Join(errReqProcFailed, err)
         }
@@ -30,11 +30,11 @@ func (r Requester) Request(cd *CacheDir.CacheDir) (bool, error) {
 
 var errReqSerProcFailed = errors.New("failed processing a request series")
 
-func (r Requester) RequestN(cd *CacheDir.CacheDir, n uint32) (uint32, error) {
+func (r Requester) RequestN(cds *CacheDir.CacheDirSync, n uint32) (uint32, error) {
         var nHits uint32 = 0
 
         for i := uint32(0) ; i < n ; i += 1 {
-                hit, err := r.Request(cd)
+                hit, err := r.Request(cds)
                 if err != nil {
                         return 0, errors.Join(errReqSerProcFailed, err)
                 }

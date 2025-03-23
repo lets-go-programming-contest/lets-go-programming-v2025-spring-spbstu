@@ -42,8 +42,8 @@ func main() {
                                      float64(100))
 }
 
-func goroutRequestN(requester Requester.Requester, cd *CacheDir.CacheDir, n uint32, ch chan<- uint32) error {
-        nHits, err := requester.RequestN(cd, n)
+func goroutRequestN(requester Requester.Requester, cds *CacheDir.CacheDirSync, n uint32, ch chan<- uint32) error {
+        nHits, err := requester.RequestN(cds, n)
         if err != nil {
                 // without this the system deadlocks waiting
                 // for the channel in an error scenario
@@ -56,7 +56,7 @@ func goroutRequestN(requester Requester.Requester, cd *CacheDir.CacheDir, n uint
         return nil
 }
 
-func launchRequesters(cd *CacheDir.CacheDir, nRequesters uint32, reqRange uint32, nRequests uint32) (*[]chan uint32, *errgroup.Group) {
+func launchRequesters(cds *CacheDir.CacheDirSync, nRequesters uint32, reqRange uint32, nRequests uint32) (*[]chan uint32, *errgroup.Group) {
         chanArr := make([]chan uint32, 0, nRequesters)
 
         group, _ := errgroup.WithContext(context.Background())
@@ -65,7 +65,7 @@ func launchRequesters(cd *CacheDir.CacheDir, nRequesters uint32, reqRange uint32
                 requester := Requester.NewRequester(reqRange)
                 chanArr = append(chanArr, make(chan uint32))
                 group.Go(func() error {
-                        return goroutRequestN(requester, cd, nRequests, chanArr[i])
+                        return goroutRequestN(requester, cds, nRequests, chanArr[i])
                 })
         }
 
