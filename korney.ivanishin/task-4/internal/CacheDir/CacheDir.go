@@ -3,7 +3,6 @@ package CacheDir
 import (
 	"container/list"
 	"fmt"
-	"slices"
 	"sync"
 )
 
@@ -19,7 +18,7 @@ type CacheDir struct {
 func NewCacheDir(reqRange uint32, cacheCap uint32) CacheDir {
         return CacheDir{
                 list: list.New(),
-                dir: slices.Repeat([]*list.Element{nil}, int(reqRange)),
+                dir: make([]*list.Element, int(reqRange)),
                 rang: reqRange,
                 size: 0,
                 cap: cacheCap,
