@@ -4,6 +4,8 @@ import (
 	"container/list"
 	"fmt"
 	"sync"
+
+	"github.com/quaiion/go-practice/lru-cache/internal/BuildConfig"
 )
 
 type CacheDir struct {
@@ -38,10 +40,14 @@ func (cds *CacheDirSync) GetRequest(id uint32) (bool, error) {
                                          id, cds.cd.rang)
         }
 
-        cds.mtx.Lock()
+        if !BuildConfig.FAILBUILD {
+                cds.mtx.Lock()
+        }
         if cds.cd.dir[id] != nil {
                 err := cds.cd.processHit(id)
-                cds.mtx.Unlock()
+                if !BuildConfig.FAILBUILD {
+                        cds.mtx.Unlock()
+                }
                 if err != nil {
                         return true, fmt.Errorf("failed processing a hit on request id %d: %w",
                                                 id, err)
@@ -50,7 +56,9 @@ func (cds *CacheDirSync) GetRequest(id uint32) (bool, error) {
                 return true, nil
         } else {
                 err := cds.cd.processMiss(id)
-                cds.mtx.Unlock()
+                if !BuildConfig.FAILBUILD {
+                        cds.mtx.Unlock()
+                }
                 if err != nil {
                         return false, fmt.Errorf("failed processing a miss on request id %d: %w",
                                                  id, err)
