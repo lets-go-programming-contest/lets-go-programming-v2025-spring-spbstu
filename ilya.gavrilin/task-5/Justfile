@@ -1,0 +1,41 @@
+default: build
+
+clean:
+	rm -f task-5-artifacts ssa.html fib.o
+	cd cmd/service && rm -f generated_fib.go
+
+generate:
+	cd cmd/service && go generate
+
+build: generate
+	cd cmd/service && go build -o ../../task-5-artifacts .
+
+build-debug: generate
+	cd cmd/service && go build -tags debug -o ../../task-5-artifacts .
+
+build-ld: generate
+	cd cmd/service && go build -ldflags "-X main.version=1.0.0" -o ../../task-5-artifacts .
+
+run: build
+	./task-5-artifacts
+
+ast:
+	go tool compile -W internal/fib/fib.go
+
+ssa:
+	GOSSAFUNC=Fibonacci go tool compile internal/fib/fib.go
+
+asm:
+	go build -gcflags="-S" internal/fib/fib.go
+
+help:
+	@echo "Available commands:"
+	@echo "  clean       - Remove binary and generated files"
+	@echo "  generate    - Run go generate to generate code"
+	@echo "  build       - Build the executable"
+	@echo "  build-debug - Build with debug tag"
+	@echo "  build-ld    - Build with ldflags (set version)"
+	@echo "  run         - Run the application"
+	@echo "  ast         - Dump AST of main.go"
+	@echo "  ssa         - Dump SSA of main.go"
+	@echo "  asm         - Dump assembler output of main.go"
