@@ -58,8 +58,9 @@ func createXmlDecoder(inFile io.Reader) *xml.Decoder {
 }
 
 var (
-        errTokenParseFailed   = errors.New("failed parsing a token from input file data")
-        errRecordDecodeFailed = errors.New("failed decoding an xml currency record")
+        errRecordsDecodeFailed = errors.New("failed decoding an xml currency records")
+        errValidFailed         = errors.New("failed validating decoded xml records")
+
 )
 
 func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
@@ -71,36 +72,16 @@ func decodeXmlFile(decoder *xml.Decoder) (currency.CurrencyList, error) {
                 panic("failed decoding xml file data")
         }
 
-        var currList []currency.Currency
-
-        for token, err := decoder.Token() ; token != nil ; token, err = decoder.Token() {
-                if err != nil {
-                        return nil, errors.Join(errTokenParseFailed, err)
-                }
-
-                if tokenType, ok := token.(xml.StartElement) ; ok {
-                        if tokenType.Name.Local != `Valute` {
-                                continue
-                        }
-
-                        var curr currency.Currency
-                        err = decoder.DecodeElement(&curr, &tokenType)
-                        if err != nil {
-                                return nil, errors.Join(errRecordDecodeFailed, err)
-                        }
-
-                        err = validator.New().Struct(curr)
-                        if err != nil {
-                                // we only validate the "required" condition and
-                                // just discard elements that dont satisfy it,
-                                // so there is no need to pass this error upwards
-
-                                 continue
-                        }
-
-                        currList = append(currList, curr)
-                }
+        scheme := currency.NewScheme()
+        err := decoder.Decode(&scheme)
+        if err != nil {
+                return nil, errors.Join(errRecordsDecodeFailed, err)
         }
 
-        return currList, nil
+        err = validator.New().Struct(scheme)
+        if err != nil {
+                return nil, errors.Join(errValidFailed, err)
+        }
+
+        return scheme.List, nil
 }

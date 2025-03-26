@@ -24,20 +24,34 @@ func (f *comaSepFloat64) UnmarshalText(text []byte) error {
         return nil
 }
 
-type Currency struct {
+type CurrencyDat struct {
         NumCode  int            `xml:"NumCode" json:"num_code" validate:"required"`
         CharCode string         `xml:"CharCode" json:"char_code" validate:"required"`
         Value    comaSepFloat64 `xml:"Value" json:"value" validate:"required"`
 }
 
+type Currency struct {
+        Curr CurrencyDat `xml:"Valute"`
+}
+
 type CurrencyList []Currency
+
+type Scheme struct {
+        List CurrencyList `xml:"ValCurs"`
+}
+
+func NewScheme() Scheme {
+        return Scheme{
+                List: make(CurrencyList, 0),
+        }
+}
 
 func (l CurrencyList) Len() int {
         return len(l)
 }
 
 func (l CurrencyList) Less(idx1, idx2 int) bool {
-        return l[idx1].Value < l[idx2].Value
+        return l[idx1].Curr.Value < l[idx2].Curr.Value
 }
 
 func (l CurrencyList) Swap(idx1, idx2 int) {
