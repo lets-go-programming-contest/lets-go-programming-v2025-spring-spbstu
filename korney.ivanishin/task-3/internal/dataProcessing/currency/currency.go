@@ -32,6 +32,16 @@ type Currency struct {
 
 type CurrencyList []Currency
 
+type Scheme struct {
+        List CurrencyList `xml:"Valute"`
+}
+
+func NewScheme() Scheme {
+        return Scheme{
+                List: make(CurrencyList, 0),
+        }
+}
+
 func (l CurrencyList) Len() int {
         return len(l)
 }
