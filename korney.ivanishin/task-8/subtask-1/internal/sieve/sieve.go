@@ -14,7 +14,7 @@ func FindPrimes(edge uint32) ([]uint32, error) {
         primes := make([]uint32, 0)
         
         for num := uint32(2) ; num <= edge ; num += 1 {
-                if !sieve[num - 1] {
+                if !sieve[num - 2] {
                         primes = append(primes, num)
 
                         err := updateSieve(sieve, num)
@@ -32,8 +32,8 @@ func updateSieve(sieve []bool, newPrime uint32) error {
                 return errIndexOutOfBound
         }
 
-        for num := newPrime ; num <= uint32(len(sieve)) ; num += newPrime {
-                sieve[num - 1] = true
+        for num := newPrime ; num <= uint32(len(sieve)) + 1 ; num += newPrime {
+                sieve[num - 2] = true
         }
 
         return nil
