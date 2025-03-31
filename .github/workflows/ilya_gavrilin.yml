@@ -15,6 +15,17 @@ jobs:
       with:
         go-version: 1.23.5
 
+    - name: Install dependencies
+      working-directory: ./ilya.gavrilin/task-6
+      run: go mod tidy
+
+    - name: Install mockgen
+      run: go install github.com/golang/mock/mockgen@v1.6.0
+
+    - name: Generate mocks
+      working-directory: ./ilya.gavrilin/task-6
+      run: go generate ./...
+
     - name: Run tests
       working-directory: ./ilya.gavrilin/task-6
       run: go test -v ./...
