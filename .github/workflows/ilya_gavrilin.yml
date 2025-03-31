@@ -15,23 +15,22 @@ jobs:
       with:
         go-version: 1.23.5
 
-    - name: Install dependencies
+    - name: Install mockery
       working-directory: ./ilya.gavrilin/task-6
-      run: go mod tidy
-
-    - name: Install mockgen
-      run: go install github.com/golang/mock/mockgen@v1.6.0
+      run: go install github.com/vektra/mockery/v2@latest
 
     - name: Generate mocks
       working-directory: ./ilya.gavrilin/task-6
-      run: go generate ./...
+      run: |
+        go generate ./...
+        go mod tidy
 
     - name: Run tests
       working-directory: ./ilya.gavrilin/task-6
       run: go test -v ./...
 
     - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v3
+      uses: golangci/golangci-lint-action@v6
       with:
-        version: v1.64
+        version: v1.64.2
         working-directory: ./ilya.gavrilin/task-6
