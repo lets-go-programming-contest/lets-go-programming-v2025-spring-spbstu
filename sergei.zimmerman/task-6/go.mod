@@ -8,6 +8,8 @@ require (
 )
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.2 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/josharian/native v1.1.0 // indirect
 	github.com/mdlayher/genetlink v1.3.2 // indirect
@@ -21,4 +23,5 @@ require (
 	golang.org/x/net v0.10.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/sys v0.12.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
