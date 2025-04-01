@@ -6,4 +6,4 @@ type Doer interface {
 	DoSomething(int, string) error
 }
 
-// go generate ./
+// go generate
