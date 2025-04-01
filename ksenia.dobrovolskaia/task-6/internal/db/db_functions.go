@@ -23,19 +23,23 @@ func (service DBService) GetNames() ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
+	defer func() {
+		_ = rows.Close()
+	}()
 
 	var names []string
 
 	for rows.Next() {
 		var name string
 		if err := rows.Scan(&name); err != nil {
+			//panic("Не отсканировались имена B GetNames")
 			return nil, err
 		}
 		names = append(names, name)
 	}
 
 	if err := rows.Err(); err != nil {
+		// panic("End B GetNames, rows.Err")
 		return nil, err
 	}
 
@@ -48,18 +52,22 @@ func (service DBService) SelectUniqueValues(columnName string, tableName string)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
+	defer func() {
+		_ = rows.Close()
+	}()
 
 	var values []string
 	for rows.Next() {
 		var value string
 		if err := rows.Scan(&value); err != nil {
+			// panic("Не отсканились имена B SelectUniqueValues")
 			return nil, err
 		}
 		values = append(values, value)
 	}
 
 	if err := rows.Err(); err != nil {
+		// panic("End B SelectUniqueValues, rows.Err")
 		return nil, err
 	}
 
