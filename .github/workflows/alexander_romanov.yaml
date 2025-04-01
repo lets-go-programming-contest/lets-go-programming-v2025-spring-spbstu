@@ -1,0 +1,19 @@
+name: alexander_romanov_tests
+on:
+  push:
+    branches: ["alexander.romanov/task-7"]
+
+jobs:
+  check-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v24
+
+    - name: Run Go tests
+      run: |
+        nix run nixpkgs#go_1_24 test -v ./...
+      working-directory: ./alexander.romanov/task-7
