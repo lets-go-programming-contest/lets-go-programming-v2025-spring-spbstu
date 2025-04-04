@@ -1,0 +1,26 @@
+run:
+  timeout: 5m
+  tests: false
+
+linters:
+  enable-all: true
+  disable:
+    - forbidigo
+    - varnamelen
+  fast: false
+
+linters-settings:
+  gci:
+    sections:
+      - standard
+      - default
+      - prefix(example_mock)
+    skip-generated: false
+    custom-order: true
+  depguard:
+    rules:
+      main:
+        allow:
+          - $gostd
+          - example_mock
+          - github.com/mdlayher/wifi
