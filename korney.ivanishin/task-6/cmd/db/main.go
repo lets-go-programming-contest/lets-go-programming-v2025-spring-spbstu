@@ -3,9 +3,6 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"log"
-
-	_ "github.com/lib/pq"
 
 	dbPack "example_mock/internal/db"
 )
@@ -15,13 +12,16 @@ func main() {
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	defer db.Close()
 
 	dbService := dbPack.New(db)
 
 	names, err := dbService.GetNames()
+	if err != nil {
+		panic(err)
+	}
 
 	for _, name := range names {
 		fmt.Println(name)
