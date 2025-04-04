@@ -32,6 +32,7 @@ func (service DBService) GetNames() ([]string, error) {
 		if err := rows.Scan(&name); err != nil {
 			return nil, err
 		}
+
 		names = append(names, name)
 	}
 
@@ -44,18 +45,22 @@ func (service DBService) GetNames() ([]string, error) {
 
 func (service DBService) SelectUniqueValues(columnName string, tableName string) ([]string, error) {
 	query := "SELECT DISTINCT " + columnName + " FROM " + tableName
+
 	rows, err := service.DB.Query(query)
 	if err != nil {
 		return nil, err
 	}
+
 	defer rows.Close()
 
 	var values []string
+
 	for rows.Next() {
 		var value string
 		if err := rows.Scan(&value); err != nil {
 			return nil, err
 		}
+
 		values = append(values, value)
 	}
 

@@ -1,8 +1,9 @@
 package wifi
 
 import (
-	"github.com/mdlayher/wifi"
 	"net"
+
+	"github.com/mdlayher/wifi"
 )
 
 type WiFi interface {
@@ -22,6 +23,7 @@ func (service WiFiService) GetAddresses() ([]net.HardwareAddr, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	var addrs []net.HardwareAddr
 
 	for _, iface := range interfaces {
@@ -36,10 +38,12 @@ func (service WiFiService) GetNames() ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	var name_list []string
 
 	for _, iface := range interfaces {
 		name_list = append(name_list, iface.Name)
 	}
+
 	return name_list, nil
 }

@@ -2,11 +2,12 @@ package main
 
 import (
 	"database/sql"
-	dbPack "example_mock/internal/db"
 	"fmt"
 	"log"
 
 	_ "github.com/lib/pq"
+
+	dbPack "example_mock/internal/db"
 )
 
 func main() {
