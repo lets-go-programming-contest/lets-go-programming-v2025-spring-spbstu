@@ -8,15 +8,15 @@ type Database interface {
 	Query(query string, args ...any) (*sql.Rows, error)
 }
 
-type DBService struct {
+type Service struct {
 	DB Database
 }
 
-func New(db Database) DBService {
-	return DBService{DB: db}
+func New(db Database) Service {
+	return Service{DB: db}
 }
 
-func (service DBService) GetNames() ([]string, error) {
+func (service Service) GetNames() ([]string, error) {
 	query := "SELECT name FROM users"
 
 	rows, err := service.DB.Query(query)
@@ -46,7 +46,7 @@ func (service DBService) GetNames() ([]string, error) {
 	return names, nil
 }
 
-func (service DBService) SelectUniqueValues(columnName string, tableName string) ([]string, error) {
+func (service Service) SelectUniqueValues(columnName string, tableName string) ([]string, error) {
 	query := "SELECT DISTINCT " + columnName + " FROM " + tableName
 	rows, err := service.DB.Query(query)
 	if err != nil {
