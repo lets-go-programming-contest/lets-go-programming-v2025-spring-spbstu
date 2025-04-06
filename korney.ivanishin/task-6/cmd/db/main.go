@@ -2,9 +2,15 @@ package main
 
 import (
 	"database/sql"
+	"errors"
 	"fmt"
 
 	dbPack "example_mock/internal/db"
+)
+
+var (
+	errSQLOpenFailed  = errors.New("failed to open SQL")
+	errGetNamesFailed = errors.New("failed getting names")
 )
 
 func main() {
@@ -12,7 +18,7 @@ func main() {
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
-		panic(err)
+		panic(errors.Join(errSQLOpenFailed, err))
 	}
 	defer db.Close()
 
@@ -20,7 +26,7 @@ func main() {
 
 	names, err := dbService.GetNames()
 	if err != nil {
-		panic(err)
+		panic(errors.Join(errGetNamesFailed, err))
 	}
 
 	for _, name := range names {

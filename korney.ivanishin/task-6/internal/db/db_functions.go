@@ -14,8 +14,9 @@ type Service struct {
 }
 
 var (
-	errGetNamesFailed          = errors.New("failed getting names")
-	errSelectUniqueNamesFailed = errors.New("failed selecting unique names")
+	errGetRowsFailed  = errors.New("failed getting rows")
+	errScanRowsFailed = errors.New("failed scanning rows")
+	errIterRowsFailed = errors.New("failed iterating rows")
 )
 
 func New(db Database) Service {
@@ -27,7 +28,7 @@ func (service Service) GetNames() ([]string, error) {
 
 	rows, err := service.DB.Query(query)
 	if err != nil {
-		return nil, errors.Join(errGetNamesFailed, err)
+		return nil, errors.Join(errGetRowsFailed, err)
 	}
 	defer rows.Close()
 
@@ -36,14 +37,14 @@ func (service Service) GetNames() ([]string, error) {
 	for rows.Next() {
 		var name string
 		if err := rows.Scan(&name); err != nil {
-			return nil, errors.Join(errGetNamesFailed, err)
+			return nil, errors.Join(errScanRowsFailed, err)
 		}
 
 		names = append(names, name)
 	}
 
 	if err := rows.Err(); err != nil {
-		return nil, errors.Join(errGetNamesFailed, err)
+		return nil, errors.Join(errIterRowsFailed, err)
 	}
 
 	return names, nil
@@ -54,7 +55,7 @@ func (service Service) SelectUniqueValues(columnName string, tableName string) (
 
 	rows, err := service.DB.Query(query)
 	if err != nil {
-		return nil, errors.Join(errSelectUniqueNamesFailed, err)
+		return nil, errors.Join(errGetRowsFailed, err)
 	}
 
 	defer rows.Close()
@@ -64,14 +65,14 @@ func (service Service) SelectUniqueValues(columnName string, tableName string) (
 	for rows.Next() {
 		var value string
 		if err := rows.Scan(&value); err != nil {
-			return nil, errors.Join(errSelectUniqueNamesFailed, err)
+			return nil, errors.Join(errScanRowsFailed, err)
 		}
 
 		values = append(values, value)
 	}
 
 	if err := rows.Err(); err != nil {
-		return nil, errors.Join(errSelectUniqueNamesFailed, err)
+		return nil, errors.Join(errIterRowsFailed, err)
 	}
 
 	return values, nil
