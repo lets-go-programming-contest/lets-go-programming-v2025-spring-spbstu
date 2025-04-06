@@ -13,5 +13,8 @@ obj:
 	go tool compile -o main.o $(main_src)
 	go tool nm main.o > out_nm.txt
 
+run:
+	go run $(main_src)
+
 clean:
-	rm ssa.html main main.o out*
+	rm ssa.html main.o out*

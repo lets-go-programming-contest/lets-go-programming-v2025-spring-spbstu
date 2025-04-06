@@ -1,12 +1,8 @@
 package main
 
-import (
-	"fmt"
+import "fmt"
 
-	"github.com/dmitriy.rumyantsev/task-8/task-8-2/internal/tags"
-)
-
-var messages = []string{"Main Message"}
+var messages = []string{"Hello from Main"}
 
 func main() {
     for _, m := range messages {

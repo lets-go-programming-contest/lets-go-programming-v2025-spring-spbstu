@@ -1,7 +1,9 @@
 main_src = ./cmd/service
 
-tags:
-	go run -tags tag1 $(main_src)
+export TAGS := tag1
 
-clean:
-	rm main
+tags_off:
+	go run $(main_src)
+
+tags_on:
+	go run -tags $(TAGS) $(main_src)
