@@ -1,0 +1,41 @@
+name: kutuzov.viktor
+
+on:
+  push:
+    branches: [ "kutuzov.viktor/lesson7" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: golang:1.23-bookworm
+    defaults:
+      run:
+        working-directory: kutuzov.viktor/task6
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: |
+          apt-get update
+          apt-get install -y ca-certificates
+
+      - name: Test
+        run: go test -v ./...
+
+  lint:
+    name: Run linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.23'
+
+      - name: Run golangci-lint
+        uses: kutuzov.viktor/task6/golangci.yaml
+        with:
+          version: v1.54.2
+          working-directory: kutuzov.viktor/task6
+          args: ./...
