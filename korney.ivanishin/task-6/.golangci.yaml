@@ -1,0 +1,46 @@
+version: "2"
+run:
+  tests: false
+linters:
+  default: all
+  disable:
+    - forbidigo
+    - varnamelen
+  settings:
+    depguard:
+      rules:
+        main:
+          allow:
+            - $gostd
+            - example_mock
+            - github.com/mdlayher/wifi
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(example_mock)
+      custom-order: true
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
