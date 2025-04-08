@@ -3,7 +3,6 @@ package db_test
 import (
 	"errors"
 	"example_mock/internal/db"
-	"log"
 	"regexp"
 	"testing"
 
@@ -18,7 +17,8 @@ type rowTestDb struct {
 
 var testTable = []rowTestDb{
 	{
-		names: []string{"Ivan, Gena228"},
+		names:       []string{"Ivan", "Gena228"},
+		errExpected: nil,
 	},
 	{
 		names:       nil,
@@ -61,26 +61,36 @@ func mockDbRows(names []string) *sqlmock.Rows {
 	return rows
 }
 
-func TestSelectUniqueValues_ScanConversion(t *testing.T) {
+func TestSelectUniqueValues(t *testing.T) {
 	mockDB, mock, err := sqlmock.New()
-	require.NoError(t, err)
 	defer func() {
-		if err := mockDB.Close(); err != nil {
-			log.Printf("failed to close mockDB: %v", err)
-			// или возврат ошибки, если это уместно
-		}
+		_ = mockDB.Close()
 	}()
 
-	service := db.New(mockDB)
-	column := "city"
-	table := "locations"
-	query := "SELECT DISTINCT " + column + " FROM " + table
-	// Simulate a row where the 'column' field is an integer (456)
-	rows := sqlmock.NewRows([]string{column}).AddRow(456)
-	mock.ExpectQuery(regexp.QuoteMeta(query)).WillReturnRows(rows)
+	if err != nil {
+		t.Fatalf("an error '%s' was not expected when marshaling expected jsondata", err)
+	}
 
-	values, err := service.SelectUniqueValues(column, table)
-	require.NoError(t, err, "expected no error during scan")
-	require.Equal(t, []string{"456"}, values, "expected names to contain '456' as a string")
-	require.NoError(t, mock.ExpectationsWereMet())
+	service := db.New(mockDB)
+
+	column := "name"
+	table := "users"
+	query := "SELECT DISTINCT " + column + " FROM " + table
+
+	for _, row := range testTable {
+		mock.ExpectQuery(regexp.QuoteMeta(query)).WillReturnRows(mockDbRows(row.names)).WillReturnError(row.errExpected)
+		names, err := service.SelectUniqueValues(column, table)
+
+		if row.errExpected != nil {
+			require.Error(t, err, "expected query error")
+			require.Nil(t, names)
+			require.NoError(t, mock.ExpectationsWereMet())
+
+			continue
+		}
+
+		require.NoError(t, err)
+		require.Equal(t, row.names, names)
+		require.NoError(t, mock.ExpectationsWereMet())
+	}
 }

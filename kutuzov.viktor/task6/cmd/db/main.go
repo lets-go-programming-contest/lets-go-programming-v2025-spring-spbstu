@@ -2,11 +2,10 @@ package main
 
 import (
 	"database/sql"
-	dbPack "example_mock/internal/db"
 	"fmt"
 	"log"
 
-	_ "github.com/lib/pq"
+	dbPack "example_mock/internal/db"
 )
 
 func main() {
@@ -16,6 +15,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	defer func() {
 		if err := db.Close(); err != nil {
 			log.Printf("failed to close db: %v", err)
@@ -25,7 +25,6 @@ func main() {
 	dbService := dbPack.New(db)
 
 	names, err := dbService.GetNames()
-
 	if err != nil {
 		log.Printf("failed to get names: %v", err)
 	}

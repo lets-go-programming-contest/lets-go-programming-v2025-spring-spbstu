@@ -25,6 +25,7 @@ func (service Service) GetNames() ([]string, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed query: %w", err)
 	}
+
 	defer func() {
 		if err := rows.Close(); err != nil {
 			log.Printf("failed to close rows: %v", err)
@@ -53,10 +54,10 @@ func (service Service) SelectUniqueValues(columnName string, tableName string) (
 	query := "SELECT DISTINCT " + columnName + " FROM " + tableName
 
 	rows, err := service.DB.Query(query)
-
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("query error: %w", err)
 	}
+
 	defer func() {
 		if err := rows.Close(); err != nil {
 			log.Printf("failed to close rows: %v", err)
@@ -68,14 +69,14 @@ func (service Service) SelectUniqueValues(columnName string, tableName string) (
 	for rows.Next() {
 		var value string
 		if err := rows.Scan(&value); err != nil {
-			return nil, err
+			return nil, fmt.Errorf("scan error: %w", err)
 		}
 
 		values = append(values, value)
 	}
 
 	if err := rows.Err(); err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error in rows.Err: %w", err)
 	}
 
 	return values, nil
