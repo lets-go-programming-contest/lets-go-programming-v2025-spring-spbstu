@@ -1,8 +1,8 @@
 package wifi
 
 import (
-	"net"
 	"fmt"
+	"net"
 
 	"github.com/mdlayher/wifi"
 )
@@ -39,6 +39,7 @@ func (service Service) GetNames() ([]string, error) {
 	if err != nil {
 		return nil, fmt.Errorf("getting interfaces: %w", err)
 	}
+
 	nameList := make([]string, 0, len(interfaces))
 
 	for _, iface := range interfaces {

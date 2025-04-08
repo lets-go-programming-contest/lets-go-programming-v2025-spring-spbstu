@@ -23,3 +23,4 @@ linters-settings:
           - example_mock
           - github.com/mdlayher/wifi
           - github.com/pkg/errors
+          - github.com/lib/pq

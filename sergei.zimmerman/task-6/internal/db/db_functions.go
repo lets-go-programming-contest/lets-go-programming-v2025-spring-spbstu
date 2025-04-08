@@ -46,8 +46,8 @@ func (service Service) GetNames() ([]string, error) {
 
 func (service Service) SelectUniqueValues(columnName string, tableName string) ([]string, error) {
 	query := "SELECT DISTINCT " + columnName + " FROM " + tableName
-	rows, err := service.DB.Query(query)
 
+	rows, err := service.DB.Query(query)
 	if err != nil {
 		return nil, fmt.Errorf("querying the database: %w", err)
 	}

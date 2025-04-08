@@ -12,6 +12,7 @@ func main() {
 	wifiClient, err := wifi.New()
 	if err != nil {
 		fmt.Printf("Ошибка при создании wifiClient: %s\n", err.Error())
+
 		return
 	}
 
@@ -20,6 +21,7 @@ func main() {
 	addrs, err := wifiService.GetAddresses()
 	if err != nil {
 		fmt.Printf("Ошибка при получении адресов: %s\n", err.Error())
+
 		return
 	}
 
