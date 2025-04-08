@@ -2,7 +2,7 @@ name: dmitriy_krutikov
 
 on:
     push:
-        branches: ["dmitriy_krutikov/task-7"]
+        branches: ["dmitriy.krutikov/task-7"]
 
 jobs:
     test:
