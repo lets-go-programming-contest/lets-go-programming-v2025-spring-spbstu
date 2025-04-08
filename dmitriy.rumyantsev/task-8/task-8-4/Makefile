@@ -1,13 +1,13 @@
 main_src = ./cmd/service
 
 generate:
-	go generate $(main_src)
+	go generate ./...
 
 run:
 	go run $(main_src)
 
 all:
-	go generate $(main_src)
+	go generate ./...
 	go run $(main_src)
 
 clean:
