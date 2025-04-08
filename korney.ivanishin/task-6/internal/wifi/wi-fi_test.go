@@ -40,7 +40,7 @@ func TestGetAddresses(t *testing.T) {
                 actualAddrs, err := wifiService.GetAddresses()
 
                 if row.errExpected != nil {
-                        require.ErrorIs(t, err, joinedWiFiError(row.errExpected), "row: %d, expected error: %w, actual error: %w", i, joinedWiFiError(row.errExpected).Error(), err.Error())
+                        require.ErrorIs(t, err, row.errExpected, "row: %d, expected error: %s, actual error: %s", i, row.errExpected.Error(), err.Error())
                         continue
                 }
 
@@ -119,7 +119,7 @@ func TestGetNames(t *testing.T) {
                 actualNames, err := wifiService.GetNames()
 
                 if row.errExpected != nil {
-                        require.ErrorIs(t, err, joinedWiFiError(row.errExpected), "row: %d, expected error: %w, actual error: %w", i, joinedWiFiError(row.errExpected).Error(), err.Error())
+                        require.ErrorIs(t, err, row.errExpected, "row: %d, expected error: %s, actual error: %s", i, row.errExpected.Error(), err.Error())
                         continue
                 }
 
@@ -148,6 +148,3 @@ func mockIfacesNames(names []string) []*wifi.Interface {
         return interfaces
 }
 
-func joinedWiFiError(errWiFi error) error {
-        return errors.Join(myWifi.ErrGetInterfFailed, errWiFi)
-}

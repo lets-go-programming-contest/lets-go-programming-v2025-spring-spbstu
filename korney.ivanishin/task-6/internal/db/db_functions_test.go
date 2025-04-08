@@ -38,7 +38,7 @@ func TestGetNames(t *testing.T) {
                 names, err := dbService.GetNames()
 
                 if row.errExpected != nil {
-                        require.ErrorIs(t, err, joinedDBError(row.errExpected), "row: %d, expected error: %w, actual error: %w", i, joinedDBError(row.errExpected).Error(), err.Error())
+                        require.ErrorIs(t, err, row.errExpected, "row: %d, expected error: %s, actual error: %s", i, row.errExpected.Error(), err.Error())
                         require.Nil(t, names, "row: %d, names must be nil", i)
                         continue
                 }
@@ -94,7 +94,7 @@ func TestSelectUniqueValues(t *testing.T) {
                 values, err := dbService.SelectUniqueValues(data.colName, data.tblName)
 
                 if data.errExpected != nil {
-                        require.ErrorIs(t, err, joinedDBError(data.errExpected), "row: %d, expected error: %w, actual error: %w", i, joinedDBError(data.errExpected).Error(), err.Error())
+                        require.ErrorIs(t, err, data.errExpected, "row: %d, expected error: %s, actual error: %s", i, data.errExpected.Error(), err.Error())
                         require.Nil(t, values, "row: %d, values must be nil", i)
                         continue
                 }
@@ -111,8 +111,4 @@ func mockDBRows(names []string) *sqlmock.Rows {
         }
 
         return rows
-}
-
-func joinedDBError(errDB error) error {
-        return errors.Join(db.ErrGetRowsFailed, errDB)
 }
