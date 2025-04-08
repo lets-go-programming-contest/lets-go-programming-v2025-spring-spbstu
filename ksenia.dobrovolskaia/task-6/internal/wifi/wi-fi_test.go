@@ -72,11 +72,6 @@ func TestGetNames(t *testing.T) {
 
 	for i, tc := range testCases {
 		setupMock(mockWiFi, tc)
-		mockWiFi.ExpectedCalls = nil
-		mockWiFi.
-			On("Interfaces").
-			Return(getInterfaces(tc.addrs, tc.names), tc.errExpected).
-			Once()
 
 		names, err := service.GetNames()
 		if tc.errExpected != nil {
