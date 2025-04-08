@@ -1,0 +1,84 @@
+cmd/db/main.go:9:2: import 'github.com/lib/pq' is not allowed from list 'main' (depguard)
+	_ "github.com/lib/pq"
+	^
+cmd/db/main.go:5:1: File is not properly formatted (gci)
+	dbPack "example_mock/internal/db"
+^
+cmd/wifi/main.go:4:1: File is not properly formatted (gci)
+	myWifi "example_mock/internal/wifi"
+^
+internal/wifi/wi-fi.go:4:1: File is not properly formatted (gci)
+	"github.com/mdlayher/wifi"
+^
+cmd/db/main.go:23:9: ineffectual assignment to err (ineffassign)
+	names, err := dbService.GetNames()
+	       ^
+cmd/wifi/main.go:13:3: return with no blank line before (nlreturn)
+		return
+		^
+cmd/wifi/main.go:21:3: return with no blank line before (nlreturn)
+		return
+		^
+internal/wifi/wi-fi.go:44:2: return with no blank line before (nlreturn)
+	return name_list, nil
+	^
+internal/wifi/wi-fi.go:25:2: Consider pre-allocating `addrs` (prealloc)
+	var addrs []net.HardwareAddr
+	^
+internal/db/db_functions.go:11:6: exported: type name will be used as db.DBService by other packages, and that stutters; consider calling this Service (revive)
+type DBService struct {
+     ^
+internal/wifi/wi-fi.go:12:6: exported: type name will be used as wifi.WiFiService by other packages, and that stutters; consider calling this Service (revive)
+type WiFiService struct {
+     ^
+internal/wifi/wi-fi.go:39:6: var-naming: don't use underscores in Go names; var name_list should be nameList (revive)
+	var name_list []string
+	    ^
+internal/db/db_functions.go:24:15: error returned from interface method should be wrapped: sig: func (example_mock/internal/db.Database).Query(query string, args ...any) (*database/sql.Rows, error) (wrapcheck)
+		return nil, err
+		            ^
+internal/db/db_functions.go:33:16: error returned from external package is unwrapped: sig: func (*database/sql.Rows).Scan(dest ...any) error (wrapcheck)
+			return nil, err
+			            ^
+internal/db/db_functions.go:39:15: error returned from external package is unwrapped: sig: func (*database/sql.Rows).Err() error (wrapcheck)
+		return nil, err
+		            ^
+internal/db/db_functions.go:49:15: error returned from interface method should be wrapped: sig: func (example_mock/internal/db.Database).Query(query string, args ...any) (*database/sql.Rows, error) (wrapcheck)
+		return nil, err
+		            ^
+internal/db/db_functions.go:57:16: error returned from external package is unwrapped: sig: func (*database/sql.Rows).Scan(dest ...any) error (wrapcheck)
+			return nil, err
+			            ^
+internal/db/db_functions.go:63:15: error returned from external package is unwrapped: sig: func (*database/sql.Rows).Err() error (wrapcheck)
+		return nil, err
+		            ^
+internal/wifi/wi-fi.go:23:15: error returned from interface method should be wrapped: sig: func (example_mock/internal/wifi.WiFi).Interfaces() ([]*github.com/mdlayher/wifi.Interface, error) (wrapcheck)
+		return nil, err
+		            ^
+internal/wifi/wi-fi.go:37:15: error returned from interface method should be wrapped: sig: func (example_mock/internal/wifi.WiFi).Interfaces() ([]*github.com/mdlayher/wifi.Interface, error) (wrapcheck)
+		return nil, err
+		            ^
+internal/db/db_functions.go:35:3: append only allowed to cuddle with appended value (wsl)
+		names = append(names, name)
+		^
+internal/db/db_functions.go:48:2: only one cuddle assignment allowed before if statement (wsl)
+	if err != nil {
+	^
+internal/db/db_functions.go:51:2: only one cuddle assignment allowed before defer statement (wsl)
+	defer rows.Close()
+	^
+internal/db/db_functions.go:54:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for rows.Next() {
+	^
+internal/db/db_functions.go:59:3: append only allowed to cuddle with appended value (wsl)
+		values = append(values, value)
+		^
+25 issues:
+* depguard: 1
+* gci: 3
+* ineffassign: 1
+* nlreturn: 3
+* prealloc: 1
+* revive: 3
+* wrapcheck: 8
+* wsl: 5
