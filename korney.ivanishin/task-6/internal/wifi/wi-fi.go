@@ -15,7 +15,7 @@ type Service struct {
 	WiFi WiFi
 }
 
-var errGetInterfFailed = errors.New("failed getting interfaces")
+var ErrGetInterfFailed = errors.New("failed getting interfaces")
 
 func New(wifi WiFi) Service {
 	return Service{WiFi: wifi}
@@ -24,7 +24,7 @@ func New(wifi WiFi) Service {
 func (service Service) GetAddresses() ([]net.HardwareAddr, error) {
 	interfaces, err := service.WiFi.Interfaces()
 	if err != nil {
-		return nil, errors.Join(errGetInterfFailed, err)
+		return nil, errors.Join(ErrGetInterfFailed, err)
 	}
 
 	addrs := make([]net.HardwareAddr, 0)
@@ -39,7 +39,7 @@ func (service Service) GetAddresses() ([]net.HardwareAddr, error) {
 func (service Service) GetNames() ([]string, error) {
 	interfaces, err := service.WiFi.Interfaces()
 	if err != nil {
-		return nil, errors.Join(errGetInterfFailed, err)
+		return nil, errors.Join(ErrGetInterfFailed, err)
 	}
 
 	nameList := make([]string, 0)

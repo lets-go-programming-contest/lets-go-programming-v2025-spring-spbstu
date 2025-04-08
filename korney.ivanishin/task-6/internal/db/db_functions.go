@@ -14,7 +14,7 @@ type Service struct {
 }
 
 var (
-	errGetRowsFailed  = errors.New("failed getting rows")
+	ErrGetRowsFailed  = errors.New("failed getting rows")
 	errScanRowsFailed = errors.New("failed scanning rows")
 	errIterRowsFailed = errors.New("failed iterating rows")
 )
@@ -28,7 +28,7 @@ func (service Service) GetNames() ([]string, error) {
 
 	rows, err := service.DB.Query(query)
 	if err != nil {
-		return nil, errors.Join(errGetRowsFailed, err)
+		return nil, errors.Join(ErrGetRowsFailed, err)
 	}
 	defer rows.Close()
 
@@ -55,7 +55,7 @@ func (service Service) SelectUniqueValues(columnName string, tableName string) (
 
 	rows, err := service.DB.Query(query)
 	if err != nil {
-		return nil, errors.Join(errGetRowsFailed, err)
+		return nil, errors.Join(ErrGetRowsFailed, err)
 	}
 
 	defer rows.Close()
