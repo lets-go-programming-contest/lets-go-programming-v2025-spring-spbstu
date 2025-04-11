@@ -1,0 +1,2 @@
+This is an embedded file.
+It is included in the binary using //go:embed.
