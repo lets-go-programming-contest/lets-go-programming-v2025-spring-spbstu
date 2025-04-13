@@ -24,7 +24,7 @@ jobs:
       run: go generate ./... ; go mod tidy
 
     - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v7.0.0
+      uses: golangci/golangci-lint-action@v6
       with:
         working-directory: dmitriy.rumyantsev/task-7
 
