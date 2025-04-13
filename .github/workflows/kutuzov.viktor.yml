@@ -15,10 +15,20 @@ jobs:
     - name: Install system dependencies
       run:  apt-get update && apt-get install -y ca-certificates
 
+    # - name: Install ca-certificates
+    #   uses: awalsh128/cache-apt-pkgs-action@v1
+    #   with:
+    #     packages: ca-certificates
+    #     version: 1.0
+
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
         go-version: 1.23.8
+
+    - name: setup dependencies
+      working-directory: kutuzov.viktor/task6
+      run:  go mod tidy
 
     - name: Run tests
       working-directory: ./kutuzov.viktor/task6
