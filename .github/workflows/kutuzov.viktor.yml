@@ -13,7 +13,11 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Install system dependencies
-      run:  apt-get update && apt-get install -y ca-certificates
+      run:  |
+      sudo rm -f /var/lib/apt/lists/lock
+      sudo rm -f /var/cache/apt/archives/lock
+      sudo apt-get update
+      sudo apt-get install -y ca-certificates
 
     # - name: Install ca-certificates
     #   uses: awalsh128/cache-apt-pkgs-action@v1
@@ -28,11 +32,11 @@ jobs:
 
     - name: setup dependencies
       working-directory: kutuzov.viktor/task6
-      run:  go mod tidy
+      run:  sudo go mod tidy
 
     - name: Run tests
       working-directory: ./kutuzov.viktor/task6
-      run: go test -v ./...
+      run: sudo go test -v ./...
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v6
