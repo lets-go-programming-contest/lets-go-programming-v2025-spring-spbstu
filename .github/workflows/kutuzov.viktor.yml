@@ -12,19 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install system dependencies
-      run:  |
-      sudo rm -f /var/lib/apt/lists/lock
-      sudo rm -f /var/cache/apt/archives/lock
-      sudo apt-get update
-      sudo apt-get install -y ca-certificates
-
-    # - name: Install ca-certificates
-    #   uses: awalsh128/cache-apt-pkgs-action@v1
-    #   with:
-    #     packages: ca-certificates
-    #     version: 1.0
-
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
@@ -43,27 +30,3 @@ jobs:
       with:
         version: v1.64.8
         working-directory: ./kutuzov.viktor/task6
-    # runs-on: ubuntu-latests
-    # steps:
-    #     - uses: actions/checkout@v3
-    #     - name: set up go
-    #       uses: actions/setup-go@v5.4.0
-    #       with:
-    #         go-version: 1.24
-
-    #     - name: set up mockery
-    #       working-directory: kutuzov.viktor/task6
-    #       run: go install github.com/vektra/mockery/v2@v2.53.3
-
-    #     - name: generate mock objects with mockery
-    #       working-directory: kutuzov.viktor/task6
-    #       run: go generate ./... ; go mod tidy
-
-    #     - name: run golang linter
-    #       uses: golangci/golangci-lint-action@v6.0.1
-    #       with:
-    #         working-directory: kutuzov.viktor/task6
-
-    #     - name: run tests
-    #       working-directory: kutuzov.viktor/task6
-    #       run: go test -v ./...
