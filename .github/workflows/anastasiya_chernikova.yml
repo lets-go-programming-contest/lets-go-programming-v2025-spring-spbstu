@@ -1,0 +1,41 @@
+name: Go CI/CD Pipeline  # Descriptive workflow name
+
+on:
+  push:
+    branches: [ "anastasiya.chernikova/task-7" ]  # Trigger on pushes to specific branch
+
+jobs:
+  test-and-lint:  # More descriptive job name
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3  # Checkout repository code
+
+    # Set up Go environment with specified version
+    - name: Set Up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.23.5  # Note: Verify correct Go version (1.23.x not released as of 2024-06-19)
+
+    # Install mock generation tool
+    - name: Install Mockery
+      working-directory: ./anastasiya.cherikova/task-7
+      run: go install github.com/vektra/mockery/v2@latest
+
+    # Generate mock implementations and clean dependencies
+    - name: Generate Mocks
+      working-directory: ./anastasiya.cherikova/task-7
+      run: |
+        go generate ./...  # Generate mock interfaces
+        go mod tidy  # Clean up dependencies
+
+    # Run test suite with verbose output
+    - name: Run Test Suite
+      working-directory: ./anastasiya.cherikova/task-7
+      run: go test -v ./...
+
+    # Execute static code analysis using golangci-lint
+    - name: Run Code Linter
+      uses: golangci/golangci-lint-action@v6
+      with:
+        version: v1.64.2  # Pinned linter version for consistency
+        working-directory: ./anastasiya.cherikova/task-7
