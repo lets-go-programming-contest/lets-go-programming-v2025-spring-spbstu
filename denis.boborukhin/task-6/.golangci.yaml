@@ -1,0 +1,41 @@
+version: "2"
+run:
+  tests: false
+linters:
+  default: none
+  enable:
+    - bidichk
+    - durationcheck
+    - errcheck
+    - exhaustive
+    - godot
+    - govet
+    - ineffassign
+    - misspell
+    - predeclared
+    - reassign
+    - revive
+    - staticcheck
+    - unused
+    - whitespace
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
