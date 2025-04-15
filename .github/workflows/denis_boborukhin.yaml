@@ -21,7 +21,7 @@ jobs:
 
     - name: Make go generate
       working-directory: denis.boborukhin/task-7
-      run: go generate ; go mod tidy
+      run: go generate ./... ; go mod tidy
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v6
@@ -30,4 +30,4 @@ jobs:
 
     - name: Run tests
       working-directory: denis.boborukhin/task-7
-      run: go test -v -cover
+      run: go test ./... -v -cover
