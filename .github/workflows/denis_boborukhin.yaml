@@ -2,7 +2,7 @@ name: denis_boborukhin
 
 on:
   push:
-    branches: ["denis_boborukhin/task-7"]
+    branches: ["d.boborukhin/TASK-7"]
 
 jobs:
   Main_test:
