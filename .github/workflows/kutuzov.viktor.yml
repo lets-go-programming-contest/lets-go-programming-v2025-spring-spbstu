@@ -27,7 +27,7 @@ jobs:
 
     - name: Run tests
       working-directory: ./kutuzov.viktor/task6
-      run: sudo go test -v ./...
+      run: go test -v ./...
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v6
