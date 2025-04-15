@@ -1,0 +1,26 @@
+run:
+  timeout: 5m
+  tests: false
+
+linters:
+  enable-all: true
+  disable:
+    - forbidigo
+    - varnamelen
+  fast: false
+
+linters-settings:
+  gci:
+    sections:
+      - standard
+      - default
+      - prefix(github.com/dmitriy.rumyantsev/task-7)
+    skip-generated: false
+    custom-order: true
+  depguard:
+    rules:
+      main:
+        allow:
+          - $gostd
+          - github.com/dmitriy.rumyantsev/task-7
+          - github.com/mdlayher/wifi
