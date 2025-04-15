@@ -16,11 +16,16 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer db.Close()
+	defer func() {
+		_ = db.Close()
+	}()
 
 	dbService := dbPack.New(db)
 
 	names, err := dbService.GetNames()
+  if err != nil {
+		log.Fatal(err)
+	}
 
 	for _, name := range names {
 		fmt.Println(name)

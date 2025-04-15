@@ -23,7 +23,9 @@ func (service DBService) GetNames() ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
+	defer func() {
+		_ = rows.Close()
+	}()
 
 	var names []string
 
@@ -48,7 +50,9 @@ func (service DBService) SelectUniqueValues(columnName string, tableName string)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
+	defer func() {
+		_ = rows.Close()
+	}()
 
 	var values []string
 	for rows.Next() {

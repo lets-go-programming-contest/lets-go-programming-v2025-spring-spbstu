@@ -85,7 +85,7 @@ func mockUnique(names []string) *sqlmock.Rows {
   }
 
   rows := sqlmock.NewRows([]string{"name"})
-  for name, _ := range unique {
+  for name := range unique {
     rows = rows.AddRow(name)
   }
   return rows
