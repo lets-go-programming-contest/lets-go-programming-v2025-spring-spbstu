@@ -1,0 +1,2127 @@
+# command-line-arguments
+
+before walk init <nil>
+after walk init <nil>
+
+before walk main
+.   DCL # main.go:17:9
+.   .   NAME-main.edge esc(no) Class:PAUTO Offset:0 OnStack Used uint32 tc(1) # main.go:17:9
+.   DCL # main.go:17:15
+.   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   DCL # main.go:17:19
+.   .   NAME-main..autotmp_2 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   DCL # main.go:17:19
+.   .   NAME-main..autotmp_3 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS tc(1) # main.go:17:19
+.   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS2FUNC Def tc(1) # main.go:17:19
+.   AS2FUNC-Lhs
+.   .   NAME-main..autotmp_25 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS2FUNC-Rhs
+.   .   CALLFUNC STRUCT-struct { uint32; error } tc(1) # main.go:17:44
+.   .   CALLFUNC-Fun
+.   .   .   NAME-streamutils.ScanUInt32 Class:PFUNC Offset:0 Used FUNC-func() (uint32, error) tc(1) # streamutils.go:10:6
+.   AS2 tc(1) # main.go:17:19
+.   AS2-Lhs
+.   .   NAME-main..autotmp_2 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   .   NAME-main..autotmp_3 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS2-Rhs
+.   .   NAME-main..autotmp_25 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS2 Def tc(1) # main.go:17:19
+.   AS2-Lhs
+.   .   NAME-main.edge esc(no) Class:PAUTO Offset:0 OnStack Used uint32 tc(1) # main.go:17:9
+.   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   AS2-Rhs
+.   .   CONVNOP uint32 tc(1) # streamutils.go:10:6
+.   .   .   NAME-main..autotmp_2 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   .   NAME-main..autotmp_3 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   IF tc(1) # main.go:18:9
+.   IF-Cond
+.   .   NE bool tc(1) # main.go:18:16
+.   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   NIL error tc(1) # main.go:18:19
+.   IF-Body
+.   .   CALLFUNC tc(1) # main.go:19:39
+.   .   CALLFUNC-Fun
+.   .   .   NAME-streamutils.FlushInput Class:PFUNC Offset:0 Used FUNC-func() tc(1) # streamutils.go:28:6
+.   .   DCL # main.go:20:34
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:19:11
+.   .   AS2 Def tc(1) # main.go:20:34
+.   .   AS2-Lhs
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:19:11
+.   .   AS2-Rhs
+.   .   .   SLICELIT esc(no) Len:2 Implicit SLICE-[]error tc(1) # main.go:20:34
+.   .   .   SLICELIT-List
+.   .   .   .   NAME-main.errScanFailed Class:PEXTERN Offset:0 Used error tc(1) # main.go:11:9
+.   .   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   DCL # main.go:20:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   AS tc(1) # main.go:20:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   INLMARK Index:3 # +main.go:20:34
+.   .   DCL # main.go:20:34 join.go:20:2
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:20:34 join.go:20:4
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   .   LITERAL-0 int tc(1) # main.go:20:34 join.go:20:7
+.   .   DCL # main.go:20:34 join.go:21:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:21:9
+.   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:19:11
+.   .   RANGE Def tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   RANGE-Key
+.   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:21:9
+.   .   RANGE-Body
+.   .   .   IF tc(1) # main.go:20:34 join.go:22:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:20:34 join.go:22:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:21:9
+.   .   .   .   .   NIL error tc(1) # main.go:20:34 join.go:22:13
+.   .   .   IF-Body
+.   .   .   .   ASOP-ADD AsOp:ADD IncDec tc(1) # main.go:20:34 join.go:23:5
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   .   .   .   LITERAL-1 int tc(1) # main.go:20:34 join.go:23:5
+.   .   RANGE-ValueTypeWord
+.   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   IF tc(1) # main.go:20:34 join.go:26:2
+.   .   IF-Cond
+.   .   .   EQ bool tc(1) # main.go:20:34 join.go:26:7
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   .   .   LITERAL-0 int tc(1) # main.go:20:34 join.go:26:10
+.   .   IF-Body
+.   .   .   AS2 tc(1) # main.go:20:34
+.   .   .   AS2-Lhs
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   .   AS2-Rhs
+.   .   .   .   NIL error tc(1) # main.go:20:34 join.go:27:10
+.   .   .   GOTO main..i0 tc(1) # main.go:20:34
+.   .   DCL # main.go:20:34 join.go:29:2
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   AS tc(1) # main.go:20:34 join.go:30:13
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   MAKESLICE esc(h) SLICE-[]error tc(1) # main.go:20:34 join.go:30:13
+.   .   .   MAKESLICE-RType
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:30:13
+.   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   MAKESLICE-Len
+.   .   .   .   LITERAL-0 int tc(1) # main.go:20:34 join.go:30:23
+.   .   .   MAKESLICE-Cap
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:20:34 join.go:29:4
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   .   PTRLIT esc(h) PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:7
+.   .   .   .   STRUCTLIT errors.joinError tc(1) # main.go:20:34 join.go:29:17
+.   .   .   .   STRUCTLIT-List
+.   .   .   .   .   STRUCTKEY errors.errs # main.go:20:34 join.go:30:3
+.   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   DCL # main.go:20:34 join.go:32:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:32:9
+.   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:19:11
+.   .   RANGE Def tc(1) # main.go:20:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   RANGE-Key
+.   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:32:9
+.   .   RANGE-Body
+.   .   .   IF tc(1) # main.go:20:34 join.go:33:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:20:34 join.go:33:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:32:9
+.   .   .   .   .   NIL error tc(1) # main.go:20:34 join.go:33:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:34:11
+.   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:20:34 join.go:34:5
+.   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   .   .   .   APPEND SLICE-[]error tc(1) # main.go:20:34 join.go:34:19
+.   .   .   .   .   APPEND-Args
+.   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:20:34 join.go:34:21
+.   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:32:9
+.   .   .   .   .   APPEND-RType
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   RANGE-ValueTypeWord
+.   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   AS tc(1) # main.go:20:34 join.go:37:9
+.   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   AS2 tc(1) # main.go:20:34
+.   .   AS2-Lhs
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   AS2-Rhs
+.   .   .   CONVIFACE Implicit error tc(1) # main.go:20:34 join.go:37:9
+.   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   CONVIFACE-TypeWord
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:37:9
+.   .   .   .   .   LINKSYMOFFSET-go:itab.*errors.joinError,error Offset:0 uint8 tc(1)
+.   .   .   CONVIFACE-SrcRType
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:37:9
+.   .   .   .   .   LINKSYMOFFSET-type:*errors.joinError Offset:0 uint8 tc(1)
+.   .   GOTO main..i0 tc(1) # main.go:20:34
+.   .   LABEL main..i0 # main.go:20:34
+.   .   PANIC tc(1) # main.go:20:22
+.   .   .   CONVIFACE Implicit INTER-interface {} tc(1) # main.go:20:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   DCL # main.go:23:9
+.   .   NAME-main.primes esc(no) Class:PAUTO Offset:0 OnStack Used SLICE-[]uint32 tc(1) # main.go:23:9
+.   DCL # main.go:23:21
+.   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   DCL # main.go:23:21
+.   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:23:21
+.   AS tc(1) # main.go:23:21
+.   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   AS tc(1) # main.go:23:21
+.   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS2FUNC Def tc(1) # main.go:23:21
+.   AS2FUNC-Lhs
+.   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS2FUNC-Rhs
+.   .   CALLFUNC STRUCT-struct { []uint32; error } tc(1) # main.go:23:40
+.   .   CALLFUNC-Fun
+.   .   .   NAME-sieve.FindPrimes Class:PFUNC Offset:0 Used FUNC-func(uint32) ([]uint32, error) tc(1) # sieve.go:10:6
+.   .   CALLFUNC-Args
+.   .   .   NAME-main.edge esc(no) Class:PAUTO Offset:0 OnStack Used uint32 tc(1) # main.go:17:9
+.   AS2 tc(1) # main.go:23:21
+.   AS2-Lhs
+.   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:23:21
+.   AS2-Rhs
+.   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS2 Def tc(1) # main.go:23:21
+.   AS2-Lhs
+.   .   NAME-main.primes esc(no) Class:PAUTO Offset:0 OnStack Used SLICE-[]uint32 tc(1) # main.go:23:9
+.   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   AS2-Rhs
+.   .   CONVNOP SLICE-[]uint32 tc(1) # sieve.go:10:6
+.   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:23:21
+.   IF tc(1) # main.go:24:9
+.   IF-Cond
+.   .   NE bool tc(1) # main.go:24:16
+.   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   NIL error tc(1) # main.go:24:19
+.   IF-Body
+.   .   DCL # main.go:25:34
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:25:34 join.go:19:11
+.   .   AS2 Def tc(1) # main.go:25:34
+.   .   AS2-Lhs
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:25:34 join.go:19:11
+.   .   AS2-Rhs
+.   .   .   SLICELIT esc(no) Len:2 Implicit SLICE-[]error tc(1) # main.go:25:34
+.   .   .   SLICELIT-List
+.   .   .   .   NAME-main.errSieveFailed Class:PEXTERN Offset:0 Used error tc(1) # main.go:12:9
+.   .   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   DCL # main.go:25:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   AS tc(1) # main.go:25:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   INLMARK Index:4 # +main.go:25:34
+.   .   DCL # main.go:25:34 join.go:20:2
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:25:34 join.go:20:4
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   .   LITERAL-0 int tc(1) # main.go:25:34 join.go:20:7
+.   .   DCL # main.go:25:34 join.go:21:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:21:9
+.   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:25:34 join.go:19:11
+.   .   RANGE Def tc(1) # main.go:25:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   RANGE-Key
+.   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:21:9
+.   .   RANGE-Body
+.   .   .   IF tc(1) # main.go:25:34 join.go:22:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:25:34 join.go:22:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:21:9
+.   .   .   .   .   NIL error tc(1) # main.go:25:34 join.go:22:13
+.   .   .   IF-Body
+.   .   .   .   ASOP-ADD AsOp:ADD IncDec tc(1) # main.go:25:34 join.go:23:5
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   .   .   .   LITERAL-1 int tc(1) # main.go:25:34 join.go:23:5
+.   .   RANGE-ValueTypeWord
+.   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   IF tc(1) # main.go:25:34 join.go:26:2
+.   .   IF-Cond
+.   .   .   EQ bool tc(1) # main.go:25:34 join.go:26:7
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   .   .   LITERAL-0 int tc(1) # main.go:25:34 join.go:26:10
+.   .   IF-Body
+.   .   .   AS2 tc(1) # main.go:25:34
+.   .   .   AS2-Lhs
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   .   AS2-Rhs
+.   .   .   .   NIL error tc(1) # main.go:25:34 join.go:27:10
+.   .   .   GOTO main..i1 tc(1) # main.go:25:34
+.   .   DCL # main.go:25:34 join.go:29:2
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   AS tc(1) # main.go:25:34 join.go:30:13
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   MAKESLICE esc(h) SLICE-[]error tc(1) # main.go:25:34 join.go:30:13
+.   .   .   MAKESLICE-RType
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:30:13
+.   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   MAKESLICE-Len
+.   .   .   .   LITERAL-0 int tc(1) # main.go:25:34 join.go:30:23
+.   .   .   MAKESLICE-Cap
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:25:34 join.go:29:4
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   .   PTRLIT esc(h) PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:7
+.   .   .   .   STRUCTLIT errors.joinError tc(1) # main.go:25:34 join.go:29:17
+.   .   .   .   STRUCTLIT-List
+.   .   .   .   .   STRUCTKEY errors.errs # main.go:25:34 join.go:30:3
+.   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   DCL # main.go:25:34 join.go:32:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:32:9
+.   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:25:34 join.go:19:11
+.   .   RANGE Def tc(1) # main.go:25:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   RANGE-Key
+.   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:32:9
+.   .   RANGE-Body
+.   .   .   IF tc(1) # main.go:25:34 join.go:33:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:25:34 join.go:33:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:32:9
+.   .   .   .   .   NIL error tc(1) # main.go:25:34 join.go:33:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:34:11
+.   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:25:34 join.go:34:5
+.   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   .   .   .   APPEND SLICE-[]error tc(1) # main.go:25:34 join.go:34:19
+.   .   .   .   .   APPEND-Args
+.   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:25:34 join.go:34:21
+.   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:32:9
+.   .   .   .   .   APPEND-RType
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   RANGE-ValueTypeWord
+.   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   AS tc(1) # main.go:25:34 join.go:37:9
+.   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   AS2 tc(1) # main.go:25:34
+.   .   AS2-Lhs
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   AS2-Rhs
+.   .   .   CONVIFACE Implicit error tc(1) # main.go:25:34 join.go:37:9
+.   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   CONVIFACE-TypeWord
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:37:9
+.   .   .   .   .   LINKSYMOFFSET-go:itab.*errors.joinError,error Offset:0 uint8 tc(1)
+.   .   .   CONVIFACE-SrcRType
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:37:9
+.   .   .   .   .   LINKSYMOFFSET-type:*errors.joinError Offset:0 uint8 tc(1)
+.   .   GOTO main..i1 tc(1) # main.go:25:34
+.   .   LABEL main..i1 # main.go:25:34
+.   .   PANIC tc(1) # main.go:25:22
+.   .   .   CONVIFACE Implicit INTER-interface {} tc(1) # main.go:25:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   AS tc(1) # main.go:28:13
+.   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   CALLFUNC error tc(1) # main.go:28:37
+.   .   CALLFUNC-Fun
+.   .   .   NAME-streamutils.PrintSlice[go.shape.uint32] Class:PFUNC Offset:0 Used FUNC-func(*[4]uintptr, []go.shape.uint32) error tc(1) # streamutils.go:16:6
+.   .   CALLFUNC-Args
+.   .   .   ADDR PTR-*[4]uintptr tc(1) # main.go:28:26
+.   .   .   .   NAME-streamutils..dict.PrintSlice[uint32] Class:PEXTERN Offset:0 Addrtaken ARRAY-[4]uintptr tc(1) # <autogenerated>:1:0
+.   .   .   NAME-main.primes esc(no) Class:PAUTO Offset:0 OnStack Used SLICE-[]uint32 tc(1) # main.go:23:9
+.   IF tc(1) # main.go:29:9
+.   IF-Cond
+.   .   NE bool tc(1) # main.go:29:16
+.   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   NIL error tc(1) # main.go:29:19
+.   IF-Body
+.   .   DCL # main.go:30:34
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:30:34 join.go:19:11
+.   .   AS2 Def tc(1) # main.go:30:34
+.   .   AS2-Lhs
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:30:34 join.go:19:11
+.   .   AS2-Rhs
+.   .   .   SLICELIT esc(no) Len:2 Implicit SLICE-[]error tc(1) # main.go:30:34
+.   .   .   SLICELIT-List
+.   .   .   .   NAME-main.errPrintFailed Class:PEXTERN Offset:0 Used error tc(1) # main.go:13:9
+.   .   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   DCL # main.go:30:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   AS tc(1) # main.go:30:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   INLMARK Index:5 # +main.go:30:34
+.   .   DCL # main.go:30:34 join.go:20:2
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:30:34 join.go:20:4
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   .   LITERAL-0 int tc(1) # main.go:30:34 join.go:20:7
+.   .   DCL # main.go:30:34 join.go:21:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:21:9
+.   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:30:34 join.go:19:11
+.   .   RANGE Def tc(1) # main.go:30:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   RANGE-Key
+.   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:21:9
+.   .   RANGE-Body
+.   .   .   IF tc(1) # main.go:30:34 join.go:22:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:30:34 join.go:22:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:21:9
+.   .   .   .   .   NIL error tc(1) # main.go:30:34 join.go:22:13
+.   .   .   IF-Body
+.   .   .   .   ASOP-ADD AsOp:ADD IncDec tc(1) # main.go:30:34 join.go:23:5
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   .   .   .   LITERAL-1 int tc(1) # main.go:30:34 join.go:23:5
+.   .   RANGE-ValueTypeWord
+.   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   IF tc(1) # main.go:30:34 join.go:26:2
+.   .   IF-Cond
+.   .   .   EQ bool tc(1) # main.go:30:34 join.go:26:7
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   .   .   LITERAL-0 int tc(1) # main.go:30:34 join.go:26:10
+.   .   IF-Body
+.   .   .   AS2 tc(1) # main.go:30:34
+.   .   .   AS2-Lhs
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   .   AS2-Rhs
+.   .   .   .   NIL error tc(1) # main.go:30:34 join.go:27:10
+.   .   .   GOTO main..i2 tc(1) # main.go:30:34
+.   .   DCL # main.go:30:34 join.go:29:2
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   AS tc(1) # main.go:30:34 join.go:30:13
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   MAKESLICE esc(h) SLICE-[]error tc(1) # main.go:30:34 join.go:30:13
+.   .   .   MAKESLICE-RType
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:30:13
+.   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   MAKESLICE-Len
+.   .   .   .   LITERAL-0 int tc(1) # main.go:30:34 join.go:30:23
+.   .   .   MAKESLICE-Cap
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:30:34 join.go:29:4
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   .   PTRLIT esc(h) PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:7
+.   .   .   .   STRUCTLIT errors.joinError tc(1) # main.go:30:34 join.go:29:17
+.   .   .   .   STRUCTLIT-List
+.   .   .   .   .   STRUCTKEY errors.errs # main.go:30:34 join.go:30:3
+.   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   DCL # main.go:30:34 join.go:32:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:32:9
+.   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:30:34 join.go:19:11
+.   .   RANGE Def tc(1) # main.go:30:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   RANGE-Key
+.   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:32:9
+.   .   RANGE-Body
+.   .   .   IF tc(1) # main.go:30:34 join.go:33:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:30:34 join.go:33:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:32:9
+.   .   .   .   .   NIL error tc(1) # main.go:30:34 join.go:33:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:34:11
+.   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:30:34 join.go:34:5
+.   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   .   .   .   APPEND SLICE-[]error tc(1) # main.go:30:34 join.go:34:19
+.   .   .   .   .   APPEND-Args
+.   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:30:34 join.go:34:21
+.   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:32:9
+.   .   .   .   .   APPEND-RType
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   RANGE-ValueTypeWord
+.   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   AS tc(1) # main.go:30:34 join.go:37:9
+.   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   AS2 tc(1) # main.go:30:34
+.   .   AS2-Lhs
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   AS2-Rhs
+.   .   .   CONVIFACE Implicit error tc(1) # main.go:30:34 join.go:37:9
+.   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   CONVIFACE-TypeWord
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:37:9
+.   .   .   .   .   LINKSYMOFFSET-go:itab.*errors.joinError,error Offset:0 uint8 tc(1)
+.   .   .   CONVIFACE-SrcRType
+.   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:37:9
+.   .   .   .   .   LINKSYMOFFSET-type:*errors.joinError Offset:0 uint8 tc(1)
+.   .   GOTO main..i2 tc(1) # main.go:30:34
+.   .   LABEL main..i2 # main.go:30:34
+.   .   PANIC tc(1) # main.go:30:22
+.   .   .   CONVIFACE Implicit INTER-interface {} tc(1) # main.go:30:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+after walk main
+.   DCL # main.go:17:9
+.   .   NAME-main.edge esc(no) Class:PAUTO Offset:0 OnStack Used uint32 tc(1) # main.go:17:9
+.   DCL # main.go:17:15
+.   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   DCL # main.go:17:19
+.   .   NAME-main..autotmp_2 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   DCL # main.go:17:19
+.   .   NAME-main..autotmp_3 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   AS tc(1) # main.go:17:19
+.   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   BLOCK-init
+.   .   CALLFUNC Walked STRUCT-struct { uint32; error } tc(1) # main.go:17:44
+.   .   CALLFUNC-Fun
+.   .   .   NAME-streamutils.ScanUInt32 Class:PFUNC Offset:0 Used FUNC-func() (uint32, error) tc(1) # streamutils.go:10:6
+.   BLOCK # main.go:17:19
+.   BLOCK-List
+.   .   AS # main.go:17:19
+.   .   .   NAME-main..autotmp_25 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   .   .   RESULT uint32 tc(1) # main.go:17:19
+.   .   AS # main.go:17:19
+.   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   .   .   RESULT Index:1 error tc(1) # main.go:17:19
+.   BLOCK # main.go:17:19
+.   BLOCK-List
+.   .   AS tc(1) # main.go:17:19
+.   .   .   NAME-main..autotmp_2 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   .   .   NAME-main..autotmp_25 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   .   AS tc(1) # main.go:17:19
+.   .   .   NAME-main..autotmp_3 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   BLOCK # main.go:17:19
+.   BLOCK-List
+.   .   AS tc(1) # main.go:17:19
+.   .   .   NAME-main.edge esc(no) Class:PAUTO Offset:0 OnStack Used uint32 tc(1) # main.go:17:9
+.   .   .   NAME-main..autotmp_2 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used uint32 tc(1) # main.go:17:19
+.   .   AS tc(1) # main.go:17:19
+.   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   NAME-main..autotmp_3 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   IF tc(1) # main.go:18:9
+.   IF-Cond
+.   .   NE bool tc(1) # main.go:18:16
+.   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   NIL error tc(1) # main.go:18:19
+.   IF-Body
+.   .   CALLFUNC Walked tc(1) # main.go:19:39
+.   .   CALLFUNC-Fun
+.   .   .   NAME-streamutils.FlushInput Class:PFUNC Offset:0 Used FUNC-func() tc(1) # streamutils.go:28:6
+.   .   DCL # main.go:20:34
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:19:11
+.   .   BLOCK # main.go:20:34
+.   .   BLOCK-List
+.   .   .   AS tc(1) # main.go:20:34
+.   .   .   .   NAME-main..autotmp_31 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[2]error tc(1) # main.go:20:34
+.   .   .   AS tc(1) # main.go:20:34
+.   .   .   .   NAME-main..autotmp_30 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:20:34
+.   .   .   .   ADDR PTR-*[2]error tc(1) # main.go:20:34
+.   .   .   .   .   NAME-main..autotmp_31 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[2]error tc(1) # main.go:20:34
+.   .   .   BLOCK tc(1) # main.go:20:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34
+.   .   .   .   .   INDEX Bounded error tc(1) # main.go:20:34
+.   .   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # main.go:20:34
+.   .   .   .   .   .   .   NAME-main..autotmp_30 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:20:34
+.   .   .   .   .   .   LITERAL-0 int tc(1) # main.go:20:34
+.   .   .   .   .   NAME-main.errScanFailed Class:PEXTERN Offset:0 Used error tc(1) # main.go:11:9
+.   .   .   BLOCK tc(1) # main.go:20:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34
+.   .   .   .   .   INDEX Bounded error tc(1) # main.go:20:34
+.   .   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # main.go:20:34
+.   .   .   .   .   .   .   NAME-main..autotmp_30 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:20:34
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:20:34
+.   .   .   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   BLOCK tc(1) # main.go:20:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34
+.   .   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:19:11
+.   .   .   .   .   SLICEARR SLICE-[]error tc(1) # main.go:20:34
+.   .   .   .   .   .   NAME-main..autotmp_30 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:20:34
+.   .   .   BLOCK # main.go:20:34
+.   .   DCL # main.go:20:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   AS tc(1) # main.go:20:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   INLMARK Index:3 # +main.go:20:34
+.   .   DCL # main.go:20:34 join.go:20:2
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:20:34 join.go:20:4
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   .   LITERAL-0 int tc(1) # main.go:20:34 join.go:20:7
+.   .   DCL # main.go:20:34 join.go:21:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:21:9
+.   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:19:11
+.   .   FOR-init
+.   .   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_32 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_33 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   LEN int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_34 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   CONVNOP uintptr tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   SPTR Bounded PTR-*error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   FOR # main.go:20:34 join.go:21:16
+.   .   FOR-Cond
+.   .   .   LT bool tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_32 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_33 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:21:16
+.   .   FOR-Post
+.   .   .   BLOCK tc(1) # main.go:20:34 join.go:21:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_32 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   ADD int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_32 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_34 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   ADD uintptr tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   CONVNOP uintptr tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   .   .   NAME-main..autotmp_35 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   LITERAL-16 uintptr tc(1) # main.go:20:34 join.go:21:16
+.   .   FOR-Body
+.   .   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_35 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   CONVNOP PTR-*error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   CONVNOP CheckPtr UNSAFEPTR-unsafe.Pointer tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_34 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:20:34 join.go:21:16
+.   .   .   BLOCK # main.go:20:34 join.go:21:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   .   NAME-main..autotmp_32 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:21:9
+.   .   .   .   .   DEREF Bounded error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_35 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   IF tc(1) # main.go:20:34 join.go:22:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:20:34 join.go:22:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:21:9
+.   .   .   .   .   NIL error tc(1) # main.go:20:34 join.go:22:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:23:5
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   .   .   .   ADD int tc(1) # main.go:20:34 join.go:23:5
+.   .   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:20:34 join.go:23:5
+.   .   IF tc(1) # main.go:20:34 join.go:26:2
+.   .   IF-Cond
+.   .   .   EQ bool tc(1) # main.go:20:34 join.go:26:7
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   .   .   LITERAL-0 int tc(1) # main.go:20:34 join.go:26:10
+.   .   IF-Body
+.   .   .   BLOCK # main.go:20:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34
+.   .   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   .   .   .   NIL error tc(1) # main.go:20:34 join.go:27:10
+.   .   .   GOTO main..i0 tc(1) # main.go:20:34
+.   .   DCL # main.go:20:34 join.go:29:2
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   AS tc(1) # main.go:20:34 join.go:30:13
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   SLICEHEADER SLICE-[]error tc(1) # main.go:20:34 join.go:30:13
+.   .   .   SLICEHEADER-Ptr
+.   .   .   .   CALLFUNC NonNil Walked UNSAFEPTR-unsafe.Pointer tc(1) # main.go:20:34 join.go:30:13
+.   .   .   .   CALLFUNC-Fun
+.   .   .   .   .   NAME-runtime.makeslice Class:PFUNC Offset:0 Used FUNC-func(*byte, int, int) unsafe.Pointer tc(1)
+.   .   .   .   CALLFUNC-Args
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:30:13
+.   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   .   LITERAL-0 int tc(1) # main.go:20:34 join.go:30:23
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   .   SLICEHEADER-Len
+.   .   .   .   LITERAL-0 int tc(1) # main.go:20:34 join.go:30:23
+.   .   .   SLICEHEADER-Cap
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:20:34 join.go:20:2
+.   .   AS-init
+.   .   .   AS tc(1) # main.go:20:34 join.go:29:7
+.   .   .   .   NAME-main..autotmp_36 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:7
+.   .   .   .   NEW esc(h) NonNil PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:7
+.   .   .   .   .   TYPE errors.joinError Class:PEXTERN Offset:0 type errors.joinError tc(1) # join.go:40:6
+.   .   .   BLOCK tc(1) # main.go:20:34 join.go:30:3
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:30:3
+.   .   .   .   .   DOT errors.errs SLICE-[]error tc(1) # main.go:20:34 join.go:30:3
+.   .   .   .   .   .   DEREF errors.joinError tc(1) # main.go:20:34 join.go:29:7
+.   .   .   .   .   .   .   NAME-main..autotmp_36 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:7
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   AS Def tc(1) # main.go:20:34 join.go:29:4
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   .   NAME-main..autotmp_36 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:7
+.   .   DCL # main.go:20:34 join.go:32:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:32:9
+.   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:19:11
+.   .   FOR-init
+.   .   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_37 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_38 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   LEN int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_39 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   CONVNOP uintptr tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   SPTR Bounded PTR-*error tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   FOR # main.go:20:34 join.go:32:16
+.   .   FOR-Cond
+.   .   .   LT bool tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_37 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_38 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:32:16
+.   .   FOR-Post
+.   .   .   BLOCK tc(1) # main.go:20:34 join.go:32:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_37 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   ADD int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_37 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_39 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   ADD uintptr tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   CONVNOP uintptr tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   .   .   NAME-main..autotmp_40 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   LITERAL-16 uintptr tc(1) # main.go:20:34 join.go:32:16
+.   .   FOR-Body
+.   .   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_40 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   CONVNOP PTR-*error tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   CONVNOP CheckPtr UNSAFEPTR-unsafe.Pointer tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_39 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:20:34 join.go:32:16
+.   .   .   BLOCK # main.go:20:34 join.go:32:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   .   NAME-main..autotmp_37 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:32:9
+.   .   .   .   .   DEREF Bounded error tc(1) # main.go:20:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_40 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:20:34 join.go:32:16
+.   .   .   IF tc(1) # main.go:20:34 join.go:33:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:20:34 join.go:33:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:32:9
+.   .   .   .   .   NIL error tc(1) # main.go:20:34 join.go:33:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:20:34 join.go:34:11
+.   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:20:34 join.go:34:5
+.   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   .   .   .   APPEND SLICE-[]error tc(1) # main.go:20:34 join.go:34:19
+.   .   .   .   .   APPEND-Fun
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   .   APPEND-Args
+.   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:20:34 join.go:34:21
+.   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:20:34 join.go:32:9
+.   .   .   .   .   APPEND-RType
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   AS tc(1) # main.go:20:34 join.go:37:9
+.   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:29:2
+.   .   BLOCK # main.go:20:34
+.   .   BLOCK-List
+.   .   .   AS tc(1) # main.go:20:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   .   .   MAKEFACE error tc(1) # main.go:20:34 join.go:37:9
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:20:34 join.go:37:9
+.   .   .   .   .   .   LINKSYMOFFSET-go:itab.*errors.joinError,error Offset:0 uint8 tc(1)
+.   .   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   GOTO main..i0 tc(1) # main.go:20:34
+.   .   LABEL main..i0 # main.go:20:34
+.   .   BLOCK # main.go:20:22
+.   .   BLOCK-List
+.   .   .   AS # main.go:20:34
+.   .   .   .   NAME-main..autotmp_41 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:20:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:20:34 join.go:19:26
+.   .   .   AS # main.go:20:34
+.   .   .   .   NAME-main..autotmp_42 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   .   CONVNOP PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:20:34
+.   .   .   .   .   .   ITAB PTR-*uintptr tc(1) # main.go:20:34
+.   .   .   .   .   .   .   NAME-main..autotmp_41 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:20:34
+.   .   .   IF # main.go:20:34
+.   .   .   IF-Cond
+.   .   .   .   NE untyped bool tc(1) # main.go:20:34
+.   .   .   .   .   NAME-main..autotmp_42 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   .   .   NIL PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   IF-Body
+.   .   .   .   AS # main.go:20:34
+.   .   .   .   .   NAME-main..autotmp_42 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   .   .   DOTPTR runtime.Type Bounded PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   .   .   .   NAME-main..autotmp_42 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   CALLFUNC Walked tc(1) # main.go:20:22
+.   .   .   CALLFUNC-Fun
+.   .   .   .   NAME-runtime.gopanic Class:PFUNC Offset:0 Used FUNC-func(interface {}) tc(1)
+.   .   .   CALLFUNC-Args
+.   .   .   .   MAKEFACE INTER-interface {} tc(1) # main.go:20:34
+.   .   .   .   .   NAME-main..autotmp_42 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   .   .   IDATA PTR-*uint8 tc(1) # main.go:20:34
+.   .   .   .   .   .   NAME-main..autotmp_41 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:20:34
+.   DCL # main.go:23:9
+.   .   NAME-main.primes esc(no) Class:PAUTO Offset:0 OnStack Used SLICE-[]uint32 tc(1) # main.go:23:9
+.   DCL # main.go:23:21
+.   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   DCL # main.go:23:21
+.   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:23:21
+.   AS tc(1) # main.go:23:21
+.   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   AS tc(1) # main.go:23:21
+.   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   BLOCK-init
+.   .   CALLFUNC Walked STRUCT-struct { []uint32; error } tc(1) # main.go:23:40
+.   .   CALLFUNC-Fun
+.   .   .   NAME-sieve.FindPrimes Class:PFUNC Offset:0 Used FUNC-func(uint32) ([]uint32, error) tc(1) # sieve.go:10:6
+.   .   CALLFUNC-Args
+.   .   .   NAME-main.edge esc(no) Class:PAUTO Offset:0 OnStack Used uint32 tc(1) # main.go:17:9
+.   BLOCK # main.go:23:21
+.   BLOCK-List
+.   .   AS # main.go:23:21
+.   .   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   .   RESULT SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   AS # main.go:23:21
+.   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   .   .   RESULT Index:1 error tc(1) # main.go:23:21
+.   BLOCK # main.go:23:21
+.   BLOCK-List
+.   .   AS tc(1) # main.go:23:21
+.   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   AS tc(1) # main.go:23:21
+.   .   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:23:21
+.   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:17:19
+.   BLOCK # main.go:23:21
+.   BLOCK-List
+.   .   AS tc(1) # main.go:23:21
+.   .   .   NAME-main.primes esc(no) Class:PAUTO Offset:0 OnStack Used SLICE-[]uint32 tc(1) # main.go:23:9
+.   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]uint32 tc(1) # main.go:23:21
+.   .   AS tc(1) # main.go:23:21
+.   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:23:21
+.   IF tc(1) # main.go:24:9
+.   IF-Cond
+.   .   NE bool tc(1) # main.go:24:16
+.   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   NIL error tc(1) # main.go:24:19
+.   IF-Body
+.   .   DCL # main.go:25:34
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:25:34 join.go:19:11
+.   .   BLOCK # main.go:25:34
+.   .   BLOCK-List
+.   .   .   AS tc(1) # main.go:25:34
+.   .   .   .   NAME-main..autotmp_44 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[2]error tc(1) # main.go:25:34
+.   .   .   AS tc(1) # main.go:25:34
+.   .   .   .   NAME-main..autotmp_43 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:25:34
+.   .   .   .   ADDR PTR-*[2]error tc(1) # main.go:25:34
+.   .   .   .   .   NAME-main..autotmp_44 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[2]error tc(1) # main.go:25:34
+.   .   .   BLOCK tc(1) # main.go:25:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34
+.   .   .   .   .   INDEX Bounded error tc(1) # main.go:25:34
+.   .   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # main.go:25:34
+.   .   .   .   .   .   .   NAME-main..autotmp_43 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:25:34
+.   .   .   .   .   .   LITERAL-0 int tc(1) # main.go:25:34
+.   .   .   .   .   NAME-main.errSieveFailed Class:PEXTERN Offset:0 Used error tc(1) # main.go:12:9
+.   .   .   BLOCK tc(1) # main.go:25:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34
+.   .   .   .   .   INDEX Bounded error tc(1) # main.go:25:34
+.   .   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # main.go:25:34
+.   .   .   .   .   .   .   NAME-main..autotmp_43 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:25:34
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:25:34
+.   .   .   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   BLOCK tc(1) # main.go:25:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34
+.   .   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:25:34 join.go:19:11
+.   .   .   .   .   SLICEARR SLICE-[]error tc(1) # main.go:25:34
+.   .   .   .   .   .   NAME-main..autotmp_43 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:25:34
+.   .   .   BLOCK # main.go:25:34
+.   .   DCL # main.go:25:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   AS tc(1) # main.go:25:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   INLMARK Index:4 # +main.go:25:34
+.   .   DCL # main.go:25:34 join.go:20:2
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:25:34 join.go:20:4
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   .   LITERAL-0 int tc(1) # main.go:25:34 join.go:20:7
+.   .   DCL # main.go:25:34 join.go:21:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:21:9
+.   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:25:34 join.go:19:11
+.   .   FOR-init
+.   .   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_45 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_46 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   LEN int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_47 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   CONVNOP uintptr tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   SPTR Bounded PTR-*error tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   FOR # main.go:25:34 join.go:21:16
+.   .   FOR-Cond
+.   .   .   LT bool tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_45 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_46 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:21:16
+.   .   FOR-Post
+.   .   .   BLOCK tc(1) # main.go:25:34 join.go:21:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_45 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   ADD int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_45 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_47 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   ADD uintptr tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   CONVNOP uintptr tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   .   .   NAME-main..autotmp_48 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   LITERAL-16 uintptr tc(1) # main.go:25:34 join.go:21:16
+.   .   FOR-Body
+.   .   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_48 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   CONVNOP PTR-*error tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   CONVNOP CheckPtr UNSAFEPTR-unsafe.Pointer tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_47 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:25:34 join.go:21:16
+.   .   .   BLOCK # main.go:25:34 join.go:21:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   .   NAME-main..autotmp_45 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:21:9
+.   .   .   .   .   DEREF Bounded error tc(1) # main.go:25:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_48 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:25:34 join.go:21:16
+.   .   .   IF tc(1) # main.go:25:34 join.go:22:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:25:34 join.go:22:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:21:9
+.   .   .   .   .   NIL error tc(1) # main.go:25:34 join.go:22:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:23:5
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   .   .   .   ADD int tc(1) # main.go:25:34 join.go:23:5
+.   .   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:25:34 join.go:23:5
+.   .   IF tc(1) # main.go:25:34 join.go:26:2
+.   .   IF-Cond
+.   .   .   EQ bool tc(1) # main.go:25:34 join.go:26:7
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   .   .   LITERAL-0 int tc(1) # main.go:25:34 join.go:26:10
+.   .   IF-Body
+.   .   .   BLOCK # main.go:25:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34
+.   .   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   .   .   .   NIL error tc(1) # main.go:25:34 join.go:27:10
+.   .   .   GOTO main..i1 tc(1) # main.go:25:34
+.   .   DCL # main.go:25:34 join.go:29:2
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   AS tc(1) # main.go:25:34 join.go:30:13
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   SLICEHEADER SLICE-[]error tc(1) # main.go:25:34 join.go:30:13
+.   .   .   SLICEHEADER-Ptr
+.   .   .   .   CALLFUNC NonNil Walked UNSAFEPTR-unsafe.Pointer tc(1) # main.go:25:34 join.go:30:13
+.   .   .   .   CALLFUNC-Fun
+.   .   .   .   .   NAME-runtime.makeslice Class:PFUNC Offset:0 Used FUNC-func(*byte, int, int) unsafe.Pointer tc(1)
+.   .   .   .   CALLFUNC-Args
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:30:13
+.   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   .   LITERAL-0 int tc(1) # main.go:25:34 join.go:30:23
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   .   SLICEHEADER-Len
+.   .   .   .   LITERAL-0 int tc(1) # main.go:25:34 join.go:30:23
+.   .   .   SLICEHEADER-Cap
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:25:34 join.go:20:2
+.   .   AS-init
+.   .   .   AS tc(1) # main.go:25:34 join.go:29:7
+.   .   .   .   NAME-main..autotmp_49 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:7
+.   .   .   .   NEW esc(h) NonNil PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:7
+.   .   .   .   .   TYPE errors.joinError Class:PEXTERN Offset:0 type errors.joinError tc(1) # join.go:40:6
+.   .   .   BLOCK tc(1) # main.go:25:34 join.go:30:3
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:30:3
+.   .   .   .   .   DOT errors.errs SLICE-[]error tc(1) # main.go:25:34 join.go:30:3
+.   .   .   .   .   .   DEREF errors.joinError tc(1) # main.go:25:34 join.go:29:7
+.   .   .   .   .   .   .   NAME-main..autotmp_49 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:7
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   AS Def tc(1) # main.go:25:34 join.go:29:4
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   .   NAME-main..autotmp_49 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:7
+.   .   DCL # main.go:25:34 join.go:32:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:32:9
+.   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:25:34 join.go:19:11
+.   .   FOR-init
+.   .   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_50 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_51 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   LEN int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_52 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   CONVNOP uintptr tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   SPTR Bounded PTR-*error tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   FOR # main.go:25:34 join.go:32:16
+.   .   FOR-Cond
+.   .   .   LT bool tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_50 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_51 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:32:16
+.   .   FOR-Post
+.   .   .   BLOCK tc(1) # main.go:25:34 join.go:32:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_50 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   ADD int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_50 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_52 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   ADD uintptr tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   CONVNOP uintptr tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   .   .   NAME-main..autotmp_53 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   LITERAL-16 uintptr tc(1) # main.go:25:34 join.go:32:16
+.   .   FOR-Body
+.   .   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_53 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   CONVNOP PTR-*error tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   CONVNOP CheckPtr UNSAFEPTR-unsafe.Pointer tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_52 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:25:34 join.go:32:16
+.   .   .   BLOCK # main.go:25:34 join.go:32:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   .   NAME-main..autotmp_50 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:32:9
+.   .   .   .   .   DEREF Bounded error tc(1) # main.go:25:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_53 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:25:34 join.go:32:16
+.   .   .   IF tc(1) # main.go:25:34 join.go:33:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:25:34 join.go:33:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:32:9
+.   .   .   .   .   NIL error tc(1) # main.go:25:34 join.go:33:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:25:34 join.go:34:11
+.   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:25:34 join.go:34:5
+.   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   .   .   .   APPEND SLICE-[]error tc(1) # main.go:25:34 join.go:34:19
+.   .   .   .   .   APPEND-Fun
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   .   APPEND-Args
+.   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:25:34 join.go:34:21
+.   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:25:34 join.go:32:9
+.   .   .   .   .   APPEND-RType
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   AS tc(1) # main.go:25:34 join.go:37:9
+.   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:25:34 join.go:29:2
+.   .   BLOCK # main.go:25:34
+.   .   BLOCK-List
+.   .   .   AS tc(1) # main.go:25:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   .   .   MAKEFACE error tc(1) # main.go:25:34 join.go:37:9
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:25:34 join.go:37:9
+.   .   .   .   .   .   LINKSYMOFFSET-go:itab.*errors.joinError,error Offset:0 uint8 tc(1)
+.   .   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   GOTO main..i1 tc(1) # main.go:25:34
+.   .   LABEL main..i1 # main.go:25:34
+.   .   BLOCK # main.go:25:22
+.   .   BLOCK-List
+.   .   .   AS # main.go:25:34
+.   .   .   .   NAME-main..autotmp_54 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:25:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:25:34 join.go:19:26
+.   .   .   AS # main.go:25:34
+.   .   .   .   NAME-main..autotmp_55 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   .   CONVNOP PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:25:34
+.   .   .   .   .   .   ITAB PTR-*uintptr tc(1) # main.go:25:34
+.   .   .   .   .   .   .   NAME-main..autotmp_54 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:25:34
+.   .   .   IF # main.go:25:34
+.   .   .   IF-Cond
+.   .   .   .   NE untyped bool tc(1) # main.go:25:34
+.   .   .   .   .   NAME-main..autotmp_55 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   .   .   NIL PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   IF-Body
+.   .   .   .   AS # main.go:25:34
+.   .   .   .   .   NAME-main..autotmp_55 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   .   .   DOTPTR runtime.Type Bounded PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   .   .   .   NAME-main..autotmp_55 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   CALLFUNC Walked tc(1) # main.go:25:22
+.   .   .   CALLFUNC-Fun
+.   .   .   .   NAME-runtime.gopanic Class:PFUNC Offset:0 Used FUNC-func(interface {}) tc(1)
+.   .   .   CALLFUNC-Args
+.   .   .   .   MAKEFACE INTER-interface {} tc(1) # main.go:25:34
+.   .   .   .   .   NAME-main..autotmp_55 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   .   .   IDATA PTR-*uint8 tc(1) # main.go:25:34
+.   .   .   .   .   .   NAME-main..autotmp_54 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:25:34
+.   AS tc(1) # main.go:28:13
+.   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   CALLFUNC Walked error tc(1) # main.go:28:37
+.   .   CALLFUNC-Fun
+.   .   .   NAME-streamutils.PrintSlice[go.shape.uint32] Class:PFUNC Offset:0 Used FUNC-func(*[4]uintptr, []go.shape.uint32) error tc(1) # streamutils.go:16:6
+.   .   CALLFUNC-Args
+.   .   .   ADDR PTR-*[4]uintptr tc(1) # main.go:28:26
+.   .   .   .   NAME-streamutils..dict.PrintSlice[uint32] Class:PEXTERN Offset:0 Addrtaken ARRAY-[4]uintptr tc(1) # <autogenerated>:1:0
+.   .   .   NAME-main.primes esc(no) Class:PAUTO Offset:0 OnStack Used SLICE-[]uint32 tc(1) # main.go:23:9
+.   IF tc(1) # main.go:29:9
+.   IF-Cond
+.   .   NE bool tc(1) # main.go:29:16
+.   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   NIL error tc(1) # main.go:29:19
+.   IF-Body
+.   .   DCL # main.go:30:34
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:30:34 join.go:19:11
+.   .   BLOCK # main.go:30:34
+.   .   BLOCK-List
+.   .   .   AS tc(1) # main.go:30:34
+.   .   .   .   NAME-main..autotmp_57 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[2]error tc(1) # main.go:30:34
+.   .   .   AS tc(1) # main.go:30:34
+.   .   .   .   NAME-main..autotmp_56 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:30:34
+.   .   .   .   ADDR PTR-*[2]error tc(1) # main.go:30:34
+.   .   .   .   .   NAME-main..autotmp_57 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[2]error tc(1) # main.go:30:34
+.   .   .   BLOCK tc(1) # main.go:30:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34
+.   .   .   .   .   INDEX Bounded error tc(1) # main.go:30:34
+.   .   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # main.go:30:34
+.   .   .   .   .   .   .   NAME-main..autotmp_56 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:30:34
+.   .   .   .   .   .   LITERAL-0 int tc(1) # main.go:30:34
+.   .   .   .   .   NAME-main.errPrintFailed Class:PEXTERN Offset:0 Used error tc(1) # main.go:13:9
+.   .   .   BLOCK tc(1) # main.go:30:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34
+.   .   .   .   .   INDEX Bounded error tc(1) # main.go:30:34
+.   .   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # main.go:30:34
+.   .   .   .   .   .   .   NAME-main..autotmp_56 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:30:34
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:30:34
+.   .   .   .   .   NAME-main.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # main.go:17:15
+.   .   .   BLOCK tc(1) # main.go:30:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34
+.   .   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:30:34 join.go:19:11
+.   .   .   .   .   SLICEARR SLICE-[]error tc(1) # main.go:30:34
+.   .   .   .   .   .   NAME-main..autotmp_56 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # main.go:30:34
+.   .   .   BLOCK # main.go:30:34
+.   .   DCL # main.go:30:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   AS tc(1) # main.go:30:34
+.   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   INLMARK Index:5 # +main.go:30:34
+.   .   DCL # main.go:30:34 join.go:20:2
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   AS Def tc(1) # main.go:30:34 join.go:20:4
+.   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   .   LITERAL-0 int tc(1) # main.go:30:34 join.go:20:7
+.   .   DCL # main.go:30:34 join.go:21:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:21:9
+.   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:30:34 join.go:19:11
+.   .   FOR-init
+.   .   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_58 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_59 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   LEN int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_60 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   CONVNOP uintptr tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   SPTR Bounded PTR-*error tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   FOR # main.go:30:34 join.go:21:16
+.   .   FOR-Cond
+.   .   .   LT bool tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_58 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_59 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:21:16
+.   .   FOR-Post
+.   .   .   BLOCK tc(1) # main.go:30:34 join.go:21:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_58 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   ADD int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_58 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_60 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   ADD uintptr tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   CONVNOP uintptr tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   .   .   NAME-main..autotmp_61 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   LITERAL-16 uintptr tc(1) # main.go:30:34 join.go:21:16
+.   .   FOR-Body
+.   .   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   NAME-main..autotmp_61 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   CONVNOP PTR-*error tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   CONVNOP CheckPtr UNSAFEPTR-unsafe.Pointer tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_60 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:30:34 join.go:21:16
+.   .   .   BLOCK # main.go:30:34 join.go:21:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   .   NAME-main..autotmp_58 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:21:9
+.   .   .   .   .   DEREF Bounded error tc(1) # main.go:30:34 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_61 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:30:34 join.go:21:16
+.   .   .   IF tc(1) # main.go:30:34 join.go:22:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:30:34 join.go:22:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:21:9
+.   .   .   .   .   NIL error tc(1) # main.go:30:34 join.go:22:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:23:5
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   .   .   .   ADD int tc(1) # main.go:30:34 join.go:23:5
+.   .   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:30:34 join.go:23:5
+.   .   IF tc(1) # main.go:30:34 join.go:26:2
+.   .   IF-Cond
+.   .   .   EQ bool tc(1) # main.go:30:34 join.go:26:7
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   .   .   LITERAL-0 int tc(1) # main.go:30:34 join.go:26:10
+.   .   IF-Body
+.   .   .   BLOCK # main.go:30:34
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34
+.   .   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   .   .   .   NIL error tc(1) # main.go:30:34 join.go:27:10
+.   .   .   GOTO main..i2 tc(1) # main.go:30:34
+.   .   DCL # main.go:30:34 join.go:29:2
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   AS tc(1) # main.go:30:34 join.go:30:13
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   SLICEHEADER SLICE-[]error tc(1) # main.go:30:34 join.go:30:13
+.   .   .   SLICEHEADER-Ptr
+.   .   .   .   CALLFUNC NonNil Walked UNSAFEPTR-unsafe.Pointer tc(1) # main.go:30:34 join.go:30:13
+.   .   .   .   CALLFUNC-Fun
+.   .   .   .   .   NAME-runtime.makeslice Class:PFUNC Offset:0 Used FUNC-func(*byte, int, int) unsafe.Pointer tc(1)
+.   .   .   .   CALLFUNC-Args
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:30:13
+.   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   .   LITERAL-0 int tc(1) # main.go:30:34 join.go:30:23
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   .   SLICEHEADER-Len
+.   .   .   .   LITERAL-0 int tc(1) # main.go:30:34 join.go:30:23
+.   .   .   SLICEHEADER-Cap
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # main.go:30:34 join.go:20:2
+.   .   AS-init
+.   .   .   AS tc(1) # main.go:30:34 join.go:29:7
+.   .   .   .   NAME-main..autotmp_62 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:7
+.   .   .   .   NEW esc(h) NonNil PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:7
+.   .   .   .   .   TYPE errors.joinError Class:PEXTERN Offset:0 type errors.joinError tc(1) # join.go:40:6
+.   .   .   BLOCK tc(1) # main.go:30:34 join.go:30:3
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:30:3
+.   .   .   .   .   DOT errors.errs SLICE-[]error tc(1) # main.go:30:34 join.go:30:3
+.   .   .   .   .   .   DEREF errors.joinError tc(1) # main.go:30:34 join.go:29:7
+.   .   .   .   .   .   .   NAME-main..autotmp_62 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:7
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   AS Def tc(1) # main.go:30:34 join.go:29:4
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   .   NAME-main..autotmp_62 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:7
+.   .   DCL # main.go:30:34 join.go:32:9
+.   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:32:9
+.   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # main.go:30:34 join.go:19:11
+.   .   FOR-init
+.   .   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_63 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_64 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   LEN int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_65 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   CONVNOP uintptr tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   SPTR Bounded PTR-*error tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # main.go:20:34 join.go:21:16
+.   .   FOR # main.go:30:34 join.go:32:16
+.   .   FOR-Cond
+.   .   .   LT bool tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_63 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_64 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:32:16
+.   .   FOR-Post
+.   .   .   BLOCK tc(1) # main.go:30:34 join.go:32:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_63 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   ADD int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_63 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   LITERAL-1 int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_65 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   ADD uintptr tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   CONVNOP uintptr tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   .   .   NAME-main..autotmp_66 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   LITERAL-16 uintptr tc(1) # main.go:30:34 join.go:32:16
+.   .   FOR-Body
+.   .   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   NAME-main..autotmp_66 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   CONVNOP PTR-*error tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   CONVNOP CheckPtr UNSAFEPTR-unsafe.Pointer tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_65 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # main.go:30:34 join.go:32:16
+.   .   .   BLOCK # main.go:30:34 join.go:32:16
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   .   NAME-main..autotmp_63 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:32:9
+.   .   .   .   .   DEREF Bounded error tc(1) # main.go:30:34 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_66 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # main.go:30:34 join.go:32:16
+.   .   .   IF tc(1) # main.go:30:34 join.go:33:3
+.   .   .   IF-Cond
+.   .   .   .   NE bool tc(1) # main.go:30:34 join.go:33:10
+.   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:32:9
+.   .   .   .   .   NIL error tc(1) # main.go:30:34 join.go:33:13
+.   .   .   IF-Body
+.   .   .   .   AS tc(1) # main.go:30:34 join.go:34:11
+.   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:30:34 join.go:34:5
+.   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   .   .   .   APPEND SLICE-[]error tc(1) # main.go:30:34 join.go:34:19
+.   .   .   .   .   APPEND-Fun
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   .   APPEND-Args
+.   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # main.go:30:34 join.go:34:21
+.   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # main.go:30:34 join.go:32:9
+.   .   .   .   .   APPEND-RType
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:34:19
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   AS tc(1) # main.go:30:34 join.go:37:9
+.   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # main.go:30:34 join.go:29:2
+.   .   BLOCK # main.go:30:34
+.   .   BLOCK-List
+.   .   .   AS tc(1) # main.go:30:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   .   .   MAKEFACE error tc(1) # main.go:30:34 join.go:37:9
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # main.go:30:34 join.go:37:9
+.   .   .   .   .   .   LINKSYMOFFSET-go:itab.*errors.joinError,error Offset:0 uint8 tc(1)
+.   .   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # main.go:20:34 join.go:37:9
+.   .   GOTO main..i2 tc(1) # main.go:30:34
+.   .   LABEL main..i2 # main.go:30:34
+.   .   BLOCK # main.go:30:22
+.   .   BLOCK-List
+.   .   .   AS # main.go:30:34
+.   .   .   .   NAME-main..autotmp_67 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:30:34
+.   .   .   .   NAME-main.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # main.go:30:34 join.go:19:26
+.   .   .   AS # main.go:30:34
+.   .   .   .   NAME-main..autotmp_68 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   .   CONVNOP PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # main.go:30:34
+.   .   .   .   .   .   ITAB PTR-*uintptr tc(1) # main.go:30:34
+.   .   .   .   .   .   .   NAME-main..autotmp_67 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:30:34
+.   .   .   IF # main.go:30:34
+.   .   .   IF-Cond
+.   .   .   .   NE untyped bool tc(1) # main.go:30:34
+.   .   .   .   .   NAME-main..autotmp_68 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   .   .   NIL PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   IF-Body
+.   .   .   .   AS # main.go:30:34
+.   .   .   .   .   NAME-main..autotmp_68 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   .   .   DOTPTR runtime.Type Bounded PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   .   .   .   NAME-main..autotmp_68 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   CALLFUNC Walked tc(1) # main.go:30:22
+.   .   .   CALLFUNC-Fun
+.   .   .   .   NAME-runtime.gopanic Class:PFUNC Offset:0 Used FUNC-func(interface {}) tc(1)
+.   .   .   CALLFUNC-Args
+.   .   .   .   MAKEFACE INTER-interface {} tc(1) # main.go:30:34
+.   .   .   .   .   NAME-main..autotmp_68 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   .   .   IDATA PTR-*uint8 tc(1) # main.go:30:34
+.   .   .   .   .   .   NAME-main..autotmp_67 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # main.go:30:34
+
+before walk streamutils.PrintSlice[go.shape.uint32]
+.   DCL # streamutils.go:17:16
+.   .   NAME-streamutils.v esc(no) Class:PAUTO DictIndex:2 Offset:0 OnStack Used go.shape.uint32 tc(1) # streamutils.go:17:16
+.   AS tc(1) # streamutils.go:17:21
+.   .   NAME-main..autotmp_13 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]go.shape.uint32 tc(1) # streamutils.go:17:21
+.   .   NAME-streamutils.s esc(no) Class:PPARAM DictIndex:1 Offset:0 OnStack Used SLICE-[]go.shape.uint32 tc(1) # streamutils.go:16:24
+.   RANGE Def tc(1) # streamutils.go:17:21
+.   .   NAME-main..autotmp_13 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]go.shape.uint32 tc(1) # streamutils.go:17:21
+.   RANGE-Key
+.   .   NAME-main._ Offset:0 blank tc(1)
+.   .   NAME-streamutils.v esc(no) Class:PAUTO DictIndex:2 Offset:0 OnStack Used go.shape.uint32 tc(1) # streamutils.go:17:16
+.   RANGE-Body
+.   .   DCL # streamutils.go:18:20
+.   .   .   NAME-streamutils.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # streamutils.go:18:20
+.   .   DCL # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   DCL # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   AS tc(1) # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_16 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   AS2FUNC Def tc(1) # streamutils.go:18:24
+.   .   AS2FUNC-Lhs
+.   .   .   NAME-main..autotmp_15 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_16 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   AS2FUNC-Rhs
+.   .   .   CALLFUNC IsDDD STRUCT-struct { fmt.n int; fmt.err error } tc(1) # streamutils.go:18:37
+.   .   .   CALLFUNC-Fun
+.   .   .   .   NAME-fmt.Printf Class:PFUNC Offset:0 Used FUNC-func(string, ...any) (int, error) tc(1) # print.go:232:6
+.   .   .   CALLFUNC-Args
+.   .   .   .   LITERAL-"%v " string tc(1) # streamutils.go:18:38
+.   .   .   .   SLICELIT esc(no) Len:1 Implicit Transient SLICE-[]any tc(1) # streamutils.go:18:37
+.   .   .   .   SLICELIT-List
+.   .   .   .   .   CONVIFACE esc(h) Implicit any tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   NAME-streamutils.v esc(no) Class:PAUTO DictIndex:2 Offset:0 OnStack Used go.shape.uint32 tc(1) # streamutils.go:17:16
+.   .   .   .   .   CONVIFACE-TypeWord
+.   .   .   .   .   .   CONVNOP PTR-*uint8 tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   INDEX uintptr tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   .   DEREF Implicit ARRAY-[4]uintptr tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   .   .   NAME-streamutils..dict esc(no) Class:PPARAM Offset:0 OnStack Used PTR-*[4]uintptr tc(1) # streamutils.go:16:6
+.   .   .   .   .   .   .   .   LITERAL-1 int tc(1) # streamutils.go:18:45
+.   .   .   .   .   CONVIFACE-SrcRType
+.   .   .   .   .   .   CONVNOP PTR-*uint8 tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   INDEX uintptr tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   .   DEREF Implicit ARRAY-[4]uintptr tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   .   .   NAME-streamutils..dict esc(no) Class:PPARAM Offset:0 OnStack Used PTR-*[4]uintptr tc(1) # streamutils.go:16:6
+.   .   .   .   .   .   .   .   LITERAL-1 int tc(1) # streamutils.go:18:45
+.   .   .   .   SLICELIT-Prealloc
+.   .   .   .   .   NAME-main..autotmp_14 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used ARRAY-[1]any tc(1) # streamutils.go:18:37
+.   .   AS2 tc(1) # streamutils.go:18:24
+.   .   AS2-Lhs
+.   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   AS2-Rhs
+.   .   .   NAME-main..autotmp_15 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_16 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   AS2 Def tc(1) # streamutils.go:18:24
+.   .   AS2-Lhs
+.   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   NAME-streamutils.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # streamutils.go:18:20
+.   .   AS2-Rhs
+.   .   .   CONVNOP int tc(1) # print.go:232:6
+.   .   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   IF tc(1) # streamutils.go:19:17
+.   .   IF-Cond
+.   .   .   NE bool tc(1) # streamutils.go:19:24
+.   .   .   .   NAME-streamutils.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # streamutils.go:18:20
+.   .   .   .   NIL error tc(1) # streamutils.go:19:27
+.   .   IF-Body
+.   .   .   DCL # streamutils.go:20:43
+.   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:19:11
+.   .   .   AS2 Def tc(1) # streamutils.go:20:43
+.   .   .   AS2-Lhs
+.   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:19:11
+.   .   .   AS2-Rhs
+.   .   .   .   SLICELIT esc(no) Len:2 Implicit SLICE-[]error tc(1) # streamutils.go:20:43
+.   .   .   .   SLICELIT-List
+.   .   .   .   .   NAME-streamutils.errSlicePrintFailed Class:PEXTERN Offset:0 Used error tc(1) # streamutils.go:8:5
+.   .   .   .   .   NAME-streamutils.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # streamutils.go:18:20
+.   .   .   DCL # streamutils.go:20:43
+.   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   .   .   INLMARK Index:6 # +streamutils.go:20:43
+.   .   .   DCL # streamutils.go:20:43 join.go:20:2
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   AS Def tc(1) # streamutils.go:20:43 join.go:20:4
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   .   LITERAL-0 int tc(1) # streamutils.go:20:43 join.go:20:7
+.   .   .   DCL # streamutils.go:20:43 join.go:21:9
+.   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:21:9
+.   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:19:11
+.   .   .   RANGE Def tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   RANGE-Key
+.   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:21:9
+.   .   .   RANGE-Body
+.   .   .   .   IF tc(1) # streamutils.go:20:43 join.go:22:3
+.   .   .   .   IF-Cond
+.   .   .   .   .   NE bool tc(1) # streamutils.go:20:43 join.go:22:10
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:21:9
+.   .   .   .   .   .   NIL error tc(1) # streamutils.go:20:43 join.go:22:13
+.   .   .   .   IF-Body
+.   .   .   .   .   ASOP-ADD AsOp:ADD IncDec tc(1) # streamutils.go:20:43 join.go:23:5
+.   .   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   .   .   .   LITERAL-1 int tc(1) # streamutils.go:20:43 join.go:23:5
+.   .   .   RANGE-ValueTypeWord
+.   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   IF tc(1) # streamutils.go:20:43 join.go:26:2
+.   .   .   IF-Cond
+.   .   .   .   EQ bool tc(1) # streamutils.go:20:43 join.go:26:7
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   .   .   LITERAL-0 int tc(1) # streamutils.go:20:43 join.go:26:10
+.   .   .   IF-Body
+.   .   .   .   AS2 tc(1) # streamutils.go:20:43
+.   .   .   .   AS2-Lhs
+.   .   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   .   .   .   AS2-Rhs
+.   .   .   .   .   NIL error tc(1) # streamutils.go:20:43 join.go:27:10
+.   .   .   .   GOTO main..i0 tc(1) # streamutils.go:20:43
+.   .   .   DCL # streamutils.go:20:43 join.go:29:2
+.   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   AS tc(1) # streamutils.go:20:43 join.go:30:13
+.   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   MAKESLICE esc(h) SLICE-[]error tc(1) # streamutils.go:20:43 join.go:30:13
+.   .   .   .   MAKESLICE-RType
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:30:13
+.   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   MAKESLICE-Len
+.   .   .   .   .   LITERAL-0 int tc(1) # streamutils.go:20:43 join.go:30:23
+.   .   .   .   MAKESLICE-Cap
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   AS Def tc(1) # streamutils.go:20:43 join.go:29:4
+.   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   .   PTRLIT esc(h) PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:7
+.   .   .   .   .   STRUCTLIT errors.joinError tc(1) # streamutils.go:20:43 join.go:29:17
+.   .   .   .   .   STRUCTLIT-List
+.   .   .   .   .   .   STRUCTKEY errors.errs # streamutils.go:20:43 join.go:30:3
+.   .   .   .   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   DCL # streamutils.go:20:43 join.go:32:9
+.   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:32:9
+.   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:19:11
+.   .   .   RANGE Def tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   RANGE-Key
+.   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:32:9
+.   .   .   RANGE-Body
+.   .   .   .   IF tc(1) # streamutils.go:20:43 join.go:33:3
+.   .   .   .   IF-Cond
+.   .   .   .   .   NE bool tc(1) # streamutils.go:20:43 join.go:33:10
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:32:9
+.   .   .   .   .   .   NIL error tc(1) # streamutils.go:20:43 join.go:33:13
+.   .   .   .   IF-Body
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:34:11
+.   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # streamutils.go:20:43 join.go:34:5
+.   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   .   .   .   APPEND SLICE-[]error tc(1) # streamutils.go:20:43 join.go:34:19
+.   .   .   .   .   .   APPEND-Args
+.   .   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # streamutils.go:20:43 join.go:34:21
+.   .   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:32:9
+.   .   .   .   .   .   APPEND-RType
+.   .   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:34:19
+.   .   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   RANGE-ValueTypeWord
+.   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   AS tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   NAME-main..autotmp_18 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   AS2 tc(1) # streamutils.go:20:43
+.   .   .   AS2-Lhs
+.   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   .   .   AS2-Rhs
+.   .   .   .   CONVIFACE Implicit error tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   .   NAME-main..autotmp_18 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   CONVIFACE-TypeWord
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   .   .   LINKSYMOFFSET-go:itab.*errors.joinError,error Offset:0 uint8 tc(1)
+.   .   .   .   CONVIFACE-SrcRType
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   .   .   LINKSYMOFFSET-type:*errors.joinError Offset:0 uint8 tc(1)
+.   .   .   GOTO main..i0 tc(1) # streamutils.go:20:43
+.   .   .   LABEL main..i0 # streamutils.go:20:43
+.   .   .   RETURN tc(1) # streamutils.go:20:25
+.   .   .   RETURN-Results
+.   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   CALLFUNC IsDDD STRUCT-struct { fmt.n int; fmt.err error } tc(1) # streamutils.go:24:20
+.   CALLFUNC-Fun
+.   .   NAME-fmt.Println Class:PFUNC Offset:0 Used FUNC-func(...any) (int, error) tc(1) # print.go:313:6
+.   CALLFUNC-Args
+.   .   SLICELIT esc(no) Len:1 Implicit Transient SLICE-[]any tc(1) # streamutils.go:24:20
+.   .   SLICELIT-List
+.   .   .   CONVIFACE esc(h) Implicit any tc(1) # streamutils.go:24:21
+.   .   .   .   NAME-main..stmp_3 Class:PEXTERN Offset:0 Readonly Used string tc(1) # streamutils.go:24:21
+.   .   .   CONVIFACE-TypeWord
+.   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:24:21
+.   .   .   .   .   LINKSYMOFFSET-type:string Offset:0 uint8 tc(1)
+.   .   .   CONVIFACE-SrcRType
+.   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:24:21
+.   .   .   .   .   LINKSYMOFFSET-type:string Offset:0 uint8 tc(1)
+.   .   SLICELIT-Prealloc
+.   .   .   NAME-main..autotmp_14 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used ARRAY-[1]any tc(1) # streamutils.go:18:37
+.   RETURN tc(1) # streamutils.go:25:9
+.   RETURN-Results
+.   .   NIL error tc(1) # streamutils.go:25:16
+after walk streamutils.PrintSlice[go.shape.uint32]
+.   DCL # streamutils.go:17:16
+.   .   NAME-streamutils.v esc(no) Class:PAUTO DictIndex:2 Offset:0 OnStack Used go.shape.uint32 tc(1) # streamutils.go:17:16
+.   AS tc(1) # streamutils.go:17:21
+.   .   NAME-main..autotmp_13 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]go.shape.uint32 tc(1) # streamutils.go:17:21
+.   .   NAME-streamutils.s esc(no) Class:PPARAM DictIndex:1 Offset:0 OnStack Used SLICE-[]go.shape.uint32 tc(1) # streamutils.go:16:24
+.   FOR-init
+.   .   AS tc(1) # streamutils.go:17:21
+.   .   .   NAME-main..autotmp_19 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:17:21
+.   .   AS tc(1) # streamutils.go:17:21
+.   .   .   NAME-main..autotmp_20 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:17:21
+.   .   .   LEN int tc(1) # streamutils.go:17:21
+.   .   .   .   NAME-main..autotmp_13 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]go.shape.uint32 tc(1) # streamutils.go:17:21
+.   FOR # streamutils.go:17:21
+.   FOR-Cond
+.   .   LT bool tc(1) # streamutils.go:17:21
+.   .   .   NAME-main..autotmp_19 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:17:21
+.   .   .   NAME-main..autotmp_20 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:17:21
+.   FOR-Post
+.   .   AS tc(1) # streamutils.go:17:21
+.   .   .   NAME-main..autotmp_19 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:17:21
+.   .   .   ADD int tc(1) # streamutils.go:17:21
+.   .   .   .   NAME-main..autotmp_19 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:17:21
+.   .   .   .   LITERAL-1 int tc(1) # streamutils.go:17:21
+.   FOR-Body
+.   .   BLOCK # streamutils.go:17:21
+.   .   BLOCK-List
+.   .   .   AS tc(1) # streamutils.go:17:21
+.   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   NAME-main..autotmp_19 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:17:21
+.   .   .   AS tc(1) # streamutils.go:17:21
+.   .   .   .   NAME-streamutils.v esc(no) Class:PAUTO DictIndex:2 Offset:0 OnStack Used go.shape.uint32 tc(1) # streamutils.go:17:16
+.   .   .   .   INDEX Bounded go.shape.uint32 tc(1) # streamutils.go:17:21
+.   .   .   .   .   NAME-main..autotmp_13 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]go.shape.uint32 tc(1) # streamutils.go:17:21
+.   .   .   .   .   NAME-main..autotmp_19 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:17:21
+.   .   DCL # streamutils.go:18:20
+.   .   .   NAME-streamutils.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # streamutils.go:18:20
+.   .   DCL # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   DCL # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   AS tc(1) # streamutils.go:18:24
+.   .   .   NAME-main..autotmp_16 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   BLOCK-init
+.   .   .   AS tc(1) # streamutils.go:18:37
+.   .   .   .   NAME-main..autotmp_14 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[1]any tc(1) # streamutils.go:18:37
+.   .   .   AS tc(1) # streamutils.go:18:37
+.   .   .   .   NAME-main..autotmp_22 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[1]any tc(1) # streamutils.go:18:37
+.   .   .   .   ADDR PTR-*[1]any tc(1) # streamutils.go:18:37
+.   .   .   .   .   NAME-main..autotmp_14 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[1]any tc(1) # streamutils.go:18:37
+.   .   .   BLOCK tc(1) # streamutils.go:18:45
+.   .   .   BLOCK-List
+.   .   .   .   AS-init
+.   .   .   .   .   AS tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   NAME-main..autotmp_23 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   CALLFUNC Walked UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   CALLFUNC-Fun
+.   .   .   .   .   .   .   NAME-runtime.convT32 Class:PFUNC Offset:0 Used FUNC-func(uint32) unsafe.Pointer tc(1)
+.   .   .   .   .   .   CALLFUNC-Args
+.   .   .   .   .   .   .   CONVNOP uint32 tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   .   NAME-streamutils.v esc(no) Class:PAUTO DictIndex:2 Offset:0 OnStack Used go.shape.uint32 tc(1) # streamutils.go:17:16
+.   .   .   .   AS tc(1) # streamutils.go:18:45
+.   .   .   .   .   INDEX Bounded any tc(1) # streamutils.go:18:37
+.   .   .   .   .   .   DEREF Implicit ARRAY-[1]any tc(1) # streamutils.go:18:37
+.   .   .   .   .   .   .   NAME-main..autotmp_22 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[1]any tc(1) # streamutils.go:18:37
+.   .   .   .   .   .   LITERAL-0 int tc(1) # streamutils.go:18:37
+.   .   .   .   .   MAKEFACE any tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   CONVNOP PTR-*uint8 tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   INDEX uintptr tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   .   DEREF Implicit ARRAY-[4]uintptr tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   .   .   .   NAME-streamutils..dict esc(no) Class:PPARAM Offset:0 OnStack Used PTR-*[4]uintptr tc(1) # streamutils.go:16:6
+.   .   .   .   .   .   .   .   LITERAL-1 int tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   NAME-main..autotmp_23 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:18:45
+.   .   .   BLOCK tc(1) # streamutils.go:18:45
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # streamutils.go:18:45
+.   .   .   .   .   NAME-main..autotmp_21 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]any tc(1) # streamutils.go:18:37
+.   .   .   .   .   SLICEARR SLICE-[]any tc(1) # streamutils.go:18:45
+.   .   .   .   .   .   NAME-main..autotmp_22 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[1]any tc(1) # streamutils.go:18:37
+.   .   .   CALLFUNC IsDDD Walked STRUCT-struct { fmt.n int; fmt.err error } tc(1) # streamutils.go:18:37
+.   .   .   CALLFUNC-Fun
+.   .   .   .   NAME-fmt.Printf Class:PFUNC Offset:0 Used FUNC-func(string, ...any) (int, error) tc(1) # print.go:232:6
+.   .   .   CALLFUNC-Args
+.   .   .   .   LITERAL-"%v " string tc(1) # streamutils.go:18:38
+.   .   .   .   NAME-main..autotmp_21 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]any tc(1) # streamutils.go:18:37
+.   .   BLOCK # streamutils.go:18:24
+.   .   BLOCK-List
+.   .   .   AS # streamutils.go:18:24
+.   .   .   .   NAME-main..autotmp_15 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   .   .   RESULT int tc(1) # streamutils.go:18:24
+.   .   .   AS # streamutils.go:18:24
+.   .   .   .   NAME-main..autotmp_16 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   .   .   RESULT Index:1 error tc(1) # streamutils.go:18:24
+.   .   BLOCK # streamutils.go:18:24
+.   .   BLOCK-List
+.   .   .   AS tc(1) # streamutils.go:18:24
+.   .   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   .   .   NAME-main..autotmp_15 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   .   AS tc(1) # streamutils.go:18:24
+.   .   .   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   .   .   NAME-main..autotmp_16 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   BLOCK # streamutils.go:18:24
+.   .   BLOCK-List
+.   .   .   AS tc(1) # streamutils.go:18:24
+.   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   NAME-main..autotmp_5 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:18:24
+.   .   .   AS tc(1) # streamutils.go:18:24
+.   .   .   .   NAME-streamutils.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # streamutils.go:18:20
+.   .   .   .   NAME-main..autotmp_6 esc(no) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:18:24
+.   .   IF tc(1) # streamutils.go:19:17
+.   .   IF-Cond
+.   .   .   NE bool tc(1) # streamutils.go:19:24
+.   .   .   .   NAME-streamutils.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # streamutils.go:18:20
+.   .   .   .   NIL error tc(1) # streamutils.go:19:27
+.   .   IF-Body
+.   .   .   DCL # streamutils.go:20:43
+.   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:19:11
+.   .   .   BLOCK # streamutils.go:20:43
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   .   NAME-main..autotmp_25 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   .   NAME-main..autotmp_24 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   .   ADDR PTR-*[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   NAME-main..autotmp_25 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   BLOCK tc(1) # streamutils.go:20:43
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   INDEX Bounded error tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   .   .   NAME-main..autotmp_24 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   .   LITERAL-0 int tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   NAME-streamutils.errSlicePrintFailed Class:PEXTERN Offset:0 Used error tc(1) # streamutils.go:8:5
+.   .   .   .   BLOCK tc(1) # streamutils.go:20:43
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   INDEX Bounded error tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   .   .   NAME-main..autotmp_24 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   .   LITERAL-1 int tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   NAME-streamutils.err esc(no) Class:PAUTO Offset:0 OnStack Used error tc(1) # streamutils.go:18:20
+.   .   .   .   BLOCK tc(1) # streamutils.go:20:43
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:19:11
+.   .   .   .   .   .   SLICEARR SLICE-[]error tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   .   NAME-main..autotmp_24 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[2]error tc(1) # streamutils.go:20:43
+.   .   .   .   BLOCK # streamutils.go:20:43
+.   .   .   DCL # streamutils.go:20:43
+.   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   .   .   INLMARK Index:6 # +streamutils.go:20:43
+.   .   .   DCL # streamutils.go:20:43 join.go:20:2
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   AS Def tc(1) # streamutils.go:20:43 join.go:20:4
+.   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   .   LITERAL-0 int tc(1) # streamutils.go:20:43 join.go:20:7
+.   .   .   DCL # streamutils.go:20:43 join.go:21:9
+.   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:21:9
+.   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:19:11
+.   .   .   FOR-init
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   LEN int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   CONVNOP uintptr tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   SPTR Bounded PTR-*error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   FOR # streamutils.go:20:43 join.go:21:16
+.   .   .   FOR-Cond
+.   .   .   .   LT bool tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_27 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   FOR-Post
+.   .   .   .   BLOCK tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   ADD int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   LITERAL-1 int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   ADD uintptr tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   CONVNOP uintptr tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   .   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   LITERAL-16 uintptr tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   FOR-Body
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   CONVNOP PTR-*error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   CONVNOP CheckPtr UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   NAME-main..autotmp_28 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   BLOCK # streamutils.go:20:43 join.go:21:16
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   .   .   NAME-main..autotmp_26 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:21:9
+.   .   .   .   .   .   DEREF Bounded error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   .   .   .   NAME-main..autotmp_29 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   IF tc(1) # streamutils.go:20:43 join.go:22:3
+.   .   .   .   IF-Cond
+.   .   .   .   .   NE bool tc(1) # streamutils.go:20:43 join.go:22:10
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:21:9
+.   .   .   .   .   .   NIL error tc(1) # streamutils.go:20:43 join.go:22:13
+.   .   .   .   IF-Body
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:23:5
+.   .   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   .   .   .   ADD int tc(1) # streamutils.go:20:43 join.go:23:5
+.   .   .   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   .   .   .   .   LITERAL-1 int tc(1) # streamutils.go:20:43 join.go:23:5
+.   .   .   IF tc(1) # streamutils.go:20:43 join.go:26:2
+.   .   .   IF-Cond
+.   .   .   .   EQ bool tc(1) # streamutils.go:20:43 join.go:26:7
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   .   .   LITERAL-0 int tc(1) # streamutils.go:20:43 join.go:26:10
+.   .   .   IF-Body
+.   .   .   .   BLOCK # streamutils.go:20:43
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   .   .   .   .   .   NIL error tc(1) # streamutils.go:20:43 join.go:27:10
+.   .   .   .   GOTO main..i0 tc(1) # streamutils.go:20:43
+.   .   .   DCL # streamutils.go:20:43 join.go:29:2
+.   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   AS tc(1) # streamutils.go:20:43 join.go:30:13
+.   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   SLICEHEADER SLICE-[]error tc(1) # streamutils.go:20:43 join.go:30:13
+.   .   .   .   SLICEHEADER-Ptr
+.   .   .   .   .   CALLFUNC NonNil Walked UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:20:43 join.go:30:13
+.   .   .   .   .   CALLFUNC-Fun
+.   .   .   .   .   .   NAME-runtime.makeslice Class:PFUNC Offset:0 Used FUNC-func(*byte, int, int) unsafe.Pointer tc(1)
+.   .   .   .   .   CALLFUNC-Args
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:30:13
+.   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   .   .   LITERAL-0 int tc(1) # streamutils.go:20:43 join.go:30:23
+.   .   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   .   SLICEHEADER-Len
+.   .   .   .   .   LITERAL-0 int tc(1) # streamutils.go:20:43 join.go:30:23
+.   .   .   .   SLICEHEADER-Cap
+.   .   .   .   .   NAME-errors.n esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used int tc(1) # streamutils.go:20:43 join.go:20:2
+.   .   .   AS-init
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:29:7
+.   .   .   .   .   NAME-main..autotmp_30 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:7
+.   .   .   .   .   NEW esc(h) NonNil PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:7
+.   .   .   .   .   .   TYPE errors.joinError Class:PEXTERN Offset:0 type errors.joinError tc(1) # join.go:40:6
+.   .   .   .   BLOCK tc(1) # streamutils.go:20:43 join.go:30:3
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:30:3
+.   .   .   .   .   .   DOT errors.errs SLICE-[]error tc(1) # streamutils.go:20:43 join.go:30:3
+.   .   .   .   .   .   .   DEREF errors.joinError tc(1) # streamutils.go:20:43 join.go:29:7
+.   .   .   .   .   .   .   .   NAME-main..autotmp_30 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:7
+.   .   .   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   AS Def tc(1) # streamutils.go:20:43 join.go:29:4
+.   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   .   NAME-main..autotmp_30 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:7
+.   .   .   DCL # streamutils.go:20:43 join.go:32:9
+.   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:32:9
+.   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   NAME-errors.errs esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:19:11
+.   .   .   FOR-init
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_31 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_32 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   LEN int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_33 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   CONVNOP uintptr tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   SPTR Bounded PTR-*error tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   .   NAME-main..autotmp_17 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]error tc(1) # streamutils.go:20:43 join.go:21:16
+.   .   .   FOR # streamutils.go:20:43 join.go:32:16
+.   .   .   FOR-Cond
+.   .   .   .   LT bool tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_31 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_32 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   FOR-Post
+.   .   .   .   BLOCK tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_31 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   ADD int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   NAME-main..autotmp_31 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   LITERAL-1 int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   NAME-main..autotmp_33 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   ADD uintptr tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   CONVNOP uintptr tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   .   CONVNOP UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   .   .   NAME-main..autotmp_34 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   LITERAL-16 uintptr tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   FOR-Body
+.   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   NAME-main..autotmp_34 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   CONVNOP PTR-*error tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   CONVNOP CheckPtr UNSAFEPTR-unsafe.Pointer tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   NAME-main..autotmp_33 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used uintptr tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   BLOCK # streamutils.go:20:43 join.go:32:16
+.   .   .   .   BLOCK-List
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   NAME-main._ Offset:0 blank tc(1)
+.   .   .   .   .   .   NAME-main..autotmp_31 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:32:9
+.   .   .   .   .   .   DEREF Bounded error tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   .   .   .   NAME-main..autotmp_34 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*error tc(1) # streamutils.go:20:43 join.go:32:16
+.   .   .   .   IF tc(1) # streamutils.go:20:43 join.go:33:3
+.   .   .   .   IF-Cond
+.   .   .   .   .   NE bool tc(1) # streamutils.go:20:43 join.go:33:10
+.   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:32:9
+.   .   .   .   .   .   NIL error tc(1) # streamutils.go:20:43 join.go:33:13
+.   .   .   .   IF-Body
+.   .   .   .   .   AS tc(1) # streamutils.go:20:43 join.go:34:11
+.   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # streamutils.go:20:43 join.go:34:5
+.   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   .   .   .   APPEND SLICE-[]error tc(1) # streamutils.go:20:43 join.go:34:19
+.   .   .   .   .   .   APPEND-Fun
+.   .   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:34:19
+.   .   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   .   .   .   APPEND-Args
+.   .   .   .   .   .   .   DOTPTR errors.errs SLICE-[]error tc(1) # streamutils.go:20:43 join.go:34:21
+.   .   .   .   .   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   .   .   .   .   NAME-errors.err esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used error tc(1) # streamutils.go:20:43 join.go:32:9
+.   .   .   .   .   .   APPEND-RType
+.   .   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:34:19
+.   .   .   .   .   .   .   .   LINKSYMOFFSET-type:error Offset:0 uint8 tc(1)
+.   .   .   AS tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   NAME-main..autotmp_18 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   NAME-errors.e esc(no) Class:PAUTO Offset:0 InlLocal OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:29:2
+.   .   .   BLOCK # streamutils.go:20:43
+.   .   .   BLOCK-List
+.   .   .   .   AS tc(1) # streamutils.go:20:43
+.   .   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   .   .   .   .   MAKEFACE error tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   .   .   .   .   LINKSYMOFFSET-go:itab.*errors.joinError,error Offset:0 uint8 tc(1)
+.   .   .   .   .   .   NAME-main..autotmp_18 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*errors.joinError tc(1) # streamutils.go:20:43 join.go:37:9
+.   .   .   GOTO main..i0 tc(1) # streamutils.go:20:43
+.   .   .   LABEL main..i0 # streamutils.go:20:43
+.   .   .   RETURN tc(1) # streamutils.go:20:25
+.   .   .   RETURN-Results
+.   .   .   .   AS tc(1) # streamutils.go:20:25
+.   .   .   .   .   NAME-streamutils.~r0 esc(no) Class:PPARAMOUT Offset:0 OnStack error tc(1) # streamutils.go:16:31
+.   .   .   .   .   NAME-streamutils.~r0 esc(no) Class:PAUTO Offset:0 InlFormal OnStack error tc(1) # streamutils.go:20:43 join.go:19:26
+.   BLOCK # streamutils.go:24:20
+.   BLOCK-List
+.   .   AS tc(1) # streamutils.go:24:20
+.   .   .   NAME-main..autotmp_14 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[1]any tc(1) # streamutils.go:18:37
+.   .   AS tc(1) # streamutils.go:24:20
+.   .   .   NAME-main..autotmp_36 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[1]any tc(1) # streamutils.go:24:20
+.   .   .   ADDR PTR-*[1]any tc(1) # streamutils.go:24:20
+.   .   .   .   NAME-main..autotmp_14 esc(N) Class:PAUTO Offset:0 Addrtaken AutoTemp OnStack Used ARRAY-[1]any tc(1) # streamutils.go:18:37
+.   .   BLOCK tc(1) # streamutils.go:24:21
+.   .   BLOCK-List
+.   .   .   AS tc(1) # streamutils.go:24:21
+.   .   .   .   INDEX Bounded any tc(1) # streamutils.go:24:20
+.   .   .   .   .   DEREF Implicit ARRAY-[1]any tc(1) # streamutils.go:24:20
+.   .   .   .   .   .   NAME-main..autotmp_36 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[1]any tc(1) # streamutils.go:24:20
+.   .   .   .   .   LITERAL-0 int tc(1) # streamutils.go:24:20
+.   .   .   .   MAKEFACE any tc(1) # streamutils.go:24:21
+.   .   .   .   .   ADDR PTR-*uint8 tc(1) # streamutils.go:24:21
+.   .   .   .   .   .   LINKSYMOFFSET-type:string Offset:0 uint8 tc(1)
+.   .   .   .   .   ADDR PTR-*string tc(1) # streamutils.go:24:21
+.   .   .   .   .   .   NAME-main..stmp_3 Class:PEXTERN Offset:0 Addrtaken Readonly Used string tc(1) # streamutils.go:24:21
+.   .   BLOCK tc(1) # streamutils.go:24:21
+.   .   BLOCK-List
+.   .   .   AS tc(1) # streamutils.go:24:21
+.   .   .   .   NAME-main..autotmp_35 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]any tc(1) # streamutils.go:24:20
+.   .   .   .   SLICEARR SLICE-[]any tc(1) # streamutils.go:24:21
+.   .   .   .   .   NAME-main..autotmp_36 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used PTR-*[1]any tc(1) # streamutils.go:24:20
+.   .   CALLFUNC IsDDD Walked STRUCT-struct { fmt.n int; fmt.err error } tc(1) # streamutils.go:24:20
+.   .   CALLFUNC-Fun
+.   .   .   NAME-fmt.Println Class:PFUNC Offset:0 Used FUNC-func(...any) (int, error) tc(1) # print.go:313:6
+.   .   CALLFUNC-Args
+.   .   .   NAME-main..autotmp_35 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used SLICE-[]any tc(1) # streamutils.go:24:20
+.   RETURN tc(1) # streamutils.go:25:9
+.   RETURN-Results
+.   .   AS tc(1) # streamutils.go:25:9
+.   .   .   NAME-streamutils.~r0 esc(no) Class:PPARAMOUT Offset:0 OnStack error tc(1) # streamutils.go:16:31
+.   .   .   NIL error tc(1) # streamutils.go:25:16
+
+before walk streamutils.PrintSlice[uint32]
+.   AS tc(1) # streamutils.go:16:6
+.   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:16:6
+.   .   CALLFUNC error tc(1) # streamutils.go:16:6
+.   .   CALLFUNC-Fun
+.   .   .   NAME-streamutils.PrintSlice[go.shape.uint32] Class:PFUNC Offset:0 Used FUNC-func(*[4]uintptr, []go.shape.uint32) error tc(1) # streamutils.go:16:6
+.   .   CALLFUNC-Args
+.   .   .   ADDR PTR-*[4]uintptr tc(1) # streamutils.go:16:6
+.   .   .   .   NAME-streamutils..dict.PrintSlice[uint32] Class:PEXTERN Offset:0 Addrtaken ARRAY-[4]uintptr tc(1) # <autogenerated>:1:0
+.   .   .   NAME-streamutils.s esc(no) Class:PPARAM DictIndex:1 Offset:0 OnStack Used SLICE-[]uint32 tc(1) # streamutils.go:16:24
+.   RETURN tc(1) # streamutils.go:16:6
+.   RETURN-Results
+.   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:16:6
+after walk streamutils.PrintSlice[uint32]
+.   AS tc(1) # streamutils.go:16:6
+.   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:16:6
+.   .   CALLFUNC Walked error tc(1) # streamutils.go:16:6
+.   .   CALLFUNC-Fun
+.   .   .   NAME-streamutils.PrintSlice[go.shape.uint32] Class:PFUNC Offset:0 Used FUNC-func(*[4]uintptr, []go.shape.uint32) error tc(1) # streamutils.go:16:6
+.   .   CALLFUNC-Args
+.   .   .   ADDR PTR-*[4]uintptr tc(1) # streamutils.go:16:6
+.   .   .   .   NAME-streamutils..dict.PrintSlice[uint32] Class:PEXTERN Offset:0 Addrtaken ARRAY-[4]uintptr tc(1) # <autogenerated>:1:0
+.   .   .   NAME-streamutils.s esc(no) Class:PPARAM DictIndex:1 Offset:0 OnStack Used SLICE-[]uint32 tc(1) # streamutils.go:16:24
+.   RETURN tc(1) # streamutils.go:16:6
+.   RETURN-Results
+.   .   AS tc(1) # streamutils.go:16:6
+.   .   .   NAME-streamutils.~r0 esc(no) Class:PPARAMOUT Offset:0 OnStack error tc(1) # streamutils.go:16:31
+.   .   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # streamutils.go:16:6
+
+before walk type..eq.[2]error
+.   AS tc(1) # <autogenerated>:1:0
+.   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   LITERAL-0 int tc(1) # <autogenerated>:1:0
+.   FOR tc(1) # <autogenerated>:1:0
+.   FOR-Cond
+.   .   LT bool tc(1) # <autogenerated>:1:0
+.   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   .   LITERAL-2 int tc(1) # <autogenerated>:1:0
+.   FOR-Post
+.   .   BLOCK # <autogenerated>:1:0
+.   FOR-Body
+.   .   IF tc(1) # <autogenerated>:1:0
+.   .   IF-Cond
+.   .   .   EQ bool tc(1) # <autogenerated>:1:0
+.   .   .   .   INDEX Bounded error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main.p Class:PPARAM Offset:0 OnStack Used PTR-*[2]error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   .   .   INDEX Bounded error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main.q Class:PPARAM Offset:0 OnStack Used PTR-*[2]error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   IF-Else
+.   .   .   GOTO main..neq0 tc(1) # <autogenerated>:1:0
+.   .   AS tc(1) # <autogenerated>:1:0
+.   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   .   ADD int tc(1) # <autogenerated>:1:0
+.   .   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   .   .   LITERAL-1 int tc(1) # <autogenerated>:1:0
+.   AS tc(1) # <autogenerated>:1:0
+.   .   NAME-main.r Class:PPARAMOUT Offset:0 OnStack bool tc(1) # <autogenerated>:1:0
+.   .   LITERAL-true bool tc(1) # <autogenerated>:1:0
+.   LABEL main..ret1 tc(1) # <autogenerated>:1:0
+.   RETURN tc(1) # <autogenerated>:1:0
+.   LABEL main..neq0 tc(1) # <autogenerated>:1:0
+.   AS tc(1) # <autogenerated>:1:0
+.   .   NAME-main.r Class:PPARAMOUT Offset:0 OnStack bool tc(1) # <autogenerated>:1:0
+.   .   LITERAL-false bool tc(1) # <autogenerated>:1:0
+.   GOTO main..ret1 tc(1) # <autogenerated>:1:0
+after walk type..eq.[2]error
+.   AS tc(1) # <autogenerated>:1:0
+.   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   LITERAL-0 int tc(1) # <autogenerated>:1:0
+.   FOR tc(1) # <autogenerated>:1:0
+.   FOR-Cond
+.   .   LT bool tc(1) # <autogenerated>:1:0
+.   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   .   LITERAL-2 int tc(1) # <autogenerated>:1:0
+.   FOR-Post
+.   .   BLOCK # <autogenerated>:1:0
+.   FOR-Body
+.   .   IF-init
+.   .   .   AS tc(1) # <autogenerated>:1:0
+.   .   .   .   NAME-main..autotmp_4 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # <autogenerated>:1:0
+.   .   .   .   INDEX Bounded error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main.q Class:PPARAM Offset:0 OnStack Used PTR-*[2]error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   .   AS tc(1) # <autogenerated>:1:0
+.   .   .   .   NAME-main..autotmp_5 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # <autogenerated>:1:0
+.   .   .   .   INDEX Bounded error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   DEREF Implicit ARRAY-[2]error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main.p Class:PPARAM Offset:0 OnStack Used PTR-*[2]error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   IF tc(1) # <autogenerated>:1:0
+.   .   IF-Cond
+.   .   .   ANDAND bool tc(1) # <autogenerated>:1:0
+.   .   .   .   EQ bool tc(1) # <autogenerated>:1:0
+.   .   .   .   .   ITAB PTR-*uintptr tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main..autotmp_5 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   ITAB PTR-*uintptr tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main..autotmp_4 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # <autogenerated>:1:0
+.   .   .   .   CALLFUNC Walked bool tc(1) # <autogenerated>:1:0
+.   .   .   .   CALLFUNC-Fun
+.   .   .   .   .   NAME-runtime.ifaceeq Class:PFUNC Offset:0 Used FUNC-func(*uintptr, unsafe.Pointer, unsafe.Pointer) bool tc(1)
+.   .   .   .   CALLFUNC-Args
+.   .   .   .   .   ITAB PTR-*uintptr tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main..autotmp_5 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   IDATA UNSAFEPTR-unsafe.Pointer tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main..autotmp_5 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # <autogenerated>:1:0
+.   .   .   .   .   IDATA UNSAFEPTR-unsafe.Pointer tc(1) # <autogenerated>:1:0
+.   .   .   .   .   .   NAME-main..autotmp_4 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used error tc(1) # <autogenerated>:1:0
+.   .   IF-Else
+.   .   .   GOTO main..neq0 tc(1) # <autogenerated>:1:0
+.   .   AS tc(1) # <autogenerated>:1:0
+.   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   .   ADD int tc(1) # <autogenerated>:1:0
+.   .   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # <autogenerated>:1:0
+.   .   .   .   LITERAL-1 int tc(1) # <autogenerated>:1:0
+.   AS tc(1) # <autogenerated>:1:0
+.   .   NAME-main.r Class:PPARAMOUT Offset:0 OnStack bool tc(1) # <autogenerated>:1:0
+.   .   LITERAL-true bool tc(1) # <autogenerated>:1:0
+.   LABEL main..ret1 tc(1) # <autogenerated>:1:0
+.   RETURN tc(1) # <autogenerated>:1:0
+.   LABEL main..neq0 tc(1) # <autogenerated>:1:0
+.   AS tc(1) # <autogenerated>:1:0
+.   .   NAME-main.r Class:PPARAMOUT Offset:0 OnStack bool tc(1) # <autogenerated>:1:0
+.   .   LITERAL-false bool tc(1) # <autogenerated>:1:0
+.   GOTO main..ret1 tc(1) # <autogenerated>:1:0
