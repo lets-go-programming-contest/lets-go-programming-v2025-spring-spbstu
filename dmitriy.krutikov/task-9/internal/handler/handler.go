@@ -1,4 +1,4 @@
-package contact
+package handler
 
 import (
 	"database/sql"
@@ -8,13 +8,15 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+
+	"phonebook/internal/contact"
 )
 
 type Handler struct {
-	service Service
+	service contact.Service
 }
 
-func NewHandler(service Service) *Handler {
+func NewHandler(service contact.Service) *Handler {
 	return &Handler{service: service}
 }
 
@@ -61,7 +63,7 @@ func (h *Handler) HandleSingleContact(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) getContactByName(w http.ResponseWriter, r *http.Request, name string) {
-	contact, err := h.service.GetContactByName(name)
+	c, err := h.service.GetContactByName(name)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			http.Error(w, "Contact not found", http.StatusNotFound)
@@ -72,12 +74,12 @@ func (h *Handler) getContactByName(w http.ResponseWriter, r *http.Request, name 
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(SuccessResponse{
+	json.NewEncoder(w).Encode(contact.SuccessResponse{
 		Message: "Contact retrieved successfully",
-		Data: ContactResponse{
-			ID:    contact.ID,
-			Name:  contact.Name,
-			Phone: contact.Phone,
+		Data: contact.ContactResponse{
+			ID:    c.ID,
+			Name:  c.Name,
+			Phone: c.Phone,
 		},
 	})
 }
@@ -93,7 +95,7 @@ func (h *Handler) deleteContactByName(w http.ResponseWriter, r *http.Request, na
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(SuccessResponse{
+	json.NewEncoder(w).Encode(contact.SuccessResponse{
 		Message: "Contact deleted successfully",
 	})
 }
@@ -109,7 +111,7 @@ func (h *Handler) deleteContactByID(w http.ResponseWriter, r *http.Request, id i
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(SuccessResponse{
+	json.NewEncoder(w).Encode(contact.SuccessResponse{
 		Message: "Contact deleted successfully",
 	})
 }
@@ -120,9 +122,9 @@ func (h *Handler) getAllContacts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var response []ContactResponse
+	var response []contact.ContactResponse
 	for _, c := range contacts {
-		response = append(response, ContactResponse{
+		response = append(response, contact.ContactResponse{
 			ID:    c.ID,
 			Name:  c.Name,
 			Phone: c.Phone,
@@ -130,14 +132,14 @@ func (h *Handler) getAllContacts(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(SuccessResponse{
+	json.NewEncoder(w).Encode(contact.SuccessResponse{
 		Message: "Contacts retrieved successfully",
 		Data:    response,
 	})
 }
 
 func (h *Handler) getContactByID(w http.ResponseWriter, r *http.Request, id int) {
-	contact, err := h.service.GetContactByID(id)
+	c, err := h.service.GetContactByID(id)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			http.Error(w, "Contact not found", http.StatusNotFound)
@@ -148,18 +150,18 @@ func (h *Handler) getContactByID(w http.ResponseWriter, r *http.Request, id int)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(SuccessResponse{
+	json.NewEncoder(w).Encode(contact.SuccessResponse{
 		Message: "Contact retrieved successfully",
-		Data: ContactResponse{
-			ID:    contact.ID,
-			Name:  contact.Name,
-			Phone: contact.Phone,
+		Data: contact.ContactResponse{
+			ID:    c.ID,
+			Name:  c.Name,
+			Phone: c.Phone,
 		},
 	})
 }
 
 func (h *Handler) createContact(w http.ResponseWriter, r *http.Request) {
-	var c Contact
+	var c contact.Contact
 	if err := json.NewDecoder(r.Body).Decode(&c); err != nil {
 		http.Error(w, "Invalid request payload", http.StatusBadRequest)
 		return
@@ -177,9 +179,9 @@ func (h *Handler) createContact(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(SuccessResponse{
+	json.NewEncoder(w).Encode(contact.SuccessResponse{
 		Message: "Contact created successfully",
-		Data: ContactResponse{
+		Data: contact.ContactResponse{
 			ID:    createdContact.ID,
 			Name:  createdContact.Name,
 			Phone: createdContact.Phone,
@@ -188,7 +190,7 @@ func (h *Handler) createContact(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) updateContact(w http.ResponseWriter, r *http.Request, id int) {
-	var c Contact
+	var c contact.Contact
 	if err := json.NewDecoder(r.Body).Decode(&c); err != nil {
 		http.Error(w, "Invalid request payload", http.StatusBadRequest)
 		return
@@ -207,9 +209,9 @@ func (h *Handler) updateContact(w http.ResponseWriter, r *http.Request, id int) 
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(SuccessResponse{
+	json.NewEncoder(w).Encode(contact.SuccessResponse{
 		Message: "Contact updated successfully",
-		Data: ContactResponse{
+		Data: contact.ContactResponse{
 			ID:    updatedContact.ID,
 			Name:  updatedContact.Name,
 			Phone: updatedContact.Phone,
@@ -228,7 +230,7 @@ func (h *Handler) deleteContact(w http.ResponseWriter, r *http.Request, id int) 
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(SuccessResponse{
+	json.NewEncoder(w).Encode(contact.SuccessResponse{
 		Message: "Contact deleted successfully",
 	})
 }

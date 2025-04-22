@@ -34,7 +34,7 @@ func InitDB() (*sql.DB, error) {
 			phone TEXT NOT NULL UNIQUE
 		)
 	`)
-	
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to create table: %v", err)
 	}

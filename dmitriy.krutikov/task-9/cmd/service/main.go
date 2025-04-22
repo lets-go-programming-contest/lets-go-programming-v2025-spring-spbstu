@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"phonebook/internal/contact"
 	"phonebook/internal/database"
+	"phonebook/internal/handler"
 )
 
 func main() {
@@ -16,7 +17,7 @@ func main() {
 
 	contactRepo := contact.NewPostgresRepository(db)
 	contactService := contact.NewService(contactRepo)
-	contactHandler := contact.NewHandler(contactService)
+	contactHandler := handler.NewHandler(contactService)
 
 	http.HandleFunc("/contacts", contactHandler.HandleContacts)
 	http.HandleFunc("/contacts/", contactHandler.HandleSingleContact)

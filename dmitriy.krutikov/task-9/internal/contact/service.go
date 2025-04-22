@@ -21,12 +21,17 @@ type contactService struct {
 
 var phoneRegex = regexp.MustCompile(`^\+[1-9]\d{1,14}$`)
 
+const (
+	minNameLen     = 2
+	maxNameLen     = 52
+)
+
 func isValidPhone(phone string) bool {
 	return phoneRegex.MatchString(phone)
 }
 
 func isValidName(name string) bool {
-	return len(name) >= 2 && len(name) <= 50
+	return len(name) >= minNameLen && len(name) <= maxNameLen
 }
 
 func NewService(repo Repository) Service {
@@ -48,7 +53,7 @@ func (s *contactService) GetContactByID(id int) (Contact, error) {
 
 func (s *contactService) CreateContact(c Contact) (Contact, error) {
 	if !isValidName(c.Name) {
-		return Contact{}, errors.New("invalid name")
+		return Contact{}, errors.New("invalid name (need 2...52 letters)")
 	}
 
 	if !isValidPhone(c.Phone) {
