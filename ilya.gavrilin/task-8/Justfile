@@ -1,23 +1,23 @@
 default: build
 
 clean:
-	rm -f task-5-artifacts ssa.html fib.o
+	rm -f task-8-artifacts ssa.html fib.o
 	cd cmd/service && rm -f generated_fib.go
 
 generate:
 	cd cmd/service && go generate
 
 build: generate
-	cd cmd/service && go build -o ../../task-5-artifacts .
+	cd cmd/service && go build -o ../../task-8-artifacts .
 
 build-debug: generate
-	cd cmd/service && go build -tags debug -o ../../task-5-artifacts .
+	cd cmd/service && go build -tags debug -o ../../task-8-artifacts .
 
 build-ld: generate
-	cd cmd/service && go build -ldflags "-X main.version=1.0.0" -o ../../task-5-artifacts .
+	cd cmd/service && go build -ldflags "-X main.version=1.0.0" -o ../../task-8-artifacts .
 
 run: build
-	./task-5-artifacts
+	./task-8-artifacts
 
 ast:
 	go tool compile -W internal/fib/fib.go

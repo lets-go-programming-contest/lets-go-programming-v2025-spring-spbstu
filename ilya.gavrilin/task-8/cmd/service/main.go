@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"task-5/internal/debug"
-	"task-5/internal/fib"
+	"task-8/internal/debug"
+	"task-8/internal/fib"
 )
 
 // Version set via ldflags; default is "dev"

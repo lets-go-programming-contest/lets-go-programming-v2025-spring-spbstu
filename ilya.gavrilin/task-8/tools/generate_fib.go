@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"task-5/internal/fib"
+	"task-8/internal/fib"
 )
 
 func main() {
