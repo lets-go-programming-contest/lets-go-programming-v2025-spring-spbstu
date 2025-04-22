@@ -1,0 +1,144 @@
+{
+  "Data": [
+    {
+      "NumCode": "300",
+      "CharCode": "GRD",
+      "Value": "73.6"
+    },
+    {
+      "NumCode": "56",
+      "CharCode": "BEF",
+      "Value": "61.4"
+    },
+    {
+      "NumCode": "980",
+      "CharCode": "UAH",
+      "Value": "52.9"
+    },
+    {
+      "NumCode": "792",
+      "CharCode": "TRL",
+      "Value": "42.6"
+    },
+    {
+      "NumCode": "246",
+      "CharCode": "FIM",
+      "Value": "41.7"
+    },
+    {
+      "NumCode": "826",
+      "CharCode": "GBP",
+      "Value": "41.0"
+    },
+    {
+      "NumCode": "250",
+      "CharCode": "FRF",
+      "Value": "37.8"
+    },
+    {
+      "NumCode": "960",
+      "CharCode": "XDR",
+      "Value": "36.2"
+    },
+    {
+      "NumCode": "352",
+      "CharCode": "ISK",
+      "Value": "34.5"
+    },
+    {
+      "NumCode": "208",
+      "CharCode": "DKK",
+      "Value": "33.2"
+    },
+    {
+      "NumCode": "372",
+      "CharCode": "IEP",
+      "Value": "31.4"
+    },
+    {
+      "NumCode": "578",
+      "CharCode": "NOK",
+      "Value": "30.8"
+    },
+    {
+      "NumCode": "752",
+      "CharCode": "SEK",
+      "Value": "29.6"
+    },
+    {
+      "NumCode": "840",
+      "CharCode": "USD",
+      "Value": "27.7"
+    },
+    {
+      "NumCode": "974",
+      "CharCode": "BYR",
+      "Value": "27.6"
+    },
+    {
+      "NumCode": "392",
+      "CharCode": "JPY",
+      "Value": "25.8"
+    },
+    {
+      "NumCode": "978",
+      "CharCode": "EUR",
+      "Value": "24.8"
+    },
+    {
+      "NumCode": "398",
+      "CharCode": "KZT",
+      "Value": "19.4"
+    },
+    {
+      "NumCode": "124",
+      "CharCode": "CAD",
+      "Value": "18.7"
+    },
+    {
+      "NumCode": "40",
+      "CharCode": "ATS",
+      "Value": "18.0"
+    },
+    {
+      "NumCode": "702",
+      "CharCode": "SGD",
+      "Value": "16.2"
+    },
+    {
+      "NumCode": "756",
+      "CharCode": "CHF",
+      "Value": "15.9"
+    },
+    {
+      "NumCode": "36",
+      "CharCode": "AUD",
+      "Value": "15.8"
+    },
+    {
+      "NumCode": "724",
+      "CharCode": "ESP",
+      "Value": "14.9"
+    },
+    {
+      "NumCode": "380",
+      "CharCode": "ITL",
+      "Value": "12.8"
+    },
+    {
+      "NumCode": "276",
+      "CharCode": "DEM",
+      "Value": "12.7"
+    },
+    {
+      "NumCode": "620",
+      "CharCode": "PTE",
+      "Value": "12.3"
+    },
+    {
+      "NumCode": "528",
+      "CharCode": "NLG",
+      "Value": "11.2"
+    }
+  ]
+}

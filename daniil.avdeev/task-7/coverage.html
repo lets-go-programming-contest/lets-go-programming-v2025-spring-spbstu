@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>db: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">example_mock/cmd/db/main.go (0.0%)</option>
+				
+				<option value="file1">example_mock/cmd/wifi/main.go (0.0%)</option>
+				
+				<option value="file2">example_mock/internal/db/db_functions.go (83.9%)</option>
+				
+				<option value="file3">example_mock/internal/wifi/wi-fi.go (93.3%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package main
+
+import (
+        "database/sql"
+        dbPack "example_mock/internal/db"
+        "fmt"
+        "log"
+
+        _ "github.com/lib/pq"
+)
+
+func main() <span class="cov0" title="0">{
+        connStr := "user=username dbname=mydb sslmode=disable"
+
+        db, err := sql.Open("postgres", connStr)
+        if err != nil </span><span class="cov0" title="0">{
+                log.Fatal(err)
+        }</span>
+        <span class="cov0" title="0">defer func() </span><span class="cov0" title="0">{
+                _ = db.Close()
+        }</span>()
+
+        <span class="cov0" title="0">dbService := dbPack.New(db)
+
+        names, err := dbService.GetNames()
+  if err != nil </span><span class="cov0" title="0">{
+                log.Fatal(err)
+        }</span>
+
+        <span class="cov0" title="0">for _, name := range names </span><span class="cov0" title="0">{
+                fmt.Println(name)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package main
+
+import (
+        myWifi "example_mock/internal/wifi"
+        "fmt"
+        "github.com/mdlayher/wifi"
+)
+
+func main() <span class="cov0" title="0">{
+        wifiClient, err := wifi.New()
+        if err != nil </span><span class="cov0" title="0">{
+                fmt.Printf("Ошибка при создании wifiClient: %s\n", err.Error())
+                return
+        }</span>
+
+        <span class="cov0" title="0">wifiService := myWifi.New(wifiClient)
+
+        addrs, err := wifiService.GetAddresses()
+        if err != nil </span><span class="cov0" title="0">{
+                fmt.Printf("Ошибка при получении адресов: %s\n", err.Error())
+                return
+        }</span>
+
+        <span class="cov0" title="0">for _, addr := range addrs </span><span class="cov0" title="0">{
+                fmt.Println(addr)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package db
+
+import (
+        "database/sql"
+)
+
+type Database interface {
+        Query(query string, args ...any) (*sql.Rows, error)
+}
+
+type DBService struct {
+        DB Database
+}
+
+func New(db Database) DBService <span class="cov0" title="0">{
+        return DBService{DB: db}
+}</span>
+
+func (service DBService) GetNames() ([]string, error) <span class="cov8" title="1">{
+        query := "SELECT name FROM users"
+
+        rows, err := service.DB.Query(query)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">defer func() </span><span class="cov8" title="1">{
+                _ = rows.Close()
+        }</span>()
+
+        <span class="cov8" title="1">var names []string
+
+        for rows.Next() </span><span class="cov8" title="1">{
+                var name string
+                if err := rows.Scan(&amp;name); err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+                <span class="cov8" title="1">names = append(names, name)</span>
+        }
+
+        <span class="cov8" title="1">if err := rows.Err(); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return names, nil</span>
+}
+
+func (service DBService) SelectUniqueValues(columnName string, tableName string) ([]string, error) <span class="cov8" title="1">{
+        query := "SELECT DISTINCT " + columnName + " FROM " + tableName
+        rows, err := service.DB.Query(query)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">defer func() </span><span class="cov8" title="1">{
+                _ = rows.Close()
+        }</span>()
+
+        <span class="cov8" title="1">var values []string
+        for rows.Next() </span><span class="cov8" title="1">{
+                var value string
+                if err := rows.Scan(&amp;value); err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+                <span class="cov8" title="1">values = append(values, value)</span>
+        }
+
+        <span class="cov8" title="1">if err := rows.Err(); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return values, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package wifi
+
+import (
+        "github.com/mdlayher/wifi"
+        "net"
+)
+
+type WiFi interface {
+        Interfaces() ([]*wifi.Interface, error)
+}
+
+type WiFiService struct {
+        WiFi WiFi
+}
+
+func New(wifi WiFi) WiFiService <span class="cov0" title="0">{
+        return WiFiService{WiFi: wifi}
+}</span>
+
+func (service WiFiService) GetAddresses() ([]net.HardwareAddr, error) <span class="cov8" title="1">{
+        interfaces, err := service.WiFi.Interfaces()
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">var addrs []net.HardwareAddr
+        for _, iface := range interfaces </span><span class="cov8" title="1">{
+                addrs = append(addrs, iface.HardwareAddr)
+        }</span>
+
+        <span class="cov8" title="1">return addrs, nil</span>
+}
+
+func (service WiFiService) GetNames() ([]string, error) <span class="cov8" title="1">{
+        interfaces, err := service.WiFi.Interfaces()
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">var name_list []string
+        for _, iface := range interfaces </span><span class="cov8" title="1">{
+                name_list = append(name_list, iface.Name)
+        }</span>
+        <span class="cov8" title="1">return name_list, nil</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

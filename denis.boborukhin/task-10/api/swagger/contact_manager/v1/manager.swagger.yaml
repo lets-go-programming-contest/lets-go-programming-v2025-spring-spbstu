@@ -1,0 +1,177 @@
+swagger: "2.0"
+info:
+  title: contact_manager/v1/manager.proto
+  version: version not set
+tags:
+  - name: ContactManagerService
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /v1/contacts:
+    get:
+      summary: List all contacts
+      operationId: ListContacts
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v1ListContactsResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      tags:
+        - ContactManagerService
+    post:
+      summary: Create a new contact
+      operationId: CreateContact
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v1CreateContactResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1CreateContactRequest'
+      tags:
+        - ContactManagerService
+  /v1/contacts/{id}:
+    get:
+      summary: Get a contact by ID
+      operationId: GetContact
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v1GetContactResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      tags:
+        - ContactManagerService
+    delete:
+      summary: Delete a contact
+      operationId: DeleteContact
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v1DeleteContactResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      tags:
+        - ContactManagerService
+    put:
+      summary: Update a contact
+      operationId: UpdateContact
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v1UpdateContactResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ContactManagerServiceUpdateContactBody'
+      tags:
+        - ContactManagerService
+definitions:
+  ContactManagerServiceUpdateContactBody:
+    type: object
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+  protobufAny:
+    type: object
+    properties:
+      '@type':
+        type: string
+    additionalProperties: {}
+  rpcStatus:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      details:
+        type: array
+        items:
+          type: object
+          $ref: '#/definitions/protobufAny'
+  v1Contact:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+  v1CreateContactRequest:
+    type: object
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+  v1CreateContactResponse:
+    type: object
+    properties:
+      contact:
+        $ref: '#/definitions/v1Contact'
+  v1DeleteContactResponse:
+    type: object
+  v1GetContactResponse:
+    type: object
+    properties:
+      contact:
+        $ref: '#/definitions/v1Contact'
+  v1ListContactsResponse:
+    type: object
+    properties:
+      contacts:
+        type: array
+        items:
+          type: object
+          $ref: '#/definitions/v1Contact'
+  v1UpdateContactResponse:
+    type: object
+    properties:
+      contact:
+        $ref: '#/definitions/v1Contact'

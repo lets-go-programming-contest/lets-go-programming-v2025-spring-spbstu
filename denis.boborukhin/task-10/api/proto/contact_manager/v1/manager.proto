@@ -1,0 +1,86 @@
+syntax = "proto3";
+package contact_manager.v1;
+
+import "buf/validate/validate.proto";
+import "google/api/annotations.proto";
+
+option go_package = "contact_manager/gen/proto/contact_manager/v1;contact_manager";
+
+// Service for managing contacts
+service ContactManagerService {
+  // Create a new contact
+  rpc CreateContact(CreateContactRequest) returns (CreateContactResponse) {
+    option (google.api.http) = {
+      post: "/v1/contacts"
+      body: "*"
+    };
+  }
+
+  // Get a contact by ID
+  rpc GetContact(GetContactRequest) returns (GetContactResponse) {
+    option (google.api.http) = {get: "/v1/contacts/{id}"};
+  }
+
+  // List all contacts
+  rpc ListContacts(ListContactsRequest) returns (ListContactsResponse) {
+    option (google.api.http) = {get: "/v1/contacts"};
+  }
+
+  // Update a contact
+  rpc UpdateContact(UpdateContactRequest) returns (UpdateContactResponse) {
+    option (google.api.http) = {
+      put: "/v1/contacts/{id}"
+      body: "*"
+    };
+  }
+
+  // Delete a contact
+  rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse) {
+    option (google.api.http) = {delete: "/v1/contacts/{id}"};
+  }
+}
+
+message Contact {
+  string id = 1;
+  string name = 2 [(buf.validate.field).string.min_len = 3];
+  string phone = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]{7,14}$"];
+}
+
+message CreateContactRequest {
+  string name = 1 [(buf.validate.field).string.min_len = 3];
+  string phone = 2 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]{7,14}$"];
+}
+
+message CreateContactResponse {
+  Contact contact = 1;
+}
+
+message GetContactRequest {
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+
+message GetContactResponse {
+  Contact contact = 1;
+}
+
+message ListContactsRequest {}
+
+message ListContactsResponse {
+  repeated Contact contacts = 1;
+}
+
+message UpdateContactRequest {
+  string id = 1 [(buf.validate.field).string.uuid = true];
+  string name = 2 [(buf.validate.field).string.min_len = 3];
+  string phone = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]{7,14}$"];
+}
+
+message UpdateContactResponse {
+  Contact contact = 1;
+}
+
+message DeleteContactRequest {
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+
+message DeleteContactResponse {}
