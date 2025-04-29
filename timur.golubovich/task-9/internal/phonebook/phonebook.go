@@ -2,7 +2,10 @@ package phonebook
 
 import (
 	"database/sql"
+	"fmt"
+
 	"github.com/google/uuid"
+	"github.com/jackc/pgconn"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -32,7 +35,7 @@ func New(dbPath string) (*Phonebook, error) {
 	sqlStmt := `CREATE TABLE IF NOT EXISTS contacts (
 		id TEXT PRIMARY KEY,
 		name TEXT,
-		phone TEXT
+		phone TEXT UNIQUE
 	);`
 	_, err = db.Exec(sqlStmt)
 	return &Phonebook{db}, err
@@ -68,14 +71,23 @@ func (pb *Phonebook) GetByID(id uuid.UUID) (Contact, error) {
 	return c, nil
 }
 
+func checkForDuplicate(err error) error {
+	if err != nil {
+		if pgErr, ok := err.(*pgconn.PgError); ok && pgErr.Code == "23505" {
+			return fmt.Errorf("duplicate entry: %s", pgErr.Detail)
+		}
+	}
+	return err
+}
+
 func (pb *Phonebook) Create(c Contact) error {
 	_, err := pb.db.Exec("INSERT INTO contacts (id, name, phone) VALUES (?, ?, ?)", c.ID.String(), c.Name, c.Phone)
-	return err
+	return checkForDuplicate(err)
 }
 
 func (pb *Phonebook) Update(id uuid.UUID, c Contact) error {
 	_, err := pb.db.Exec("UPDATE contacts SET name = ?, phone = ? WHERE id = ?", c.Name, c.Phone, id.String())
-	return err
+	return checkForDuplicate(err)
 }
 
 func (pb *Phonebook) Delete(id uuid.UUID) error {

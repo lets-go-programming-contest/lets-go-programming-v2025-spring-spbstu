@@ -4,9 +4,10 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"task-9/internal/service"
+
 	"github.com/google/uuid"
 	"github.com/gorilla/mux"
-	"task-9/internal/service"
 )
 
 type Handler struct {
@@ -61,7 +62,7 @@ func (h *Handler) Create(w http.ResponseWriter, r *http.Request) {
 	}
 	c, err := h.svc.Create(input.Name, input.Phone)
 	if err != nil {
-		http.Error(w, "Unable to create contact", http.StatusBadRequest)
+		http.Error(w, "Unable to create contact: "+err.Error(), http.StatusBadRequest)
 		return
 	}
 	err = json.NewEncoder(w).Encode(c)
@@ -78,11 +79,11 @@ func (h *Handler) Update(w http.ResponseWriter, r *http.Request) {
 	}
 	err := json.NewDecoder(r.Body).Decode(&input)
 	if err != nil {
-		http.Error(w, "Encoding response", http.StatusInternalServerError)
+		http.Error(w, "Encoding response", http.StatusBadRequest)
 	}
 	err = h.svc.Update(id, input.Name, input.Phone)
 	if err != nil {
-		http.Error(w, "Update failed", http.StatusInternalServerError)
+		http.Error(w, "Update failed: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.WriteHeader(http.StatusOK)
