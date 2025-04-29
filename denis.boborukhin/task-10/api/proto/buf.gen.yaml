@@ -1,0 +1,33 @@
+version: v1
+managed:
+  enabled: true
+plugins:
+  - name: go
+    out: ../../gen/proto
+    opt:
+      - paths=source_relative
+  - name: go-grpc
+    out: ../../gen/proto
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
+  - name: cobra
+    out: ../../gen/proto
+    opt:
+      - paths=source_relative
+  - name: grpc-gateway
+    out: ../../gen/proto
+    opt:
+      - paths=source_relative
+  - name: openapiv2
+    out: ../swagger
+    opt:
+      - simple_operation_ids=true
+      - output_format=yaml
+      - version=true
+      - omit_enum_default_value=true
+  - name: doc
+    out: ../../docs/gen/proto
+    opt:
+      - markdown,protoc-gen-doc.tmpl
+

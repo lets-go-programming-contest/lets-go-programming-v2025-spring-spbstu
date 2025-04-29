@@ -1,0 +1,36 @@
+name: ilya_gavrilin
+
+on:
+  push:
+    branches: [ "ilya.gavrilin/task-7" ]
+
+jobs:
+  Go-Checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.23.5
+
+    - name: Install mockery
+      working-directory: ./ilya.gavrilin/task-6
+      run: go install github.com/vektra/mockery/v2@latest
+
+    - name: Generate mocks
+      working-directory: ./ilya.gavrilin/task-6
+      run: |
+        go generate ./...
+        go mod tidy
+
+    - name: Run tests
+      working-directory: ./ilya.gavrilin/task-6
+      run: go test -v ./...
+
+    - name: Run golangci-lint
+      uses: golangci/golangci-lint-action@v6
+      with:
+        version: v1.64.2
+        working-directory: ./ilya.gavrilin/task-6
