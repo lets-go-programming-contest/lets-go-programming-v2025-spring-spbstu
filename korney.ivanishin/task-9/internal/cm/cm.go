@@ -32,7 +32,7 @@ var (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(64) NOT NULL,
     number VARCHAR(16) NOT NULL,
-    CONSTRAINT unique_name_number UNIQUE (name)
+    CONSTRAINT unique_name_number UNIQUE (number)
   )`
         queryAddCont = `
   INSERT INTO contacts (name, number)
