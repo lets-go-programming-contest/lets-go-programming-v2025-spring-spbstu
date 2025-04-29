@@ -14,7 +14,6 @@ var (
         errFailedRegExpComp = errors.New("failed to init regexp checker")
         errWrongNumFormat   = errors.New("phone number invalid format, need eleven digits")
         errFailedAddCont    = errors.New("failed adding a contact")
-        errFailedAddContID  = errors.New("failed adding a contact with specified id")
         errFailedDeleteCont = errors.New("database failed executing 'delete' query")
         errFailedCheckAff   = errors.New("failed to check affected rows")
         ErrContDelNotFound  = errors.New("contact to delete not found")
@@ -84,20 +83,11 @@ func (contMan *ContMan) Add(contact Contact) error {
                 return errWrongNumFormat
         }
         
-        if contact.ID == `` {
-                err := contMan.database.QueryRow(queryAddCont, contact.Name, contact.Number).Scan(&contact.ID)
-                if err != nil {
-                        return errors.Join(errFailedAddCont, err)
-                }
-                
-                return nil
-        }
-        
-        _, err = contMan.database.Exec(queryAddContID, contact.ID, contact.Name, contact.Number)
+        err = contMan.database.QueryRow(queryAddCont, contact.Name, contact.Number).Scan(&contact.ID)
         if err != nil {
-                return errors.Join(errFailedAddContID, err)
+                return errors.Join(errFailedAddCont, err)
         }
-        
+
         return nil
 }
 
