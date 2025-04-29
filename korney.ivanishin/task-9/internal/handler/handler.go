@@ -52,7 +52,11 @@ func (h *Handler) HandleAllContacts(writer http.ResponseWriter, request *http.Re
 
                 err = h.cdb.Add(contact)
                 if err != nil {
-                        http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusInternalServerError)
+                        if errors.Is(err, cm.ErrDuplicateAdded) {
+                                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusConflict)
+                        } else {
+                                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusInternalServerError)
+                        }
                         return
                 }
 
@@ -103,8 +107,10 @@ func (h *Handler) HandleContact(writer http.ResponseWriter, request *http.Reques
                 if err != nil {
                         if errors.Is(err, cm.ErrContUpdNotFound) {
                                 http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusNotFound)
+                        } else if errors.Is(err, cm.ErrDuplicateAdded) {
+                                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusConflict)
                         } else {
-                                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusBadRequest)
+                                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusInternalServerError)
                         }
                         return
                 }

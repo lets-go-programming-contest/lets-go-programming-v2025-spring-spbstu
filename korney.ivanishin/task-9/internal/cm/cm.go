@@ -22,6 +22,7 @@ var (
         errFailedGetRowsAff = errors.New("failed to retrieve rows affected")
         ErrContUpdNotFound  = errors.New("contact to update not found")
         errFailedRowScan    = errors.New("failed to scan one of rows selected")
+        ErrDuplicateAdded   = errors.New("tried to add a record with duplicate number")
 )
 
 // queries
@@ -31,7 +32,7 @@ var (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(64) NOT NULL,
     number VARCHAR(16) NOT NULL,
-    CONSTRAINT unique_name_number UNIQUE (number)
+    CONSTRAINT unique_number UNIQUE (number)
   )`
         queryAddCont = `
   INSERT INTO contacts (name, number)
@@ -85,7 +86,11 @@ func (contMan *ContMan) Add(contact Contact) error {
         
         err = contMan.database.QueryRow(queryAddCont, contact.Name, contact.Number).Scan(&contact.ID)
         if err != nil {
-                return errors.Join(errFailedAddCont, err)
+                if err.Error() == `pq: duplicate key value violates unique constraint "unique_number"` {
+                        return errors.Join(ErrDuplicateAdded, err)
+                } else {
+                        return errors.Join(errFailedAddCont, err)
+                }
         }
 
         return nil
@@ -152,7 +157,11 @@ func (contMan *ContMan) Update(contact Contact) error {
 
         result, err := contMan.database.Exec(queryUpdate, contact.Name, contact.Number, contact.ID)
         if err != nil {
-                return errors.Join(errFailedUpdateCont, err)
+                if err.Error() == `pq: duplicate key value violates unique constraint "unique_number"` {
+                        return errors.Join(ErrDuplicateAdded, err)
+                } else {
+                        return errors.Join(errFailedUpdateCont, err)
+                }
         }
 
         rowsAffected, err := result.RowsAffected()
