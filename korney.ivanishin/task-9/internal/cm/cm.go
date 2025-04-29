@@ -75,7 +75,7 @@ func (contMan *ContMan) Init() error {
 }
 
 func (contMan *ContMan) Add(contact Contact) error {
-        numberRegExp, err := regexp.Compile(`^\+?[0-9]{11}`)
+        numberRegExp, err := regexp.Compile(`^\+[0-9]?[0-9]{11}$`)
         if err != nil {
                 return errors.Join(errFailedRegExpComp, err)
         }
@@ -151,7 +151,7 @@ func (contMan *ContMan) Delete(id string) error {
 }
 
 func (contMan *ContMan) Update(contact Contact) error {
-        numberRegExp, err := regexp.Compile(`^\+?[0-9]{11}`)
+        numberRegExp, err := regexp.Compile(`^\+[0-9]?[0-9]{11}$`)
         if err != nil {
                 return errors.Join(errFailedRegExpComp, err)
         }
