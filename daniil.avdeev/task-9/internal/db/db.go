@@ -22,7 +22,7 @@ func NewSQLiteStorage(dbPath string) (*SQLiteStorage, error) {
 		CREATE TABLE IF NOT EXISTS contacts (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
 			name TEXT NOT NULL,
-			phone TEXT NOT NULL
+			phone TEXT UNIQUE NOT NULL
 		)
 	`)
 	if err != nil {
@@ -74,6 +74,7 @@ func (s *SQLiteStorage) CreateContact(contact contacts.Contact) (int, error) {
 		"INSERT INTO contacts (name, phone) VALUES (?, ?)",
 		contact.Name, contact.Phone,
 	)
+
 	if err != nil {
 		return 0, err
 	}

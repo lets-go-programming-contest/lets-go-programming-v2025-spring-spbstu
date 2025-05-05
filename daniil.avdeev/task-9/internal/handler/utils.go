@@ -1,22 +1,33 @@
 package handler
 
 import (
-  "errors"
 	"encoding/json"
+	"errors"
 	"net/http"
+	"regexp"
 
 	"github.com/realFrogboy/task-9/internal/contacts"
 )
 
 func checkContact(contact contacts.Contact) error {
-	if contact.Name == "" {
-		return errors.New("Name is required")
+	nameRegex, err := regexp.Compile(`[A-Za-z]+(\s[A-Za-z]+)*`)
+	if err != nil {
+		return errors.New("Faulty name regex")
 	}
 
-	if contact.Phone == "" {
-		return errors.New("Phone is required")
+	if !nameRegex.MatchString(contact.Name) {
+		return errors.New("Invalid name format")
 	}
-  return nil
+
+	phoneRegex, err := regexp.Compile(`(^8|7|\+7)((\d{10})|(\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}))`)
+	if err != nil {
+		return errors.New("Faulty phone regex")
+	}
+
+	if !phoneRegex.MatchString(contact.Phone) {
+		return errors.New("Invalid phone number format")
+	}
+	return nil
 }
 
 func respondWithError(w http.ResponseWriter, code int, message string) {

@@ -65,7 +65,7 @@ func (h *ContactHandler) CreateContact(w http.ResponseWriter, r *http.Request) {
 
 	id, err := h.db.CreateContact(contact)
 	if err != nil {
-		respondWithError(w, http.StatusInternalServerError, err.Error())
+		respondWithError(w, http.StatusBadRequest, err.Error())
 		return
 	}
 
