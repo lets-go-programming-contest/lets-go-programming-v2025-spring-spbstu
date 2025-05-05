@@ -4,8 +4,10 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"fmt"
 
 	"github.com/dmitriy.rumyantsev/task-9/internal/domain"
+	"github.com/lib/pq"
 )
 
 // ContactRepository implements the repository.ContactRepository interface using PostgreSQL
@@ -18,6 +20,14 @@ func NewContactRepository(db *sql.DB) *ContactRepository {
 	return &ContactRepository{
 		db: db,
 	}
+}
+
+// isUniqueViolation checks if the error is a PostgreSQL unique constraint violation
+func isUniqueViolation(err error) bool {
+	if pqErr, ok := err.(*pq.Error); ok {
+		return pqErr.Code == "23505" // PostgreSQL error code for unique violation
+	}
+	return false
 }
 
 // GetAll returns all contacts from the database
@@ -68,6 +78,9 @@ func (r *ContactRepository) Create(ctx context.Context, contact domain.Contact) 
 
 	err := r.db.QueryRowContext(ctx, query, contact.Name, contact.Phone).Scan(&contact.ID)
 	if err != nil {
+		if isUniqueViolation(err) {
+			return domain.Contact{}, fmt.Errorf("phone number already exists: %s", contact.Phone)
+		}
 		return domain.Contact{}, err
 	}
 
@@ -80,6 +93,9 @@ func (r *ContactRepository) Update(ctx context.Context, contact domain.Contact) 
 
 	result, err := r.db.ExecContext(ctx, query, contact.Name, contact.Phone, contact.ID)
 	if err != nil {
+		if isUniqueViolation(err) {
+			return fmt.Errorf("phone number already exists: %s", contact.Phone)
+		}
 		return err
 	}
 
@@ -122,7 +138,7 @@ func (r *ContactRepository) InitSchema() error {
 	CREATE TABLE IF NOT EXISTS contacts (
 		id SERIAL PRIMARY KEY,
 		name TEXT NOT NULL,
-		phone TEXT NOT NULL
+		phone TEXT NOT NULL UNIQUE
 	);`
 
 	_, err := r.db.Exec(query)

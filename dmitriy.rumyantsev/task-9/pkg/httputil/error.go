@@ -57,6 +57,16 @@ func NewNotFoundError(message, details string) ErrorResponse {
 	}
 }
 
+// NewConflictError creates an error with code 409 Conflict
+func NewConflictError(message, details string) ErrorResponse {
+	return ErrorResponse{
+		HTTPCode: http.StatusConflict,
+		Code:     409001,
+		Message:  message,
+		Details:  details,
+	}
+}
+
 // NewInternalServerError creates an error with code 500 Internal Server Error
 func NewInternalServerError(details string) ErrorResponse {
 	return ErrorResponse{

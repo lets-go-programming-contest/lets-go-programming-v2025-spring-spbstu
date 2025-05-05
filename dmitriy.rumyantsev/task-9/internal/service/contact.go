@@ -28,10 +28,7 @@ func NewContactService(repo repository.ContactRepository) ContactService {
 // validateName checks if the contact name is valid
 func validateName(name string) error {
 	if strings.TrimSpace(name) == "" {
-		return httputil.NewBadRequestError(
-			"Invalid name",
-			"Name cannot be empty",
-		)
+		return httputil.NewBadRequestError("Invalid name", "Name cannot be empty")
 	}
 	return nil
 }
@@ -97,7 +94,13 @@ func (s *contactService) Create(ctx context.Context, contact domain.Contact) (do
 
 	newContact, err := s.repo.Create(ctx, contact)
 	if err != nil {
-		return domain.Contact{}, fmt.Errorf("error creating contact: %w", err)
+		if strings.Contains(err.Error(), "phone number already exists") {
+			return domain.Contact{}, httputil.NewConflictError(
+				"Duplicate phone number",
+				fmt.Sprintf("The phone number %s is already registered", contact.Phone),
+			)
+		}
+		return domain.Contact{}, httputil.NewInternalServerError(err.Error())
 	}
 
 	return newContact, nil
@@ -122,13 +125,19 @@ func (s *contactService) Update(ctx context.Context, id int, contact domain.Cont
 	// Update the contact
 	err = s.repo.Update(ctx, contact)
 	if err != nil {
+		if strings.Contains(err.Error(), "phone number already exists") {
+			return domain.Contact{}, httputil.NewConflictError(
+				"Duplicate phone number",
+				fmt.Sprintf("The phone number %s is already registered", contact.Phone),
+			)
+		}
 		if errors.Is(err, sql.ErrNoRows) {
 			return domain.Contact{}, httputil.NewNotFoundError(
 				"Contact not found",
 				fmt.Sprintf("No contact found with ID: %d", id),
 			)
 		}
-		return domain.Contact{}, fmt.Errorf("error updating contact: %w", err)
+		return domain.Contact{}, httputil.NewInternalServerError(err.Error())
 	}
 
 	return contact, nil
