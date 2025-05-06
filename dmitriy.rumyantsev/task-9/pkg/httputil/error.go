@@ -41,7 +41,7 @@ func JSONError(w http.ResponseWriter, e ErrorResponse) {
 func NewBadRequestError(message, details string) ErrorResponse {
 	return ErrorResponse{
 		HTTPCode: http.StatusBadRequest,
-		Code:     400001,
+		Code:     400,
 		Message:  message,
 		Details:  details,
 	}
@@ -51,7 +51,7 @@ func NewBadRequestError(message, details string) ErrorResponse {
 func NewNotFoundError(message, details string) ErrorResponse {
 	return ErrorResponse{
 		HTTPCode: http.StatusNotFound,
-		Code:     404001,
+		Code:     404,
 		Message:  message,
 		Details:  details,
 	}
@@ -61,7 +61,7 @@ func NewNotFoundError(message, details string) ErrorResponse {
 func NewConflictError(message, details string) ErrorResponse {
 	return ErrorResponse{
 		HTTPCode: http.StatusConflict,
-		Code:     409001,
+		Code:     409,
 		Message:  message,
 		Details:  details,
 	}
@@ -71,7 +71,7 @@ func NewConflictError(message, details string) ErrorResponse {
 func NewInternalServerError(details string) ErrorResponse {
 	return ErrorResponse{
 		HTTPCode: http.StatusInternalServerError,
-		Code:     500001,
+		Code:     500,
 		Message:  "Internal Server Error",
 		Details:  details,
 	}
