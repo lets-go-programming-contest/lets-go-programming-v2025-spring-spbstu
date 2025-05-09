@@ -1,0 +1,4 @@
+db_port: "5432"
+db_pswd: "pswd"
+service_port: "8080"
+client_port: "11111"

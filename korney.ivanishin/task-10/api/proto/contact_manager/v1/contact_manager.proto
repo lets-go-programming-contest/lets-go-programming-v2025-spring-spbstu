@@ -1,0 +1,79 @@
+syntax = "proto3";
+package contact_manager.v1;
+
+import "buf/validate/validate.proto";
+
+option go_package = "github.com/quaiion/go-pracice/grpc-contact-manager/proto/contact_manager/v1;contact_manager";
+
+// Service for managing contacts
+service ContactManagerService {
+  // Create a new contact
+  rpc CreateContact(CreateContactRequest) returns (CreateContactResponse) {}
+
+  // Get a contact by ID
+  rpc GetContact(GetContactRequest) returns (GetContactResponse) {}
+
+  // List all contacts
+  rpc ListContacts(ListContactsRequest) returns (ListContactsResponse) {}
+
+  // Update a contact
+  rpc UpdateContact(UpdateContactRequest) returns (UpdateContactResponse) {}
+
+  // Delete a contact
+  rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse) {}
+}
+
+message Contact {
+  // Id of contact's record in DB
+  string id = 1;
+  // Name contact is associated with
+  string name = 2 [(buf.validate.field).string.max_len = 64];
+  // Phone number contact is associated with
+  string number = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{11}$"];
+}
+
+message CreateContactRequest {
+  // Name contact is associated with
+  string name = 1 [(buf.validate.field).string.max_len = 64];
+  // Phone number contact is associated with
+  string number = 2 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{11}$"];
+}
+
+message CreateContactResponse {
+  Contact contact = 1;
+}
+
+message GetContactRequest {
+  // Id of contact's record in DB
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+
+message GetContactResponse {
+  Contact contact = 1;
+}
+
+message ListContactsRequest {}
+
+message ListContactsResponse {
+  repeated Contact contacts = 1;
+}
+
+message UpdateContactRequest {
+  // Id of contact's record in DB
+  string id = 1 [(buf.validate.field).string.uuid = true];
+  // Name contact is associated with
+  string name = 2 [(buf.validate.field).string.max_len = 64];
+  // Phone number contact is associated with
+  string number = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{11}$"];
+}
+
+message UpdateContactResponse {
+  Contact contact = 1;
+}
+
+message DeleteContactRequest {
+  // Id of contact's record in DB
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+
+message DeleteContactResponse {}
