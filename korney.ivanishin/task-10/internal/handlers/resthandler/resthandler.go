@@ -59,7 +59,7 @@ func (h *Handler) HandleAllContacts(writer http.ResponseWriter, request *http.Re
                         return
                 }
 
-                numberRegExp, err := regexp.Compile(`^\\+[1-9][0-9]?[0-9]?[0-9]{11}$`)
+                numberRegExp, err := regexp.Compile(`^\+[1-9][0-9]?[0-9]?[0-9]{11}$`)
                 if err != nil {
                         genErrMsg(writer, errors.Join(errRegexInitFailed, err), http.StatusInternalServerError)
                         return
@@ -122,7 +122,7 @@ func (h *Handler) HandleContact(writer http.ResponseWriter, request *http.Reques
                         return
                 }
 
-                numberRegExp, err := regexp.Compile(`^\\+[1-9][0-9]?[0-9]?[0-9]{11}$`)
+                numberRegExp, err := regexp.Compile(`^\+[1-9][0-9]?[0-9]?[0-9]{11}$`)
                 if err != nil {
                         genErrMsg(writer, errors.Join(errRegexInitFailed, err), http.StatusInternalServerError)
                         return
