@@ -1,1 +1,1 @@
-client_port: "11111"
+service_port: "50051"

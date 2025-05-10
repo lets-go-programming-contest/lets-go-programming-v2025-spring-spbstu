@@ -11,11 +11,11 @@ import (
 )
 
 type ConfigParams struct {
-        ClientPort string `yaml:"client_port" validate:"required"`
+        ServicePort string `yaml:"service_port" validate:"required"`
 }
 
 func new() ConfigParams {
-        return ConfigParams{ ClientPort: `` }
+        return ConfigParams{ ServicePort: `` }
 }
 
 var (

@@ -20,7 +20,7 @@ func main() {
                 panic(errors.Join(errConfigFailed, err))
         }
 
-        address := `localhost:` + configParams.ClientPort
+        address := `localhost:` + configParams.ServicePort
 	cmd := grpcserver.ContactManagerServiceClientCommand(client.WithServerAddr(address))
 
         err = cmd.Execute()
