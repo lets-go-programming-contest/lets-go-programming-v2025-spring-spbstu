@@ -2,7 +2,6 @@ package config
 
 import (
 	"errors"
-	"flag"
 	"fmt"
 	"io/fs"
 	"os"
@@ -12,11 +11,11 @@ import (
 )
 
 type ConfigParams struct {
-        DBPort          string `yaml:"db_port"           validate:"required"`
-        DBPswd          string `yaml:"db_pswd"           validate:"required"`
-        GrpcServicePort string `yaml:"grpc_service_port" validate:"required"`
-        RestServicePort string `yaml:"rest_service_port" validate:"required"`
-        ClientPort      string `yaml:"client_port"       validate:"required"`
+        ClientPort string `yaml:"client_port" validate:"required"`
+}
+
+func new() ConfigParams {
+        return ConfigParams{ ClientPort: `` }
 }
 
 var (
@@ -27,17 +26,17 @@ var (
 )
 
 func GetConfigParams() (ConfigParams, error) {
-        confFilePath := parseConfFilePathFlag()
+        confFilePath := `config/client/config.yaml`
 
         confFileContents, err := readInFile(confFilePath)
         if err != nil {
-                zeroConfigParams := ConfigParams{``, ``, ``, ``, ``}
+                zeroConfigParams := new()
                 return zeroConfigParams, errors.Join(errConfReadFailed, err)
         }
 
         configParams, err := decodeConfFileData(confFileContents)
         if err != nil {
-                zeroConfigParams := ConfigParams{``, ``, ``, ``, ``}
+                zeroConfigParams := new()
                 return zeroConfigParams, errors.Join(errConfProcFailed, err)
         }
 
@@ -59,14 +58,6 @@ func readInFile(filePath string) ([]byte, error) {
         return fileData, nil
 }
 
-func parseConfFilePathFlag() (string) {
-        var pathStr string
-        flag.StringVar(&pathStr, "config", "config/config.yaml", "config file path")
-        flag.Parse()
-
-        return pathStr
-}
-
 func decodeConfFileData(confFileContents []byte) (ConfigParams, error) {
         if confFileContents == nil {
                 //  `panic` is used here as an assertion: it can be
@@ -80,13 +71,13 @@ func decodeConfFileData(confFileContents []byte) (ConfigParams, error) {
 
         err := yaml.Unmarshal(confFileContents, &configParams)
         if err != nil {
-                zeroConfigParams := ConfigParams{``, ``, ``, ``, ``}
+                zeroConfigParams := new()
                 return zeroConfigParams, errors.Join(errUnmrashalFailed, err)
         }
 
         err = validator.New().Struct(configParams)
         if err != nil {
-                zeroConfigParams := ConfigParams{``, ``, ``, ``, ``}
+                zeroConfigParams := new()
                 return zeroConfigParams, errors.Join(errDecodeValidFailed, err)
         }
 

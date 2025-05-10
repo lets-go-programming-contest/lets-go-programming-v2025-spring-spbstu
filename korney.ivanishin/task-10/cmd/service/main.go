@@ -9,7 +9,7 @@ import (
 	"github.com/bufbuild/protovalidate-go"
 	grpcserver "github.com/quaiion/go-practice/grpc-contact-manager/gen/proto/contact_manager/v1"
 	"github.com/quaiion/go-practice/grpc-contact-manager/internal/cm"
-	"github.com/quaiion/go-practice/grpc-contact-manager/internal/config"
+	config "github.com/quaiion/go-practice/grpc-contact-manager/internal/configs/service"
 	"github.com/quaiion/go-practice/grpc-contact-manager/internal/db"
 	"github.com/quaiion/go-practice/grpc-contact-manager/internal/handlers/grpchandler"
 	"github.com/quaiion/go-practice/grpc-contact-manager/internal/handlers/resthandler"

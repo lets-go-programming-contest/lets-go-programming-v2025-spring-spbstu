@@ -6,7 +6,7 @@ import (
 	grpcserver "github.com/quaiion/go-practice/grpc-contact-manager/gen/proto/contact_manager/v1"
 
 	"github.com/NathanBaulch/protoc-gen-cobra/client"
-	"github.com/quaiion/go-practice/grpc-contact-manager/internal/config"
+	config "github.com/quaiion/go-practice/grpc-contact-manager/internal/configs/client"
 )
 
 var (
