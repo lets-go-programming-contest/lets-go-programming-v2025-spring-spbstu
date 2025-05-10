@@ -12,10 +12,11 @@ import (
 )
 
 type ConfigParams struct {
-        DBPort      string `yaml:"db_port"      validate:"required"`
-        DBPswd      string `yaml:"db_pswd"      validate:"required"`
-        ServicePort string `yaml:"service_port" validate:"required"`
-        ClientPort  string `yaml:"client_port"  validate:"required"`
+        DBPort          string `yaml:"db_port"           validate:"required"`
+        DBPswd          string `yaml:"db_pswd"           validate:"required"`
+        GrpcServicePort string `yaml:"grpc_service_port" validate:"required"`
+        RestServicePort string `yaml:"rest_service_port" validate:"required"`
+        ClientPort      string `yaml:"client_port"       validate:"required"`
 }
 
 var (
@@ -30,13 +31,13 @@ func GetConfigParams() (ConfigParams, error) {
 
         confFileContents, err := readInFile(confFilePath)
         if err != nil {
-                zeroConfigParams := ConfigParams{``, ``, ``, ``}
+                zeroConfigParams := ConfigParams{``, ``, ``, ``, ``}
                 return zeroConfigParams, errors.Join(errConfReadFailed, err)
         }
 
         configParams, err := decodeConfFileData(confFileContents)
         if err != nil {
-                zeroConfigParams := ConfigParams{``, ``, ``, ``}
+                zeroConfigParams := ConfigParams{``, ``, ``, ``, ``}
                 return zeroConfigParams, errors.Join(errConfProcFailed, err)
         }
 
@@ -79,13 +80,13 @@ func decodeConfFileData(confFileContents []byte) (ConfigParams, error) {
 
         err := yaml.Unmarshal(confFileContents, &configParams)
         if err != nil {
-                zeroConfigParams := ConfigParams{``, ``, ``, ``}
+                zeroConfigParams := ConfigParams{``, ``, ``, ``, ``}
                 return zeroConfigParams, errors.Join(errUnmrashalFailed, err)
         }
 
         err = validator.New().Struct(configParams)
         if err != nil {
-                zeroConfigParams := ConfigParams{``, ``, ``, ``}
+                zeroConfigParams := ConfigParams{``, ``, ``, ``, ``}
                 return zeroConfigParams, errors.Join(errDecodeValidFailed, err)
         }
 
