@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ContactManagerService_CreateContact_FullMethodName = "/contact_manager.v1.ContactManagerService/CreateContact"
-	ContactManagerService_GetContact_FullMethodName    = "/contact_manager.v1.ContactManagerService/GetContact"
-	ContactManagerService_ListContacts_FullMethodName  = "/contact_manager.v1.ContactManagerService/ListContacts"
-	ContactManagerService_UpdateContact_FullMethodName = "/contact_manager.v1.ContactManagerService/UpdateContact"
-	ContactManagerService_DeleteContact_FullMethodName = "/contact_manager.v1.ContactManagerService/DeleteContact"
+	ContactManagerService_AddContact_FullMethodName     = "/contact_manager.v1.ContactManagerService/AddContact"
+	ContactManagerService_GetContact_FullMethodName     = "/contact_manager.v1.ContactManagerService/GetContact"
+	ContactManagerService_GetAllContacts_FullMethodName = "/contact_manager.v1.ContactManagerService/GetAllContacts"
+	ContactManagerService_UpdateContact_FullMethodName  = "/contact_manager.v1.ContactManagerService/UpdateContact"
+	ContactManagerService_DeleteContact_FullMethodName  = "/contact_manager.v1.ContactManagerService/DeleteContact"
 )
 
 // ContactManagerServiceClient is the client API for ContactManagerService service.
@@ -32,12 +32,12 @@ const (
 //
 // Service for managing contacts
 type ContactManagerServiceClient interface {
-	// Create a new contact
-	CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*CreateContactResponse, error)
+	// Add a new contact
+	AddContact(ctx context.Context, in *AddContactRequest, opts ...grpc.CallOption) (*AddContactResponse, error)
 	// Get a contact by ID
 	GetContact(ctx context.Context, in *GetContactRequest, opts ...grpc.CallOption) (*GetContactResponse, error)
-	// List all contacts
-	ListContacts(ctx context.Context, in *ListContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error)
+	// Get all contacts
+	GetAllContacts(ctx context.Context, in *GetAllContactsRequest, opts ...grpc.CallOption) (*GetAllContactsResponse, error)
 	// Update a contact
 	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*UpdateContactResponse, error)
 	// Delete a contact
@@ -52,10 +52,10 @@ func NewContactManagerServiceClient(cc grpc.ClientConnInterface) ContactManagerS
 	return &contactManagerServiceClient{cc}
 }
 
-func (c *contactManagerServiceClient) CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*CreateContactResponse, error) {
+func (c *contactManagerServiceClient) AddContact(ctx context.Context, in *AddContactRequest, opts ...grpc.CallOption) (*AddContactResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateContactResponse)
-	err := c.cc.Invoke(ctx, ContactManagerService_CreateContact_FullMethodName, in, out, cOpts...)
+	out := new(AddContactResponse)
+	err := c.cc.Invoke(ctx, ContactManagerService_AddContact_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,10 +72,10 @@ func (c *contactManagerServiceClient) GetContact(ctx context.Context, in *GetCon
 	return out, nil
 }
 
-func (c *contactManagerServiceClient) ListContacts(ctx context.Context, in *ListContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error) {
+func (c *contactManagerServiceClient) GetAllContacts(ctx context.Context, in *GetAllContactsRequest, opts ...grpc.CallOption) (*GetAllContactsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListContactsResponse)
-	err := c.cc.Invoke(ctx, ContactManagerService_ListContacts_FullMethodName, in, out, cOpts...)
+	out := new(GetAllContactsResponse)
+	err := c.cc.Invoke(ctx, ContactManagerService_GetAllContacts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,12 +108,12 @@ func (c *contactManagerServiceClient) DeleteContact(ctx context.Context, in *Del
 //
 // Service for managing contacts
 type ContactManagerServiceServer interface {
-	// Create a new contact
-	CreateContact(context.Context, *CreateContactRequest) (*CreateContactResponse, error)
+	// Add a new contact
+	AddContact(context.Context, *AddContactRequest) (*AddContactResponse, error)
 	// Get a contact by ID
 	GetContact(context.Context, *GetContactRequest) (*GetContactResponse, error)
-	// List all contacts
-	ListContacts(context.Context, *ListContactsRequest) (*ListContactsResponse, error)
+	// Get all contacts
+	GetAllContacts(context.Context, *GetAllContactsRequest) (*GetAllContactsResponse, error)
 	// Update a contact
 	UpdateContact(context.Context, *UpdateContactRequest) (*UpdateContactResponse, error)
 	// Delete a contact
@@ -127,14 +127,14 @@ type ContactManagerServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedContactManagerServiceServer struct{}
 
-func (UnimplementedContactManagerServiceServer) CreateContact(context.Context, *CreateContactRequest) (*CreateContactResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateContact not implemented")
+func (UnimplementedContactManagerServiceServer) AddContact(context.Context, *AddContactRequest) (*AddContactResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddContact not implemented")
 }
 func (UnimplementedContactManagerServiceServer) GetContact(context.Context, *GetContactRequest) (*GetContactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContact not implemented")
 }
-func (UnimplementedContactManagerServiceServer) ListContacts(context.Context, *ListContactsRequest) (*ListContactsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListContacts not implemented")
+func (UnimplementedContactManagerServiceServer) GetAllContacts(context.Context, *GetAllContactsRequest) (*GetAllContactsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllContacts not implemented")
 }
 func (UnimplementedContactManagerServiceServer) UpdateContact(context.Context, *UpdateContactRequest) (*UpdateContactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateContact not implemented")
@@ -162,20 +162,20 @@ func RegisterContactManagerServiceServer(s grpc.ServiceRegistrar, srv ContactMan
 	s.RegisterService(&ContactManagerService_ServiceDesc, srv)
 }
 
-func _ContactManagerService_CreateContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateContactRequest)
+func _ContactManagerService_AddContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddContactRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContactManagerServiceServer).CreateContact(ctx, in)
+		return srv.(ContactManagerServiceServer).AddContact(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ContactManagerService_CreateContact_FullMethodName,
+		FullMethod: ContactManagerService_AddContact_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContactManagerServiceServer).CreateContact(ctx, req.(*CreateContactRequest))
+		return srv.(ContactManagerServiceServer).AddContact(ctx, req.(*AddContactRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -198,20 +198,20 @@ func _ContactManagerService_GetContact_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ContactManagerService_ListContacts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListContactsRequest)
+func _ContactManagerService_GetAllContacts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllContactsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContactManagerServiceServer).ListContacts(ctx, in)
+		return srv.(ContactManagerServiceServer).GetAllContacts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ContactManagerService_ListContacts_FullMethodName,
+		FullMethod: ContactManagerService_GetAllContacts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContactManagerServiceServer).ListContacts(ctx, req.(*ListContactsRequest))
+		return srv.(ContactManagerServiceServer).GetAllContacts(ctx, req.(*GetAllContactsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -260,16 +260,16 @@ var ContactManagerService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ContactManagerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateContact",
-			Handler:    _ContactManagerService_CreateContact_Handler,
+			MethodName: "AddContact",
+			Handler:    _ContactManagerService_AddContact_Handler,
 		},
 		{
 			MethodName: "GetContact",
 			Handler:    _ContactManagerService_GetContact_Handler,
 		},
 		{
-			MethodName: "ListContacts",
-			Handler:    _ContactManagerService_ListContacts_Handler,
+			MethodName: "GetAllContacts",
+			Handler:    _ContactManagerService_GetAllContacts_Handler,
 		},
 		{
 			MethodName: "UpdateContact",

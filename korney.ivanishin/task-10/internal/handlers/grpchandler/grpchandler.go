@@ -26,7 +26,7 @@ func New(manager *cm.ContMan, validator protovalidate.Validator) *Handler {
 	}
 }
 
-func (h *Handler) Add(ctx context.Context, req *grpcserver.CreateContactRequest) (*grpcserver.CreateContactResponse, error) {
+func (h *Handler) Add(ctx context.Context, req *grpcserver.AddContactRequest) (*grpcserver.AddContactResponse, error) {
         err := h.validator.Validate(req)
 	if err != nil {
 		return nil, status.Error(codes.InvalidArgument, err.Error())
@@ -45,7 +45,7 @@ func (h *Handler) Add(ctx context.Context, req *grpcserver.CreateContactRequest)
                 }
 	}
 
-	return &grpcserver.CreateContactResponse{ Contact: convertContact(&contact) }, nil
+	return &grpcserver.AddContactResponse{ Contact: convertContact(&contact) }, nil
 }
 
 func (h *Handler) Get(ctx context.Context, req *grpcserver.GetContactRequest) (*grpcserver.GetContactResponse, error) {
@@ -66,7 +66,7 @@ func (h *Handler) Get(ctx context.Context, req *grpcserver.GetContactRequest) (*
 	return &grpcserver.GetContactResponse{ Contact: convertContact(&contact) }, nil
 }
 
-func (h *Handler) GetAll(ctx context.Context, req *grpcserver.ListContactsRequest) (*grpcserver.ListContactsResponse, error) {
+func (h *Handler) GetAll(ctx context.Context, req *grpcserver.GetAllContactsRequest) (*grpcserver.GetAllContactsResponse, error) {
 	err := h.validator.Validate(req)
 	if err != nil {
 		return nil, status.Error(codes.InvalidArgument, err.Error())
@@ -82,7 +82,7 @@ func (h *Handler) GetAll(ctx context.Context, req *grpcserver.ListContactsReques
 		protoContacts[i] = convertContact(&contact)
 	}
 
-	return &grpcserver.ListContactsResponse{ Contacts: protoContacts }, nil
+	return &grpcserver.GetAllContactsResponse{ Contacts: protoContacts }, nil
 }
 
 func (h *Handler) Update(ctx context.Context, req *grpcserver.UpdateContactRequest) (*grpcserver.UpdateContactResponse, error) {

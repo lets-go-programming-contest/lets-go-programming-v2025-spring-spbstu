@@ -7,14 +7,14 @@ option go_package = "github.com/quaiion/go-pracice/grpc-contact-manager/proto/co
 
 // Service for managing contacts
 service ContactManagerService {
-  // Create a new contact
-  rpc CreateContact(CreateContactRequest) returns (CreateContactResponse) {}
+  // Add a new contact
+  rpc AddContact(AddContactRequest) returns (AddContactResponse) {}
 
   // Get a contact by ID
   rpc GetContact(GetContactRequest) returns (GetContactResponse) {}
 
-  // List all contacts
-  rpc ListContacts(ListContactsRequest) returns (ListContactsResponse) {}
+  // Get all contacts
+  rpc GetAllContacts(GetAllContactsRequest) returns (GetAllContactsResponse) {}
 
   // Update a contact
   rpc UpdateContact(UpdateContactRequest) returns (UpdateContactResponse) {}
@@ -32,14 +32,14 @@ message Contact {
   string number = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{11}$"];
 }
 
-message CreateContactRequest {
+message AddContactRequest {
   // Name contact is associated with
   string name = 1 [(buf.validate.field).string.max_len = 64];
   // Phone number contact is associated with
   string number = 2 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{11}$"];
 }
 
-message CreateContactResponse {
+message AddContactResponse {
   Contact contact = 1;
 }
 
@@ -52,9 +52,9 @@ message GetContactResponse {
   Contact contact = 1;
 }
 
-message ListContactsRequest {}
+message GetAllContactsRequest {}
 
-message ListContactsResponse {
+message GetAllContactsResponse {
   repeated Contact contacts = 1;
 }
 

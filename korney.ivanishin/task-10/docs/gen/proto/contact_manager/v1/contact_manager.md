@@ -5,24 +5,24 @@
 # ContactManagerService
 Service for managing contacts
 
-## CreateContact
+## AddContact
 
-> **rpc** CreateContact([CreateContactRequest](#createcontactrequest))
-    [CreateContactResponse](#createcontactresponse)
+> **rpc** AddContact([AddContactRequest](#addcontactrequest))
+    [AddContactResponse](#addcontactresponse)
 
-Create a new contact
+Add a new contact
 ## GetContact
 
 > **rpc** GetContact([GetContactRequest](#getcontactrequest))
     [GetContactResponse](#getcontactresponse)
 
 Get a contact by ID
-## ListContacts
+## GetAllContacts
 
-> **rpc** ListContacts([ListContactsRequest](#listcontactsrequest))
-    [ListContactsResponse](#listcontactsresponse)
+> **rpc** GetAllContacts([GetAllContactsRequest](#getallcontactsrequest))
+    [GetAllContactsResponse](#getallcontactsresponse)
 
-List all contacts
+Get all contacts
 ## UpdateContact
 
 > **rpc** UpdateContact([UpdateContactRequest](#updatecontactrequest))
@@ -41,6 +41,29 @@ Delete a contact
 # Messages
 
 
+## AddContactRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name contact is associated with |
+| number | [ string](#string) | Phone number contact is associated with |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## AddContactResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| contact | [ Contact](#contact) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## Contact
 
 
@@ -50,29 +73,6 @@ Delete a contact
 | id | [ string](#string) | Id of contact's record in DB |
 | name | [ string](#string) | Name contact is associated with |
 | number | [ string](#string) | Phone number contact is associated with |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## CreateContactRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [ string](#string) | Name contact is associated with |
-| number | [ string](#string) | Phone number contact is associated with |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## CreateContactResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| contact | [ Contact](#contact) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -94,6 +94,23 @@ Delete a contact
  <!-- end HasFields -->
 
 
+## GetAllContactsRequest
+
+
+ <!-- end HasFields -->
+
+
+## GetAllContactsResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| contacts | [repeated Contact](#contact) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## GetContactRequest
 
 
@@ -112,23 +129,6 @@ Delete a contact
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | contact | [ Contact](#contact) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ListContactsRequest
-
-
- <!-- end HasFields -->
-
-
-## ListContactsResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| contacts | [repeated Contact](#contact) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 

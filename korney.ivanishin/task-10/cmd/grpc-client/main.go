@@ -21,9 +21,7 @@ func main() {
         }
 
         address := `localhost:` + configParams.ClientPort
-	cmd := grpcserver.ContactManagerServiceClientCommand(
-		client.WithServerAddr(address),
-	)
+	cmd := grpcserver.ContactManagerServiceClientCommand(client.WithServerAddr(address))
 
         err = cmd.Execute()
 	if err != nil {

@@ -20,41 +20,41 @@ func ContactManagerServiceClientCommand(options ...client.Option) *cobra.Command
 	}
 	cfg.BindFlags(cmd.PersistentFlags())
 	cmd.AddCommand(
-		_ContactManagerServiceCreateContactCommand(cfg),
+		_ContactManagerServiceAddContactCommand(cfg),
 		_ContactManagerServiceGetContactCommand(cfg),
-		_ContactManagerServiceListContactsCommand(cfg),
+		_ContactManagerServiceGetAllContactsCommand(cfg),
 		_ContactManagerServiceUpdateContactCommand(cfg),
 		_ContactManagerServiceDeleteContactCommand(cfg),
 	)
 	return cmd
 }
 
-func _ContactManagerServiceCreateContactCommand(cfg *client.Config) *cobra.Command {
-	req := &CreateContactRequest{}
+func _ContactManagerServiceAddContactCommand(cfg *client.Config) *cobra.Command {
+	req := &AddContactRequest{}
 
 	cmd := &cobra.Command{
-		Use:   cfg.CommandNamer("CreateContact"),
-		Short: "CreateContact RPC client",
-		Long:  "Create a new contact",
+		Use:   cfg.CommandNamer("AddContact"),
+		Short: "AddContact RPC client",
+		Long:  "Add a new contact",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if cfg.UseEnvVars {
 				if err := flag.SetFlagsFromEnv(cmd.Parent().PersistentFlags(), true, cfg.EnvVarNamer, cfg.EnvVarPrefix, "ContactManagerService"); err != nil {
 					return err
 				}
-				if err := flag.SetFlagsFromEnv(cmd.PersistentFlags(), false, cfg.EnvVarNamer, cfg.EnvVarPrefix, "ContactManagerService", "CreateContact"); err != nil {
+				if err := flag.SetFlagsFromEnv(cmd.PersistentFlags(), false, cfg.EnvVarNamer, cfg.EnvVarPrefix, "ContactManagerService", "AddContact"); err != nil {
 					return err
 				}
 			}
 			return client.RoundTrip(cmd.Context(), cfg, func(cc grpc.ClientConnInterface, in iocodec.Decoder, out iocodec.Encoder) error {
 				cli := NewContactManagerServiceClient(cc)
-				v := &CreateContactRequest{}
+				v := &AddContactRequest{}
 
 				if err := in(v); err != nil {
 					return err
 				}
 				proto.Merge(v, req)
 
-				res, err := cli.CreateContact(cmd.Context(), v)
+				res, err := cli.AddContact(cmd.Context(), v)
 
 				if err != nil {
 					return err
@@ -114,32 +114,32 @@ func _ContactManagerServiceGetContactCommand(cfg *client.Config) *cobra.Command 
 	return cmd
 }
 
-func _ContactManagerServiceListContactsCommand(cfg *client.Config) *cobra.Command {
-	req := &ListContactsRequest{}
+func _ContactManagerServiceGetAllContactsCommand(cfg *client.Config) *cobra.Command {
+	req := &GetAllContactsRequest{}
 
 	cmd := &cobra.Command{
-		Use:   cfg.CommandNamer("ListContacts"),
-		Short: "ListContacts RPC client",
-		Long:  "List all contacts",
+		Use:   cfg.CommandNamer("GetAllContacts"),
+		Short: "GetAllContacts RPC client",
+		Long:  "Get all contacts",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if cfg.UseEnvVars {
 				if err := flag.SetFlagsFromEnv(cmd.Parent().PersistentFlags(), true, cfg.EnvVarNamer, cfg.EnvVarPrefix, "ContactManagerService"); err != nil {
 					return err
 				}
-				if err := flag.SetFlagsFromEnv(cmd.PersistentFlags(), false, cfg.EnvVarNamer, cfg.EnvVarPrefix, "ContactManagerService", "ListContacts"); err != nil {
+				if err := flag.SetFlagsFromEnv(cmd.PersistentFlags(), false, cfg.EnvVarNamer, cfg.EnvVarPrefix, "ContactManagerService", "GetAllContacts"); err != nil {
 					return err
 				}
 			}
 			return client.RoundTrip(cmd.Context(), cfg, func(cc grpc.ClientConnInterface, in iocodec.Decoder, out iocodec.Encoder) error {
 				cli := NewContactManagerServiceClient(cc)
-				v := &ListContactsRequest{}
+				v := &GetAllContactsRequest{}
 
 				if err := in(v); err != nil {
 					return err
 				}
 				proto.Merge(v, req)
 
-				res, err := cli.ListContacts(cmd.Context(), v)
+				res, err := cli.GetAllContacts(cmd.Context(), v)
 
 				if err != nil {
 					return err
