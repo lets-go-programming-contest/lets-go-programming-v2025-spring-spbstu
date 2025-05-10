@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"log"
 )
 
 var (
@@ -23,7 +22,6 @@ func New() *DataBase {
 func (database *DataBase) Open(port string, pswd string) error {
         connStr := fmt.Sprintf("host=localhost port=%s user=postgres password=%s dbname=contacts sslmode=disable",
                                port, pswd)
-        log.Print(connStr)
 
         db, err := sql.Open("postgres", connStr)
         if err != nil {
