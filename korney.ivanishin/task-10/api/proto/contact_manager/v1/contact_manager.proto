@@ -29,14 +29,14 @@ message Contact {
   // Name contact is associated with
   string name = 2 [(buf.validate.field).string.max_len = 64];
   // Phone number contact is associated with
-  string number = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{11}$"];
+  string number = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{10}$"];
 }
 
 message AddContactRequest {
   // Name contact is associated with
   string name = 1 [(buf.validate.field).string.max_len = 64];
   // Phone number contact is associated with
-  string number = 2 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{11}$"];
+  string number = 2 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{10}$"];
 }
 
 message AddContactResponse {
@@ -64,7 +64,7 @@ message UpdateContactRequest {
   // Name contact is associated with
   string name = 2 [(buf.validate.field).string.max_len = 64];
   // Phone number contact is associated with
-  string number = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{11}$"];
+  string number = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{10}$"];
 }
 
 message UpdateContactResponse {
