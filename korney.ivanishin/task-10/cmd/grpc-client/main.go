@@ -10,7 +10,7 @@ import (
 )
 
 var (
-        errExecFailed   = errors.New("failed to exeute")
+        errExecFailed   = errors.New("failed to execute")
         errConfigFailed = errors.New("failed to configure")
 )
 
