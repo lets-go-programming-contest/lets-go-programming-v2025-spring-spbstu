@@ -8,54 +8,45 @@ import (
 	"strings"
 )
 
-type valCurs struct {
-	XMLName xml.Name    `xml:"ValCurs"`
-	Curs    []xmlValute `xml:"Valute"`
+type FloatString float64
+
+func (f *FloatString) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+	var s string
+	if err := d.DecodeElement(&s, &start); err != nil {
+		return err
+	}
+
+	s = strings.Replace(s, ",", ".", -1)
+
+	val, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return err
+	}
+
+	*f = FloatString(val)
+	return nil
 }
 
-type xmlValute struct {
-	NumCode  int    `xml:"NumCode"`
-	CharCode string `xml:"CharCode"`
-	Value    string `xml:"Value"`
+type valCurs struct {
+	XMLName xml.Name    `xml:"ValCurs"`
+	Curs    []Valute `xml:"Valute"`
 }
 
 type Valute struct {
-	NumCode  int
-	CharCode string
-	Value    float64
-}
-
-func xmlValute2Valute(valute xmlValute) (Valute, error) {
-	valueStr := strings.Replace(valute.Value, ",", ".", -1)
-
-	valueFloat, err := strconv.ParseFloat(valueStr, 64)
-	if err != nil {
-		return Valute{0, "", 0}, err
-	}
-
-	return Valute{valute.NumCode, valute.CharCode, valueFloat}, nil
+	NumCode  int    			`xml:"NumCode"`
+	CharCode string 			`xml:"CharCode"`
+	Value    FloatString 	`xml:"Value"`
 }
 
 func Parse(cursesFile *os.File) ([]Valute, error) {
-	var curses valCurs
-
 	decoder := xml.NewDecoder(cursesFile)
 	decoder.CharsetReader = charset.NewReaderLabel
 
+	var curses valCurs
 	err := decoder.Decode(&curses)
 	if err != nil {
-		return []Valute{}, err
+		return nil, err
 	}
 
-	var valutes []Valute
-	for _, xmlvalute := range curses.Curs {
-		valute, err := xmlValute2Valute(xmlvalute)
-		if err != nil {
-			return []Valute{}, err
-		}
-
-		valutes = append(valutes, valute)
-	}
-
-	return valutes, nil
+	return curses.Curs, nil
 }

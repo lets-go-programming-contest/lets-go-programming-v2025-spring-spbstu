@@ -2,6 +2,7 @@ package configparser
 
 import (
 	"gopkg.in/yaml.v2"
+	"errors"
 )
 
 type Config struct {
@@ -14,7 +15,7 @@ func Parse(data []byte) (Config, error) {
 
 	err := yaml.Unmarshal(data, &config)
 	if err != nil {
-		return Config{"", ""}, err
+		return Config{}, errors.Join(errors.New("Failed to unmarshal config"), err)
 	}
 
 	return config, nil

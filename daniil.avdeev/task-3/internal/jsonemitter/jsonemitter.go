@@ -2,12 +2,12 @@ package jsonemitter
 
 import (
 	"encoding/json"
-	"os"
+	"io"
 
 	"github.com/realFrogboy/task-3/internal/cursesparser"
 )
 
-func Emit(outputFile *os.File, valutes []cursesparser.Valute) error {
+func Emit(outputFile io.Writer, valutes []cursesparser.Valute) error {
 	data, err := json.Marshal(valutes)
 	if err != nil {
 		return err
