@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"flag"
-	"fmt"
 	"os"
 	"path/filepath"
 	"sort"
@@ -50,6 +49,6 @@ func main() {
 
 	err := errors.Join(errRX, errWJ)
 	if err != nil {
-		fmt.Println("errors:", err)
+		panic(err)
 	}
 }
