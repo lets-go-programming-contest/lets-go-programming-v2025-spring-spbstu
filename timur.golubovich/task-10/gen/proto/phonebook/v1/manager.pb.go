@@ -26,8 +26,6 @@ const (
 type Contact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -65,20 +63,6 @@ func (*Contact) Descriptor() ([]byte, []int) {
 func (x *Contact) GetId() string {
 	if x != nil {
 		return x.Id
-	}
-	return ""
-}
-
-func (x *Contact) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *Contact) GetPhone() string {
-	if x != nil {
-		return x.Phone
 	}
 	return ""
 }
@@ -535,14 +519,11 @@ var File_phonebook_v1_manager_proto protoreflect.FileDescriptor
 
 const file_phonebook_v1_manager_proto_rawDesc = "" +
 	"\n" +
-	"\x1aphonebook/v1/manager.proto\x12\fphonebook.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\"_\n" +
+	"\x1aphonebook/v1/manager.proto\x12\fphonebook.v1\x1a\x1bbuf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\"\x19\n" +
 	"\aContact\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\x04name\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x03R\x04name\x12'\n" +
-	"\x05phone\x18\x03 \x01(\tB\x11\xbaH\x0er\f2\n" +
-	"^\\+[0-9]*$R\x05phone\"\\\n" +
-	"\x14CreateContactRequest\x12\x1b\n" +
-	"\x04name\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x03R\x04name\x12'\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"^\n" +
+	"\x14CreateContactRequest\x12\x1d\n" +
+	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x03\x182R\x04name\x12'\n" +
 	"\x05phone\x18\x02 \x01(\tB\x11\xbaH\x0er\f2\n" +
 	"^\\+[0-9]*$R\x05phone\"H\n" +
 	"\x15CreateContactResponse\x12/\n" +

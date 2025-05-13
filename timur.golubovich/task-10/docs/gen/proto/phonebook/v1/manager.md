@@ -48,8 +48,6 @@
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | id | [ string](#string) | none |
-| name | [ string](#string) | none |
-| phone | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 

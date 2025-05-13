@@ -134,10 +134,6 @@ definitions:
     properties:
       id:
         type: string
-      name:
-        type: string
-      phone:
-        type: string
   v1CreateContactRequest:
     type: object
     properties:
