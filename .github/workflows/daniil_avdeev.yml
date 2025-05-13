@@ -2,8 +2,7 @@ name: DB_WIFI_mocks
 
 on:
   push:
-    branches:
-      - task-7
+    branches: [ "daniil.avdeev/task-7" ]
 
 jobs:
   go-test:
