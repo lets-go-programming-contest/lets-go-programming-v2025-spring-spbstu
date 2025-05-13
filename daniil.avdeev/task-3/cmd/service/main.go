@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+  "sort"
 
 	"github.com/realFrogboy/task-3/internal/configparser"
 	"github.com/realFrogboy/task-3/internal/cursesparser"
@@ -39,6 +40,8 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Cant parse input file: %s", err)
 		return
 	}
+
+  sort.Slice(valutes, func(i, j int) bool { return valutes[i].Value > valutes[j].Value })
 
 	outputFile, err := os.OpenFile(config.OutputFile, os.O_TRUNC|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
