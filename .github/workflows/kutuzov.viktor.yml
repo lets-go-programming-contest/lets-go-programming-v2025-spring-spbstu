@@ -1,0 +1,36 @@
+
+
+name: kutuzov.viktor
+
+on:
+  push:
+    branches: ["kutuzov.viktor/task7"]
+
+jobs:
+  Go-Checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.23.8
+
+    - name: set up mockery
+      working-directory: kutuzov.viktor/task6
+      run: go install github.com/vektra/mockery/v2@v2.53.3
+
+    - name: generate mock objects with mockery
+      working-directory: kutuzov.viktor/task6
+      run: go generate ./... ; go mod tidy
+
+    - name: Run tests
+      working-directory: ./kutuzov.viktor/task6
+      run: go test -v ./...
+
+    - name: Run golangci-lint
+      uses: golangci/golangci-lint-action@v6
+      with:
+        version: v1.64.8
+        working-directory: ./kutuzov.viktor/task6
