@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package contact_manager.v1;
+option go_package = "task-10/gen/proto/contact_manager/v1;contactpb";
+
+import "google/api/annotations.proto";
+import "validate/validate.proto";
+
+service ContactService {
+  rpc CreateContact(CreateContactRequest) returns (ContactResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/contacts"
+      body: "*"
+    };
+  }
+
+  rpc GetContact(GetContactRequest) returns (ContactResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/contacts/{id}"
+    };
+  }
+
+  rpc ListContacts(ListContactsRequest) returns (ListContactsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/contacts"
+    };
+  }
+
+  rpc UpdateContact(UpdateContactRequest) returns (ContactResponse) {
+    option (google.api.http) = {
+      put: "/api/v1/contacts/{id}"
+      body: "*"
+    };
+  }
+
+  rpc DeleteContact(GetContactRequest) returns (DeleteContactResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/contacts/{id}"
+    };
+  }
+}
+
+message Contact {
+  string id = 1;
+  string name = 2;
+  string phone = 3;
+  string email = 4;
+  int64 created_at = 5;
+  int64 updated_at = 6;
+}
+
+message CreateContactRequest {
+  string name = 1 [(validate.rules).string.min_len = 2];
+  string phone = 2 [(validate.rules).string.pattern = "^(\\+\\d{1,3}|8)\\d{10}$"];
+  string email = 3 [(validate.rules).string.email = true];
+}
+
+message UpdateContactRequest {
+  string id = 1 [(validate.rules).string.uuid = true];
+  string name = 2 [(validate.rules).string.min_len = 2];
+  string phone = 3 [(validate.rules).string.pattern = "^(\\+\\d{1,3}|8)\\d{10}$"];
+  string email = 4 [(validate.rules).string.email = true];
+}
+
+message GetContactRequest {
+  string id = 1 [(validate.rules).string.uuid = true];
+}
+
+message ContactResponse {
+  Contact contact = 1;
+}
+
+message ListContactsRequest {}
+
+message ListContactsResponse {
+  repeated Contact contacts = 1;
+}
+
+message DeleteContactResponse {
+  string message = 1;
+}
