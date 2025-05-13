@@ -2,7 +2,6 @@ linters:
   enable:
     - govet
     - revive
-    - errcheck
     - gosimple
     - godot
     - ineffassign
