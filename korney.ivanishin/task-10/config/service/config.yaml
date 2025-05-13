@@ -1,0 +1,4 @@
+db_port: "5432"
+db_pswd: "pswd"
+grpc_service_port: "50051"
+rest_service_port: "8080"

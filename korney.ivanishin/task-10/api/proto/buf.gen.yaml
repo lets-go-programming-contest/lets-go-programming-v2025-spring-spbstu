@@ -1,0 +1,21 @@
+version: v1
+managed:
+  enabled: true
+plugins:
+  - name: go
+    out: ../../gen/proto
+    opt:
+      - paths=source_relative
+  - name: go-grpc
+    out: ../../gen/proto
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
+  - name: cobra
+    out: ../../gen/proto
+    opt:
+      - paths=source_relative
+  - name: doc
+    out: ../../docs/gen/proto
+    opt:
+      - markdown,protoc-gen-doc.tmpl
