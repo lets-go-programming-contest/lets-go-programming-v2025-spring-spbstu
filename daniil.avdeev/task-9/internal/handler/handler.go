@@ -2,8 +2,10 @@ package handler
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/realFrogboy/task-9/internal/contacts"
 	"github.com/realFrogboy/task-9/internal/db"
@@ -12,11 +14,32 @@ import (
 )
 
 type ContactHandler struct {
-  db *db.SQLiteStorage
+	db     *db.SQLiteStorage
+	router *mux.Router
 }
 
-func NewContactHandler(db *db.SQLiteStorage) *ContactHandler {
-	return &ContactHandler{db: db}
+func NewContactHandler(dbPath string) (*ContactHandler, error) {
+	dbStorage, err := db.NewSQLiteStorage(dbPath)
+	if err != nil {
+		return nil, err
+	}
+
+	router := mux.NewRouter()
+
+	return &ContactHandler{db: dbStorage, router: router}, nil
+}
+
+func (h *ContactHandler) Delete() {
+	h.db.Close()
+}
+
+func (h *ContactHandler) Run(serverPath string) {
+	h.router.HandleFunc("/contacts", h.GetAllContacts).Methods(http.MethodGet)
+	h.router.HandleFunc("/contacts/{id}", h.GetContact).Methods(http.MethodGet)
+	h.router.HandleFunc("/contacts", h.CreateContact).Methods(http.MethodPost)
+	h.router.HandleFunc("/contacts/{id}", h.UpdateContact).Methods(http.MethodPut)
+	h.router.HandleFunc("/contacts/{id}", h.DeleteContact).Methods(http.MethodDelete)
+	log.Fatal(http.ListenAndServe(serverPath, h.router))
 }
 
 func (h *ContactHandler) GetAllContacts(w http.ResponseWriter, r *http.Request) {
@@ -58,14 +81,18 @@ func (h *ContactHandler) CreateContact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  if err := checkContact(contact); err != nil {
-    respondWithError(w, http.StatusBadRequest, err.Error())
+	if err := checkContact(contact); err != nil {
+		respondWithError(w, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	id, err := h.db.CreateContact(contact)
 	if err != nil {
-		respondWithError(w, http.StatusBadRequest, err.Error())
+		if strings.HasPrefix(err.Error(), "UNIQUE constraint failed") {
+			respondWithError(w, http.StatusBadRequest, err.Error())
+		} else {
+			respondWithError(w, http.StatusInternalServerError, err.Error())
+		}
 		return
 	}
 
@@ -92,12 +119,12 @@ func (h *ContactHandler) UpdateContact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  if err := checkContact(contact); err != nil {
+	if err := checkContact(contact); err != nil {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-  if err := h.db.UpdateContact(id, contact); err != nil {
+	if err := h.db.UpdateContact(id, contact); err != nil {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
