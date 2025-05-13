@@ -1,0 +1,6 @@
+[submodule "korney.ivanishin/task-10/api/third_party/protovalidate"]
+	path = korney.ivanishin/task-10/api/third_party/protovalidate
+	url = https://github.com/bufbuild/protovalidate.git
+[submodule "korney.ivanishin/task-10/api/third_party/googleapis"]
+	path = korney.ivanishin/task-10/api/third_party/googleapis
+	url = https://github.com/googleapis/googleapis.git
