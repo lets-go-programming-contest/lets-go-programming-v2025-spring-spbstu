@@ -21,7 +21,7 @@ jobs:
       with:
         version: v1.64.6
         working-directory: ./oleg.berezin/task-7
-        run: golangci-lint ru
+        run: golangci-lint run
 
     - name: Tests
       working-directory: ./oleg.berezin/task-7
