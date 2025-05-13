@@ -34,7 +34,8 @@ func New(rout *mux.Router, cdb ContactDB) *mux.Router {
 }
 
 func (hand *handler) get(writer http.ResponseWriter, request *http.Request) {
-        id := request.URL.Path[len(`/contacts/`):]
+        vars := mux.Vars(request)
+	id := vars["id"]
         if id == `` {
                 http.Error(writer, `{"error_message": "ID required"}`, http.StatusBadRequest)
                 return
@@ -90,7 +91,8 @@ func (hand *handler) add(writer http.ResponseWriter, request *http.Request) {
 }
 
 func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
-        id := request.URL.Path[len(`/contacts/`):]
+        vars := mux.Vars(request)
+	id := vars["id"]
         if id == `` {
                 http.Error(writer, `{"error_message": "ID required"}`, http.StatusBadRequest)
                 return
@@ -127,7 +129,8 @@ func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
 }
 
 func (hand *handler) delete(writer http.ResponseWriter, request *http.Request) {
-        id := request.URL.Path[len(`/contacts/`):]
+        vars := mux.Vars(request)
+	id := vars["id"]
         if id == `` {
                 http.Error(writer, `{"error_message": "ID required"}`, http.StatusBadRequest)
                 return
