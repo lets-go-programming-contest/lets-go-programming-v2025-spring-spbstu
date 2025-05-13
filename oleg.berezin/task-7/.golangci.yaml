@@ -1,0 +1,11 @@
+linters:
+  enable:
+    - govet
+    - revive
+    - errcheck
+    - gosimple
+    - godot
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
