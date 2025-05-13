@@ -47,7 +47,7 @@ func (hand *handler) get(writer http.ResponseWriter, request *http.Request) {
                 return
         }
 
-        writer.Header().Set("Content-Type", "application/json")
+        setHeader(writer)
         json.NewEncoder(writer).Encode(contact)
 }
 
@@ -58,7 +58,7 @@ func (hand *handler) getAll(writer http.ResponseWriter, request *http.Request) {
                 return
         }
 
-        writer.Header().Set("Content-Type", "application/json")
+        setHeader(writer)
         json.NewEncoder(writer).Encode(contacts)
 }
 
@@ -86,7 +86,7 @@ func (hand *handler) add(writer http.ResponseWriter, request *http.Request) {
                 return
         }
 
-        writer.Header().Set("Content-Type", "application/json")
+        setHeader(writer)
 }
 
 func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
@@ -123,7 +123,7 @@ func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
                 return
         }
 
-        writer.Header().Set("Content-Type", "application/json")
+        setHeader(writer)
 }
 
 func (hand *handler) delete(writer http.ResponseWriter, request *http.Request) {
@@ -144,5 +144,9 @@ func (hand *handler) delete(writer http.ResponseWriter, request *http.Request) {
                 return
         }
 
+        setHeader(writer)
+}
+
+func setHeader(writer http.ResponseWriter) {
         writer.Header().Set("Content-Type", "application/json")
 }
