@@ -87,7 +87,6 @@ func (hand *handler) add(writer http.ResponseWriter, request *http.Request) {
         }
 
         writer.Header().Set("Content-Type", "application/json")
-        writer.WriteHeader(http.StatusCreated)
 }
 
 func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
@@ -125,7 +124,6 @@ func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
         }
 
         writer.Header().Set("Content-Type", "application/json")
-        writer.WriteHeader(http.StatusOK)
 }
 
 func (hand *handler) delete(writer http.ResponseWriter, request *http.Request) {
@@ -147,5 +145,4 @@ func (hand *handler) delete(writer http.ResponseWriter, request *http.Request) {
         }
 
         writer.Header().Set("Content-Type", "application/json")
-        writer.WriteHeader(http.StatusOK)
 }
