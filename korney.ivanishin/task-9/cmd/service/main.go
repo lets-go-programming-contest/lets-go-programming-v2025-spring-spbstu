@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/mux"
 	"github.com/quaiion/go-practice/contact-manager/internal/cm"
 	"github.com/quaiion/go-practice/contact-manager/internal/config"
 	"github.com/quaiion/go-practice/contact-manager/internal/db"
@@ -36,11 +37,15 @@ func main() {
                 panic(errors.Join(errFailedInitDB, err))
         }
 
-        hand := handler.New(contMan)
+        rout := mux.NewRouter()
+        rout = handler.New(rout, contMan)
 
-        http.HandleFunc("/contacts", hand.HandleAllContacts)
-        http.HandleFunc("/contacts/", hand.HandleContact)
+        addr := `localhost:` + configParams.ServicePort
+        server := http.Server{
+                Addr: addr,
+                Handler: rout,
+        }
 
         log.Print("\ncontact manager online\n")
-        http.ListenAndServe(":" + configParams.ServicePort, nil)
+        server.ListenAndServe()
 }
