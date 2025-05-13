@@ -2,10 +2,10 @@ package handler
 
 import (
 	"encoding/json"
+	"errors"
 	"log"
 	"net/http"
 	"strconv"
-	"strings"
 
 	"github.com/realFrogboy/task-9/internal/contacts"
 	"github.com/realFrogboy/task-9/internal/db"
@@ -88,8 +88,8 @@ func (h *ContactHandler) CreateContact(w http.ResponseWriter, r *http.Request) {
 
 	id, err := h.db.CreateContact(contact)
 	if err != nil {
-		if strings.HasPrefix(err.Error(), "UNIQUE constraint failed") {
-			respondWithError(w, http.StatusBadRequest, err.Error())
+		if errors.Is(err, db.ErrConflictRecord) {
+			respondWithError(w, http.StatusConflict, err.Error())
 		} else {
 			respondWithError(w, http.StatusInternalServerError, err.Error())
 		}

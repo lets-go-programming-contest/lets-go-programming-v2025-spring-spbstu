@@ -2,11 +2,16 @@ package db
 
 import (
 	"database/sql"
+	"errors"
+	"fmt"
+	"strings"
 
 	"github.com/realFrogboy/task-9/internal/contacts"
 
 	_ "github.com/mattn/go-sqlite3"
 )
+
+var ErrConflictRecord = errors.New("Non-Unique phone number")
 
 type SQLiteStorage struct {
 	db *sql.DB
@@ -76,6 +81,9 @@ func (s *SQLiteStorage) CreateContact(contact contacts.Contact) (int, error) {
 	)
 
 	if err != nil {
+		if strings.HasPrefix(err.Error(), "UNIQUE constraint failed") {
+			return 0, fmt.Errorf("%w: %s", ErrConflictRecord, err.Error())
+		}
 		return 0, err
 	}
 
