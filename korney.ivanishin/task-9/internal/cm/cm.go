@@ -11,6 +11,7 @@ import (
 // errors
 var (
         errDBInitFailed     = errors.New("failed to init contact db")
+        ErrGetContNotFound  = errors.New("id to select not found")
         errFailedRegExpComp = errors.New("failed to init regexp checker")
         errWrongNumFormat   = errors.New("phone number invalid format, need eleven digits")
         errFailedAddCont    = errors.New("failed adding a contact")
@@ -101,7 +102,11 @@ func (contMan *ContMan) Get(id string) (Contact, error) {
         
         err := contMan.database.QueryRow(querySelect, id).Scan(&contact.ID, &contact.Name, &contact.Number)
         if err != nil {
-                return contact, errors.Join(errFailedSelectCont, err)
+                if err.Error() == `sql: no rows in result set` {
+                        return contact, errors.Join(ErrGetContNotFound, err)
+                } else {
+                        return contact, errors.Join(errFailedSelectCont, err)
+                }
         }
         
         return contact, nil

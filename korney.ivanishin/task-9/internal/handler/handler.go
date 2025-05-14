@@ -7,6 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/quaiion/go-practice/contact-manager/internal/cm"
+	"github.com/quaiion/go-practice/contact-manager/internal/httperr"
 )
 
 type ContactDB interface {
@@ -33,17 +34,27 @@ func New(rout *mux.Router, cdb ContactDB) *mux.Router {
         return rout
 }
 
+var (
+        errDecodeFailed     = errors.New("failed decoding the input contact")
+        errEmptyID          = errors.New("input ID should not be empty")
+        errEmptyName        = errors.New("input name should not be empty")
+)
+
 func (hand *handler) get(writer http.ResponseWriter, request *http.Request) {
         vars := mux.Vars(request)
-	id := vars["id"]
+	id := vars[`id`]
         if id == `` {
-                http.Error(writer, `{"error_message": "ID required"}`, http.StatusBadRequest)
+                httperr.New(errEmptyID).Encode(writer, http.StatusBadRequest)
                 return
         }
 
         contact, err := hand.cdb.Get(id)
         if err != nil {
-                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusInternalServerError)
+                if errors.Is(err, cm.ErrGetContNotFound) {
+                        httperr.New(err).Encode(writer, http.StatusNotFound)
+                } else {
+                        httperr.New(err).Encode(writer, http.StatusInternalServerError)
+                }
                 return
         }
 
@@ -54,7 +65,7 @@ func (hand *handler) get(writer http.ResponseWriter, request *http.Request) {
 func (hand *handler) getAll(writer http.ResponseWriter, request *http.Request) {
         contacts, err := hand.cdb.GetAll()
         if err != nil {
-                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusInternalServerError)
+                httperr.New(err).Encode(writer, http.StatusInternalServerError)
                 return
         }
 
@@ -67,21 +78,21 @@ func (hand *handler) add(writer http.ResponseWriter, request *http.Request) {
 
         err := json.NewDecoder(request.Body).Decode(&contact)
         if err != nil {
-                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusBadRequest)
+                httperr.New(errors.Join(errDecodeFailed, err)).Encode(writer, http.StatusBadRequest)
                 return
         }
 
-        if contact.Name == `` || contact.Number == `` {
-                http.Error(writer, `{"error_message": "name and number required"}`, http.StatusBadRequest)
+        if contact.Name == `` {
+                httperr.New(errEmptyName).Encode(writer, http.StatusBadRequest)
                 return
         }
 
         err = hand.cdb.Add(contact)
         if err != nil {
                 if errors.Is(err, cm.ErrDuplicateAdded) {
-                        http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusConflict)
+                        httperr.New(err).Encode(writer, http.StatusConflict)
                 } else {
-                        http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusInternalServerError)
+                        httperr.New(err).Encode(writer, http.StatusInternalServerError)
                 }
                 return
         }
@@ -91,9 +102,9 @@ func (hand *handler) add(writer http.ResponseWriter, request *http.Request) {
 
 func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
         vars := mux.Vars(request)
-	id := vars["id"]
+	id := vars[`id`]
         if id == `` {
-                http.Error(writer, `{"error_message": "ID required"}`, http.StatusBadRequest)
+                httperr.New(errEmptyID).Encode(writer, http.StatusBadRequest)
                 return
         }
 
@@ -101,12 +112,12 @@ func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
 
         err := json.NewDecoder(request.Body).Decode(&contact)
         if err != nil {
-                http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusBadRequest)
+                httperr.New(errors.Join(errDecodeFailed, err)).Encode(writer, http.StatusBadRequest)
                 return
         }
 
-        if contact.Name == `` || contact.Number == `` {
-                http.Error(writer, `{"error_message": "name and new number required"}`, http.StatusBadRequest)
+        if contact.Name == `` {
+                httperr.New(errEmptyName).Encode(writer, http.StatusBadRequest)
                 return
         }
 
@@ -114,11 +125,11 @@ func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
         err = hand.cdb.Update(contact)
         if err != nil {
                 if errors.Is(err, cm.ErrContUpdNotFound) {
-                        http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusNotFound)
+                        httperr.New(err).Encode(writer, http.StatusNotFound)
                 } else if errors.Is(err, cm.ErrDuplicateAdded) {
-                        http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusConflict)
+                        httperr.New(err).Encode(writer, http.StatusConflict)
                 } else {
-                        http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusInternalServerError)
+                        httperr.New(err).Encode(writer, http.StatusInternalServerError)
                 }
                 return
         }
@@ -128,18 +139,18 @@ func (hand *handler) update(writer http.ResponseWriter, request *http.Request) {
 
 func (hand *handler) delete(writer http.ResponseWriter, request *http.Request) {
         vars := mux.Vars(request)
-	id := vars["id"]
+	id := vars[`id`]
         if id == `` {
-                http.Error(writer, `{"error_message": "ID required"}`, http.StatusBadRequest)
+                httperr.New(errEmptyID).Encode(writer, http.StatusBadRequest)
                 return
         }
 
         err := hand.cdb.Delete(id)
         if err != nil {
                 if errors.Is(err, cm.ErrContDelNotFound) {
-                        http.Error(writer, `{"error_message": "contact not found"}`, http.StatusNotFound)
+                        httperr.New(err).Encode(writer, http.StatusNotFound)
                 } else {
-                        http.Error(writer, `{"error_message": "` + err.Error() + `"}`, http.StatusInternalServerError)
+                        httperr.New(err).Encode(writer, http.StatusInternalServerError)
                 }
                 return
         }
