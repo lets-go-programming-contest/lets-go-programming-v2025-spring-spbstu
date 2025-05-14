@@ -1,0 +1,104 @@
+
+before walk fib
+.   IF tc(1) # main.go:4:3
+.   IF-Cond
+.   .   EQ bool tc(1) # main.go:4:9
+.   .   .   NAME-main.n esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:3:10
+.   .   .   LITERAL-0 int tc(1) # main.go:4:12
+.   IF-Body
+.   .   RETURN tc(1) # main.go:5:5
+.   .   RETURN-Results
+.   .   .   LITERAL-0 int tc(1) # main.go:5:12
+.   IF tc(1) # main.go:8:3
+.   IF-Cond
+.   .   EQ bool tc(1) # main.go:8:9
+.   .   .   NAME-main.n esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:3:10
+.   .   .   LITERAL-1 int tc(1) # main.go:8:12
+.   IF-Body
+.   .   RETURN tc(1) # main.go:9:5
+.   .   RETURN-Results
+.   .   .   LITERAL-1 int tc(1) # main.go:9:12
+.   AS tc(1) # main.go:12:13
+.   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:13
+.   .   CALLFUNC int tc(1) # main.go:12:13
+.   .   CALLFUNC-Fun
+.   .   .   NAME-main.fib Class:PFUNC Offset:0 Used FUNC-func(int) int tc(1) # main.go:3:6
+.   .   CALLFUNC-Args
+.   .   .   SUB int tc(1) # main.go:12:16
+.   .   .   .   NAME-main.n esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:3:10
+.   .   .   .   LITERAL-2 int tc(1) # main.go:12:18
+.   AS tc(1) # main.go:12:26
+.   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:26
+.   .   CALLFUNC int tc(1) # main.go:12:26
+.   .   CALLFUNC-Fun
+.   .   .   NAME-main.fib Class:PFUNC Offset:0 Used FUNC-func(int) int tc(1) # main.go:3:6
+.   .   CALLFUNC-Args
+.   .   .   SUB int tc(1) # main.go:12:29
+.   .   .   .   NAME-main.n esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:3:10
+.   .   .   .   LITERAL-1 int tc(1) # main.go:12:31
+.   RETURN tc(1) # main.go:12:3
+.   RETURN-Results
+.   .   ADD int tc(1) # main.go:12:21
+.   .   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:13
+.   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:26
+after walk fib
+.   IF tc(1) # main.go:4:3
+.   IF-Cond
+.   .   EQ bool tc(1) # main.go:4:9
+.   .   .   NAME-main.n esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:3:10
+.   .   .   LITERAL-0 int tc(1) # main.go:4:12
+.   IF-Body
+.   .   RETURN tc(1) # main.go:5:5
+.   .   RETURN-Results
+.   .   .   AS tc(1) # main.go:5:5
+.   .   .   .   NAME-main.~r0 esc(no) Class:PPARAMOUT Offset:0 OnStack int tc(1) # main.go:3:17
+.   .   .   .   LITERAL-0 int tc(1) # main.go:5:12
+.   IF tc(1) # main.go:8:3
+.   IF-Cond
+.   .   EQ bool tc(1) # main.go:8:9
+.   .   .   NAME-main.n esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:3:10
+.   .   .   LITERAL-1 int tc(1) # main.go:8:12
+.   IF-Body
+.   .   RETURN tc(1) # main.go:9:5
+.   .   RETURN-Results
+.   .   .   AS tc(1) # main.go:9:5
+.   .   .   .   NAME-main.~r0 esc(no) Class:PPARAMOUT Offset:0 OnStack int tc(1) # main.go:3:17
+.   .   .   .   LITERAL-1 int tc(1) # main.go:9:12
+.   AS tc(1) # main.go:12:13
+.   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:13
+.   .   CALLFUNC Walked int tc(1) # main.go:12:13
+.   .   CALLFUNC-Fun
+.   .   .   NAME-main.fib Class:PFUNC Offset:0 Used FUNC-func(int) int tc(1) # main.go:3:6
+.   .   CALLFUNC-Args
+.   .   .   SUB int tc(1) # main.go:12:16
+.   .   .   .   NAME-main.n esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:3:10
+.   .   .   .   LITERAL-2 int tc(1) # main.go:12:18
+.   AS tc(1) # main.go:12:26
+.   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:26
+.   .   CALLFUNC Walked int tc(1) # main.go:12:26
+.   .   CALLFUNC-Fun
+.   .   .   NAME-main.fib Class:PFUNC Offset:0 Used FUNC-func(int) int tc(1) # main.go:3:6
+.   .   CALLFUNC-Args
+.   .   .   SUB int tc(1) # main.go:12:29
+.   .   .   .   NAME-main.n esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:3:10
+.   .   .   .   LITERAL-1 int tc(1) # main.go:12:31
+.   RETURN tc(1) # main.go:12:3
+.   RETURN-Results
+.   .   AS tc(1) # main.go:12:3
+.   .   .   NAME-main.~r0 esc(no) Class:PPARAMOUT Offset:0 OnStack int tc(1) # main.go:3:17
+.   .   .   ADD int tc(1) # main.go:12:21
+.   .   .   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:13
+.   .   .   .   NAME-main..autotmp_3 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:26
+
+before walk main
+.   CALLFUNC int tc(1) # main.go:16:6
+.   CALLFUNC-Fun
+.   .   NAME-main.fib Class:PFUNC Offset:0 Used FUNC-func(int) int tc(1) # main.go:3:6
+.   CALLFUNC-Args
+.   .   LITERAL-5 int tc(1) # main.go:16:7
+after walk main
+.   CALLFUNC Walked int tc(1) # main.go:16:6
+.   CALLFUNC-Fun
+.   .   NAME-main.fib Class:PFUNC Offset:0 Used FUNC-func(int) int tc(1) # main.go:3:6
+.   CALLFUNC-Args
+.   .   LITERAL-5 int tc(1) # main.go:16:7

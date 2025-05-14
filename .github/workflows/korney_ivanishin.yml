@@ -1,0 +1,35 @@
+name: korney_ivanishin
+
+on:
+    push:
+        branches: [ "korney.ivanishin/TASK-7" ]
+
+jobs:
+
+    Go-Tests:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4.2.2
+
+        - name: set up go
+          uses: actions/setup-go@v5.4.0
+          with:
+            go-version: 1.24
+
+        - name: set up mockery
+          working-directory: korney.ivanishin/task-7
+          run: go install github.com/vektra/mockery/v2@v2.53.3
+
+        - name: generate mock objects with mockery
+          working-directory: korney.ivanishin/task-7
+          run: go generate ./... ; go mod tidy
+
+        - name: run golang linter
+          uses: golangci/golangci-lint-action@v6.0.1
+          with:
+            working-directory: korney.ivanishin/task-7
+
+        - name: run tests
+          working-directory: korney.ivanishin/task-7
+          run: go test -v ./...
+

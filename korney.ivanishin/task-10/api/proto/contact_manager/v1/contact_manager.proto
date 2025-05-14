@@ -1,0 +1,79 @@
+syntax = "proto3";
+package contact_manager.v1;
+
+import "buf/validate/validate.proto";
+
+option go_package = "github.com/quaiion/go-pracice/grpc-contact-manager/proto/contact_manager/v1;contact_manager";
+
+// Service for managing contacts
+service ContactManagerService {
+  // Add a new contact
+  rpc AddContact(AddContactRequest) returns (AddContactResponse) {}
+
+  // Get a contact by ID
+  rpc GetContact(GetContactRequest) returns (GetContactResponse) {}
+
+  // Get all contacts
+  rpc GetAllContacts(GetAllContactsRequest) returns (GetAllContactsResponse) {}
+
+  // Update a contact
+  rpc UpdateContact(UpdateContactRequest) returns (UpdateContactResponse) {}
+
+  // Delete a contact
+  rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse) {}
+}
+
+message Contact {
+  // Id of contact's record in DB
+  string id = 1;
+  // Name contact is associated with
+  string name = 2;
+  // Phone number contact is associated with
+  string number = 3;
+}
+
+message AddContactRequest {
+  // Name contact is associated with
+  string name = 1 [(buf.validate.field).string.max_len = 64];
+  // Phone number contact is associated with
+  string number = 2 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{10}$"];
+}
+
+message AddContactResponse {
+  Contact contact = 1;
+}
+
+message GetContactRequest {
+  // Id of contact's record in DB
+  string id = 1;
+}
+
+message GetContactResponse {
+  Contact contact = 1;
+}
+
+message GetAllContactsRequest {}
+
+message GetAllContactsResponse {
+  repeated Contact contacts = 1;
+}
+
+message UpdateContactRequest {
+  // Id of contact's record in DB
+  string id = 1;
+  // Name contact is associated with
+  string name = 2 [(buf.validate.field).string.max_len = 64];
+  // Phone number contact is associated with
+  string number = 3 [(buf.validate.field).string.pattern = "^\\+[1-9][0-9]?[0-9]?[0-9]{10}$"];
+}
+
+message UpdateContactResponse {
+  Contact contact = 1;
+}
+
+message DeleteContactRequest {
+  // Id of contact's record in DB
+  string id = 1;
+}
+
+message DeleteContactResponse {}

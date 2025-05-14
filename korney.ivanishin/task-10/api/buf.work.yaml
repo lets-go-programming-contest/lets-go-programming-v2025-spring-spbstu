@@ -1,0 +1,5 @@
+version: v1
+directories:
+  - proto
+  - third_party/googleapis
+  - third_party/protovalidate/proto/protovalidate

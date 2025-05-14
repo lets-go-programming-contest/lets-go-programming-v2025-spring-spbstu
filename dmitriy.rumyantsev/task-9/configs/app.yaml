@@ -1,0 +1,15 @@
+# Server settings
+server:
+  port: 8081  # HTTP server port
+  timeout: 30s  # Timeout for server operations (read/write/idle)
+
+# Database connection settings
+database:
+  host: localhost  # PostgreSQL server hostname
+  port: 5432       # PostgreSQL server port
+  user: postgres   # Database username
+  password: dima03  # Database password
+  name: contacts   # Database name
+  max_open_conns: 10  # Maximum number of open connections to the database
+  max_idle_conns: 5   # Maximum number of idle connections in the pool
+  conn_max_lifetime: 1h  # Maximum time a connection may be reused

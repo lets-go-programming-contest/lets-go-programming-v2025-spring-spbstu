@@ -1,0 +1,33 @@
+name: denis_boborukhin 
+
+on:
+  push:
+    branches: ["d.boborukhin/TASK-7"]
+
+jobs:
+  Main_test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.2.2
+
+    - name: Set up go
+      uses: actions/setup-go@v5.4.0
+      with:
+        go-version: 1.23.5
+
+    - name: Set up mockery
+      working-directory: denis.boborukhin/task-7
+      run: go install github.com/vektra/mockery/v2@latest
+
+    - name: Make go generate
+      working-directory: denis.boborukhin/task-7
+      run: go generate ./... ; go mod tidy
+
+    - name: Run golangci-lint
+      uses: golangci/golangci-lint-action@v7
+      with:
+        working-directory: denis.boborukhin/task-7
+
+    - name: Run tests
+      working-directory: denis.boborukhin/task-7
+      run: go test ./... -v -cover

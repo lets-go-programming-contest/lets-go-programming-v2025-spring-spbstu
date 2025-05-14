@@ -1,0 +1,34 @@
+name: DB_WIFI_mocks
+
+on:
+  push:
+    branches:
+      - daniil.avdeev/task-7
+
+jobs:
+  go-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v5
+      with:
+        go-version: 1.24.0
+
+    - name: mockery
+      working-directory: ./daniil.avdeev/task-7
+      run: go install github.com/vektra/mockery/v2@v2.53.3
+
+    - name: generate
+      working-directory: ./daniil.avdeev/task-7
+      run: go generate ./... && go mod tidy
+
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v7
+      with:
+        version: v2.0.2
+        working-directory: ./daniil.avdeev/task-7
+        run: golangci-lint run
+
+    - name: test
+      working-directory: ./daniil.avdeev/task-7
+      run: go test -v ./...
