@@ -12,7 +12,7 @@ func isIntersected(inteval1 OptInt, t temperature.Temperature) bool {
 	if t.Less {
 		return inteval1.T2 < t.T
 	} else {
-		return inteval1.T2 > t.T
+		return inteval1.T1 > t.T
 	}
 }
 
